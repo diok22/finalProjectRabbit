@@ -20,8 +20,8 @@ class CreateEventViewController: UIViewController {
     
     @IBAction func submitDetails(_ sender: Any) {
         
-        let userInput = eventTitle.text
-        performSegue(withIdentifier: "submitNewEvent", sender: userInput)
+//        let userInput = eventTitle.text
+        performSegue(withIdentifier: "submitNewEvent", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -29,7 +29,9 @@ class CreateEventViewController: UIViewController {
             
             if let destination = segue.destination as? DetailOutputViewController {
                 
-                destination.passedData = sender as? String
+                destination.passedEventTitle = eventTitle.text
+                destination.passedEventTime = time.text
+                destination.passedInvitees = invitees.text
             }
         }
     }

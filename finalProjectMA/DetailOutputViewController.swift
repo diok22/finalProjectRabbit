@@ -16,12 +16,17 @@ class DetailOutputViewController: UIViewController {
     
     @IBOutlet weak var invitees: UITextView!
     
-    var passedData: String!
+    var passedEventTitle: String!
+    var passedEventTime: String!
+    var passedInvitees: String!
      
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title_event.text = passedData
+        title_event.text = passedEventTitle
+        time.text = passedEventTime
+        invitees.text = passedInvitees
+        
 
         // Do any additional setup after loading the view.
     }
