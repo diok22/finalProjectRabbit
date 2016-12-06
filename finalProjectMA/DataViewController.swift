@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class DataViewController: UIViewController {
 
@@ -14,20 +15,16 @@ class DataViewController: UIViewController {
     var dataObject: String = ""
 
     
-    
     @IBAction func createEventForm(_ sender: UIButton) {
         performSegue(withIdentifier: "CreateNewEvent", sender: self)
     }
- 
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
        
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,7 +34,6 @@ class DataViewController: UIViewController {
         super.viewWillAppear(animated)
         self.dataLabel!.text = dataObject
     }
-
 
 }
 
