@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,10 +27,56 @@
             </objects>
             <point key="canvasLocation" x="-410" y="-263"/>
         </scene>
+        <!--Detail Output View Controller-->
+        <scene sceneID="cWU-Yh-1ny">
+            <objects>
+                <viewController id="dIT-YQ-gDb" customClass="DetailOutputViewController" customModule="finalProjectMA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1UQ-Qy-h84"/>
+                        <viewControllerLayoutGuide type="bottom" id="CJZ-u1-k48"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lHH-Sh-MCF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l5y-a8-PuL" userLabel="title_output">
+                                <rect key="frame" x="67" y="432" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.75348002812904047" blue="0.80409062586073243" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZmG-Z3-FzU" userLabel="name_output">
+                                <rect key="frame" x="67" y="28" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-eb-cgy" userLabel="time_output">
+                                <rect key="frame" x="67" y="222" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.5138502903587352" blue="0.89481385993960505" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="invitees" destination="l5y-a8-PuL" id="CBv-Xf-kw4"/>
+                        <outlet property="time" destination="H5c-eb-cgy" id="kqI-W3-qWf"/>
+                        <outlet property="title_event" destination="ZmG-Z3-FzU" id="8ED-sd-Eng"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2RK-xX-D8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2057" y="6"/>
+        </scene>
         <!--Create Event View Controller-->
         <scene sceneID="chg-qz-pPs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NvY-98-KAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="createEventForm" id="6Hs-Oz-oxC" customClass="CreateEventViewController" customModule="finalProjectMA" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2xg-Tf-zzN"/>
@@ -79,6 +125,9 @@
                                 <rect key="frame" x="154" y="592" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitDetails:" destination="6Hs-Oz-oxC" eventType="touchUpInside" id="xhx-RG-QDA"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Place for map" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AdP-3z-bf4">
                                 <rect key="frame" x="67" y="340" width="245" height="227"/>
@@ -90,9 +139,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="eventTitle" destination="RDa-ir-zVs" id="0Ml-eR-SOL"/>
+                        <outlet property="invitees" destination="aIQ-OI-028" id="WWM-FJ-R1g"/>
+                        <outlet property="location" destination="cgr-Ko-BoO" id="M1Y-28-E9t"/>
+                        <outlet property="time" destination="Aeu-i0-aNu" id="n11-hW-Num"/>
+                        <segue destination="dIT-YQ-gDb" kind="show" identifier="submitNewEvent" id="cdW-XU-djG"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NvY-98-KAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="452" y="-350.37481259370315"/>
+            <point key="canvasLocation" x="586" y="6"/>
         </scene>
         <!--Data View Controller-->
         <scene sceneID="snT-py-3hH">
@@ -107,13 +164,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ" userLabel="I">
-                                <rect key="frame" x="20" y="20" width="335" height="16.5"/>
+                                <rect key="frame" x="20" y="20" width="335" height="17"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1b-V9-EN7">
-                                <rect key="frame" x="20" y="44" width="335" height="602.5"/>
+                                <rect key="frame" x="20" y="45" width="335" height="602"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDf-do-58r">
                                         <rect key="frame" x="110" y="152" width="129" height="30"/>
@@ -140,7 +197,7 @@
                     </view>
                     <connections>
                         <outlet property="dataLabel" destination="cF2-Le-7mQ" id="3EH-BK-JV6"/>
-                        <segue destination="6Hs-Oz-oxC" kind="show" identifier="NewEvent" id="is3-6W-0Dx"/>
+                        <segue destination="6Hs-Oz-oxC" kind="show" identifier="CreateNewEvent" id="is3-6W-0Dx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>

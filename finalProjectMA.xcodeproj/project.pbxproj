@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		224231F91DF705A70070BE16 /* DetailOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224231F81DF705A70070BE16 /* DetailOutputViewController.swift */; };
 		D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */; };
 		F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3880E1DF6CB810039771E /* AppDelegate.swift */; };
 		F5B388111DF6CB810039771E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388101DF6CB810039771E /* RootViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		224231F81DF705A70070BE16 /* DetailOutputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOutputViewController.swift; sourceTree = "<group>"; };
 		D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		F5B3880B1DF6CB810039771E /* finalProjectMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalProjectMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B3880E1DF6CB810039771E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				F5B388191DF6CB810039771E /* Assets.xcassets */,
 				F5B3881B1DF6CB810039771E /* LaunchScreen.storyboard */,
 				F5B3881E1DF6CB810039771E /* Info.plist */,
+				224231F81DF705A70070BE16 /* DetailOutputViewController.swift */,
 			);
 			path = finalProjectMA;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			files = (
 				F5B388111DF6CB810039771E /* RootViewController.swift in Sources */,
 				F5B388151DF6CB810039771E /* ModelController.swift in Sources */,
+				224231F91DF705A70070BE16 /* DetailOutputViewController.swift in Sources */,
 				D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */,
 				F5B388131DF6CB810039771E /* DataViewController.swift in Sources */,
 				F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */,

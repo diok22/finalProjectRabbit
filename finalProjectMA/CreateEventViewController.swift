@@ -10,6 +10,34 @@ import UIKit
 
 class CreateEventViewController: UIViewController {
 
+    @IBOutlet weak var eventTitle: UITextField!
+    
+    @IBOutlet weak var time: UITextField!
+    
+    @IBOutlet weak var location: UITextField!
+    
+    @IBOutlet weak var invitees: UITextField!
+    
+    @IBAction func submitDetails(_ sender: Any) {
+        
+        let userInput = eventTitle.text
+        performSegue(withIdentifier: "submitNewEvent", sender: userInput)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "submitNewEvent" {
+            
+            if let destination = segue.destination as? DetailOutputViewController {
+                
+                destination.passedData = sender as? String
+            }
+        }
+    }
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
