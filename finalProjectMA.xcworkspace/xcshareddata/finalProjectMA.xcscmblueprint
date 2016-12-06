@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "467F9B08E02468F377F3ABE6E775A30A31FEA3E3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "467F9B08E02468F377F3ABE6E775A30A31FEA3E3" : 9223372036854775807,
+    "4591D90882774B7744BCE27779DFADA928AF8945" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9E89869E-0015-4ECE-AD8B-B31C5B6B0A73",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "467F9B08E02468F377F3ABE6E775A30A31FEA3E3" : "finalProjectRabbit\/",
+    "4591D90882774B7744BCE27779DFADA928AF8945" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "finalProjectMA",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "finalProjectMA.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/powderham\/yelp-rails-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4591D90882774B7744BCE27779DFADA928AF8945"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/diok22\/finalProjectRabbit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "467F9B08E02468F377F3ABE6E775A30A31FEA3E3"
+    }
+  ]
+}
