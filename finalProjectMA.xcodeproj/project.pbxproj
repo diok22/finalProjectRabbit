@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0164B33F62AB9800AB4731D4 /* libPods-finalProjectMA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E82F58C75BE9BEF77343D6A1 /* libPods-finalProjectMA.a */; };
 		137C1BE91DF6ED200082DCA2 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137C1BE81DF6ED200082DCA2 /* keys.plist */; };
+		137C1BEC1DF7023C0082DCA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137C1BEB1DF7023C0082DCA2 /* GoogleService-Info.plist */; };
 		F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3880E1DF6CB810039771E /* AppDelegate.swift */; };
 		F5B388111DF6CB810039771E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388101DF6CB810039771E /* RootViewController.swift */; };
 		F5B388131DF6CB810039771E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388121DF6CB810039771E /* DataViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		137C1BE81DF6ED200082DCA2 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		137C1BEB1DF7023C0082DCA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		68248754C5929E491B69A817 /* Pods-finalProjectMA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProjectMA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finalProjectMA/Pods-finalProjectMA.debug.xcconfig"; sourceTree = "<group>"; };
 		808951FDFF276AFADAD8669A /* Pods-finalProjectMA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProjectMA.release.xcconfig"; path = "Pods/Target Support Files/Pods-finalProjectMA/Pods-finalProjectMA.release.xcconfig"; sourceTree = "<group>"; };
 		E82F58C75BE9BEF77343D6A1 /* libPods-finalProjectMA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-finalProjectMA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 		F5B3880D1DF6CB810039771E /* finalProjectMA */ = {
 			isa = PBXGroup;
 			children = (
+				137C1BEB1DF7023C0082DCA2 /* GoogleService-Info.plist */,
 				137C1BEA1DF6ED310082DCA2 /* Supporting Files */,
 				F5B3880E1DF6CB810039771E /* AppDelegate.swift */,
 				F5B388101DF6CB810039771E /* RootViewController.swift */,
@@ -279,6 +282,7 @@
 			files = (
 				137C1BE91DF6ED200082DCA2 /* keys.plist in Resources */,
 				F5B3881D1DF6CB810039771E /* LaunchScreen.storyboard in Resources */,
+				137C1BEC1DF7023C0082DCA2 /* GoogleService-Info.plist in Resources */,
 				F5B3881A1DF6CB810039771E /* Assets.xcassets in Resources */,
 				F5B388181DF6CB810039771E /* Main.storyboard in Resources */,
 			);
