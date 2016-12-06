@@ -14,6 +14,9 @@ class DataViewController: UIViewController {
     @IBOutlet weak var dataLabel: UILabel!
     var dataObject: String = ""
 
+    @IBAction func EventsonMap(_ sender: UIButton) {
+                performSegue(withIdentifier: "showEventsOnMap", sender: self)
+    }
     
     @IBAction func createEventForm(_ sender: UIButton) {
         performSegue(withIdentifier: "CreateNewEvent", sender: self)
