@@ -13,6 +13,10 @@ import GoogleMaps
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+        
+        // Initialize Parse.
+        Parse.setApplicationId(applicationId!, clientKey: clientKey!)
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
