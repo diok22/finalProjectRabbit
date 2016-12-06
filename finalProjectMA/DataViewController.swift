@@ -13,9 +13,18 @@ class DataViewController: UIViewController {
     @IBOutlet weak var dataLabel: UILabel!
     var dataObject: String = ""
 
+    
+    
+    @IBAction func createEventForm(_ sender: UIButton) {
+        performSegue(withIdentifier: "CreateNewEvent", sender: self)
+    }
+ 
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         // Do any additional setup after loading the view, typically from a nib.
     }
 

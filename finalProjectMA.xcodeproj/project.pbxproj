@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */; };
 		F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3880E1DF6CB810039771E /* AppDelegate.swift */; };
 		F5B388111DF6CB810039771E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388101DF6CB810039771E /* RootViewController.swift */; };
 		F5B388131DF6CB810039771E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388121DF6CB810039771E /* DataViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		F5B3880B1DF6CB810039771E /* finalProjectMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalProjectMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B3880E1DF6CB810039771E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5B388101DF6CB810039771E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				F5B3880E1DF6CB810039771E /* AppDelegate.swift */,
 				F5B388101DF6CB810039771E /* RootViewController.swift */,
+				D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */,
 				F5B388121DF6CB810039771E /* DataViewController.swift */,
 				F5B388141DF6CB810039771E /* ModelController.swift */,
 				F5B388161DF6CB810039771E /* Main.storyboard */,
@@ -267,6 +270,7 @@
 			files = (
 				F5B388111DF6CB810039771E /* RootViewController.swift in Sources */,
 				F5B388151DF6CB810039771E /* ModelController.swift in Sources */,
+				D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */,
 				F5B388131DF6CB810039771E /* DataViewController.swift in Sources */,
 				F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */,
 			);
@@ -511,6 +515,7 @@
 				F5B388391DF6CB810039771E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5B3883A1DF6CB810039771E /* Build configuration list for PBXNativeTarget "finalProjectMATests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +524,7 @@
 				F5B3883C1DF6CB810039771E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5B3883D1DF6CB810039771E /* Build configuration list for PBXNativeTarget "finalProjectMAUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +533,7 @@
 				F5B3883F1DF6CB810039771E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
