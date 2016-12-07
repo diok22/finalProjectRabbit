@@ -11,23 +11,27 @@ import Firebase
 
 class ShowEventsTableViewController: UITableViewController {
 
+  
     
     let ref = FIRDatabase.database().reference(withPath: "events")
     var events: [Event] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        ref.observe(.value, with: { snapshot in
-            var newEvents: [Event] = []
-            
-            for event in snapshot.children {
-                let eventInstance = Event(snapshot: event as! FIRDataSnapshot)
-                newEvents.append(eventInstance)
-            }
-            self.events = newEvents
-            self.tableView.reloadData()
-            print(snapshot.value)
-        })
+//       
+//        ref.observe(.value, with: { snapshot in
+//            var newEvents: [Event] = []
+//            
+//            for event in snapshot.children {
+//                let eventInstance = Event(snapshot: event as! FIRDataSnapshot)
+//                newEvents.append(eventInstance)
+//            }
+//            self.events = newEvents
+//            self.tableView.reloadData()
+//            print(snapshot.value)
+//        })
+        
+        events = [Event(name: "New Event", time: "now", location: "here"), Event(name: "New Event", time: "now", location: "here")]
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -42,15 +46,26 @@ class ShowEventsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+        let cell = tableView.dequeueReusableCell(withIdentifier:"eventCell") as! EventTableViewCell
+        cell.eventTitleInCell.text = events[indexPath.row].name
+        cell.eventTimeInCell.text = events[indexPath.row].time
+        cell.eventLocationInCell.text = events[indexPath.row].location
+        
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return events.count
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
     
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

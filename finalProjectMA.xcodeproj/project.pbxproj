@@ -15,6 +15,7 @@
 		441F5C8A1DF71C9B00D17CCA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441F5C891DF71C9B00D17CCA /* MapViewController.swift */; };
 		D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */; };
 		D4990CF01DF82C0F00971A19 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CEF1DF82C0F00971A19 /* Event.swift */; };
+		D4990CF41DF875A800971A19 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CF31DF875A800971A19 /* EventTableViewCell.swift */; };
 		F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3880E1DF6CB810039771E /* AppDelegate.swift */; };
 		F5B388111DF6CB810039771E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388101DF6CB810039771E /* RootViewController.swift */; };
 		F5B388131DF6CB810039771E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388121DF6CB810039771E /* DataViewController.swift */; };
@@ -55,6 +56,7 @@
 		808951FDFF276AFADAD8669A /* Pods-finalProjectMA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProjectMA.release.xcconfig"; path = "Pods/Target Support Files/Pods-finalProjectMA/Pods-finalProjectMA.release.xcconfig"; sourceTree = "<group>"; };
 		D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		D4990CEF1DF82C0F00971A19 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D4990CF31DF875A800971A19 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		E82F58C75BE9BEF77343D6A1 /* libPods-finalProjectMA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-finalProjectMA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B3880B1DF6CB810039771E /* finalProjectMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalProjectMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B3880E1DF6CB810039771E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				F5B3880E1DF6CB810039771E /* AppDelegate.swift */,
 				131415FA1DF85E9600103C48 /* ShowEventsTableViewController.swift */,
 				D4990CEF1DF82C0F00971A19 /* Event.swift */,
+				D4990CF31DF875A800971A19 /* EventTableViewCell.swift */,
 				F5B388101DF6CB810039771E /* RootViewController.swift */,
 				D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */,
 				F5B388121DF6CB810039771E /* DataViewController.swift */,
@@ -384,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5B388111DF6CB810039771E /* RootViewController.swift in Sources */,
+				D4990CF41DF875A800971A19 /* EventTableViewCell.swift in Sources */,
 				131415FB1DF85E9600103C48 /* ShowEventsTableViewController.swift in Sources */,
 				F5B388151DF6CB810039771E /* ModelController.swift in Sources */,
 				224231F91DF705A70070BE16 /* DetailOutputViewController.swift in Sources */,
