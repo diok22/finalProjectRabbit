@@ -24,23 +24,40 @@ class MapInContainer: UIViewController {
                 ["name": "Manu", "latitude": 51.51, "longitude": -0.071]
         ]
         
-        Alamofire.request("https://maps.googleapis.com/maps/api/directions/json?origin=51.51,-0.071&mode=transit&destination=51.5014,-0.1419&key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo").responseJSON
+        let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
+        let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
+        let latString = "51.55"
+        let lonString = "-0.073259"
+        let urlLocation = "origin=" + latString + "," + lonString + "&"
+        let url = urlAPI + urlLocation + "mode=transit&destination=51.5014,-0.1419&" + urlKey
+        print(url)
+        
+        print(1)
+        Alamofire.request(url).responseJSON
             { response in
                 //print(response)
                 switch response.result {
                 case .success(let value):
+                    print(2)
+
                     let json = JSON(value)
+                    print((json["routes"][0].stringValue))
+                    print(3)
+
                     
                     let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 11.0)
                     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                     mapView.isMyLocationEnabled = true
                     self.view = mapView
-                    
+                
                     let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2D(latitude: users[2]["latitude"] as! CLLocationDegrees, longitude: users[2]["longitude"] as! CLLocationDegrees)
-                    marker.title = users[2]["name"] as! String?
+                    marker.position = CLLocationCoordinate2D(latitude: users[0]["latitude"] as! CLLocationDegrees, longitude: users[0]["longitude"] as! CLLocationDegrees)
+                    marker.title = users[0]["name"] as! String?
                     marker.snippet = (json["routes"][0]["legs"][0]["duration"]["text"]).stringValue
                     marker.map = mapView
+                    
+                    print(4)
+
                     
                     let markerEvent = GMSMarker()
                     markerEvent.position = CLLocationCoordinate2D(latitude: 51.5014, longitude: -0.1419)
@@ -52,13 +69,8 @@ class MapInContainer: UIViewController {
                 case .failure(let error):
                     print(error)
                 }
-                    
-                
-                
+        
             }
-        
-
-        
         
     }
     
