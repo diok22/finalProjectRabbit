@@ -21,10 +21,10 @@ class finalProjectMATests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+        func testEventInitialization(){
+            let potentialEvent = Event(name: "New Event", time: "Today", location: "50 Commercial Street")
+            XCTAssertNotNil(potentialEvent)
+        }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
