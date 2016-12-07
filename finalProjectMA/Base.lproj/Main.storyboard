@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -94,7 +94,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDa-ir-zVs">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RDa-ir-zVs">
                                 <rect key="frame" x="90" y="129" width="194" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -141,10 +141,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="eventTitle" destination="RDa-ir-zVs" id="0Ml-eR-SOL"/>
                         <outlet property="invitees" destination="aIQ-OI-028" id="WWM-FJ-R1g"/>
                         <outlet property="location" destination="cgr-Ko-BoO" id="M1Y-28-E9t"/>
+                        <outlet property="name" destination="RDa-ir-zVs" id="ezo-nF-8T7"/>
                         <outlet property="time" destination="Aeu-i0-aNu" id="n11-hW-Num"/>
+                        <outlet property="title" destination="RDa-ir-zVs" id="QPB-gj-8ek"/>
                         <segue destination="dIT-YQ-gDb" kind="show" identifier="submitNewEvent" id="cdW-XU-djG"/>
                     </connections>
                 </viewController>
@@ -184,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVl-Yy-9AT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="407" y="-1483"/>
+            <point key="canvasLocation" x="1794" y="-1581"/>
         </scene>
         <!--Data View Controller-->
         <scene sceneID="snT-py-3hH">
@@ -218,10 +219,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUn-Ss-SKi">
                                         <rect key="frame" x="117" y="204" width="101" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Events on Map"/>
+                                        <state key="normal" title="Events List"/>
                                         <connections>
-                                            <action selector="EventsonMap:" destination="S4R-Ja-viH" eventType="touchUpInside" id="SWY-jz-8tA"/>
-                                            <segue destination="pf4-E3-sw1" kind="show" identifier="showEventsOnMap" id="aFT-zv-Tp0"/>
+                                            <action selector="ShowEventsListTable:" destination="S4R-Ja-viH" eventType="touchUpInside" id="Yd1-rv-V7z"/>
+                                            <segue destination="Fsk-yW-WWK" kind="show" identifier="showEventsListTable" id="ZtT-q6-cjq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -230,10 +231,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97826086960000003" green="0.91848131079999995" blue="0.73914263440000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="s1b-V9-EN7" secondAttribute="trailing" symbolic="YES" id="333-Jl-G0r"/>
-                            <constraint firstItem="s1b-V9-EN7" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" symbolic="YES" id="CIC-qa-9gW"/>
+                            <constraint firstAttribute="trailing" secondItem="s1b-V9-EN7" secondAttribute="trailing" constant="20" symbolic="YES" id="333-Jl-G0r"/>
+                            <constraint firstItem="s1b-V9-EN7" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" constant="20" symbolic="YES" id="CIC-qa-9gW"/>
                             <constraint firstItem="cF2-Le-7mQ" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" constant="20" symbolic="YES" id="PnF-O8-Bso"/>
-                            <constraint firstAttribute="bottom" secondItem="s1b-V9-EN7" secondAttribute="bottom" symbolic="YES" id="Xg4-Xc-7kb"/>
+                            <constraint firstAttribute="bottom" secondItem="s1b-V9-EN7" secondAttribute="bottom" constant="20" symbolic="YES" id="Xg4-Xc-7kb"/>
                             <constraint firstAttribute="trailing" secondItem="cF2-Le-7mQ" secondAttribute="trailing" constant="20" symbolic="YES" id="cCk-mG-gz5"/>
                             <constraint firstItem="s1b-V9-EN7" firstAttribute="top" secondItem="cF2-Le-7mQ" secondAttribute="bottom" constant="8" symbolic="YES" id="kQJ-gh-hu4"/>
                             <constraint firstItem="cF2-Le-7mQ" firstAttribute="top" secondItem="ZwX-cT-FIQ" secondAttribute="top" constant="20" symbolic="YES" id="zem-Jm-uYh"/>
@@ -248,10 +249,42 @@
             </objects>
             <point key="canvasLocation" x="-338" y="-963"/>
         </scene>
+        <!--EventsListTableView-->
+        <scene sceneID="3AU-6q-orj">
+            <objects>
+                <tableViewController title="EventsListTableView" id="Fsk-yW-WWK" customClass="ShowEventsListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xhv-Ai-wb5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GTf-Ic-zMW">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GTf-Ic-zMW" id="bAi-ZZ-1ia">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Fsk-yW-WWK" id="xKa-5E-4Ef"/>
+                            <outlet property="delegate" destination="Fsk-yW-WWK" id="Rix-R8-BRC"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QtT-iv-IDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="684" y="-1084"/>
+        </scene>
         <!--Map In Container-->
         <scene sceneID="OnB-8r-CqO">
             <objects>
                 <viewController id="yge-36-SDz" customClass="MapInContainer" customModule="finalProjectMA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vwb-ya-vr4"/>
+                        <viewControllerLayoutGuide type="bottom" id="dPF-el-ymo"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VIc-T1-uQ0">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9YI-FU-wNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="289" y="-869"/>
+            <point key="canvasLocation" x="2562" y="-1582"/>
         </scene>
     </scenes>
 </document>

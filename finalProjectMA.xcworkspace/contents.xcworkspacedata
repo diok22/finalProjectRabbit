@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ShowEventsListTableViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:keys.plist">
    </FileRef>
    <FileRef

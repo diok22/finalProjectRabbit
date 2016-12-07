@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import finalProjectMA
+import Firebase
+
 
 class CreateEventViewController: UIViewController {
+    
+    let ref = FIRDatabase.database().reference(withPath: "events")
+    
+    
 
-    @IBOutlet weak var eventTitle: UITextField!
+    @IBOutlet weak var name: UITextField!
     
     @IBOutlet weak var time: UITextField!
     
@@ -20,7 +27,19 @@ class CreateEventViewController: UIViewController {
     
     @IBAction func submitDetails(_ sender: Any) {
         
-//        let userInput = eventTitle.text
+//        guard let titleField = eventTitle,
+//            let title = titleField.text else { return }
+        
+//        Store event form data in firebase
+        let eventName = name.text
+        let eventTime = time.text
+        let eventLocation = location.text
+        
+        let eventInstance = Event(name: eventName!, time: eventTime!, location: eventLocation!)
+                                          
+        let eventInstanceRef = self.ref
+        eventInstanceRef.setValue(eventInstance.toAnyObject())
+        
         performSegue(withIdentifier: "submitNewEvent", sender: self)
     }
     
@@ -29,7 +48,7 @@ class CreateEventViewController: UIViewController {
             
             if let destination = segue.destination as? DetailOutputViewController {
                 
-                destination.passedEventTitle = eventTitle.text
+                destination.passedEventTitle = name.text
                 destination.passedEventTime = time.text
                 destination.passedInvitees = invitees.text
             }
