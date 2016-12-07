@@ -5,4 +5,5 @@ target 'finalProjectMA' do
   pod 'GooglePlaces'
   pod 'Firebase/Core'
   pod 'Alamofire'
+  pod 'SwiftyJSON'
 end

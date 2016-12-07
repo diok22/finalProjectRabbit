@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import Alamofire
+import SwiftyJSON
 
 class MapInContainer: UIViewController {
 
@@ -23,35 +24,35 @@ class MapInContainer: UIViewController {
                 ["name": "Manu", "latitude": 51.51, "longitude": -0.071]
         ]
         
-        Alamofire.request("https://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood4&key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo").responseJSON
+        Alamofire.request("https://maps.googleapis.com/maps/api/directions/json?origin=51.51,-0.071&mode=transit&destination=51.5014,-0.1419&key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo").responseJSON
             { response in
-                print(response)   // result of response serialization
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                }
-                // Create a GMSCameraPosition that tells the map to display the
-                // coordinate -33.86,151.20 at zoom level 6.
-                let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 11.0)
-                let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-                mapView.isMyLocationEnabled = true
-                self.view = mapView
-                
-                
-                for i in 0 ..< users.count {
+                //print(response)
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 11.0)
+                    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+                    mapView.isMyLocationEnabled = true
+                    self.view = mapView
+                    
                     let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2D(latitude: users[i]["latitude"] as! CLLocationDegrees, longitude: users[i]["longitude"] as! CLLocationDegrees)
-                    marker.title = users[i]["name"] as! String?
-                    marker.snippet = "User"
+                    marker.position = CLLocationCoordinate2D(latitude: users[2]["latitude"] as! CLLocationDegrees, longitude: users[2]["longitude"] as! CLLocationDegrees)
+                    marker.title = users[2]["name"] as! String?
+                    marker.snippet = (json["routes"][0]["legs"][0]["duration"]["text"]).stringValue
                     marker.map = mapView
+                    
+                    let markerEvent = GMSMarker()
+                    markerEvent.position = CLLocationCoordinate2D(latitude: 51.5014, longitude: -0.1419)
+                    markerEvent.title = "Buckingham Palace"
+                    markerEvent.snippet = "tour"
+                    markerEvent.icon = GMSMarker.markerImage(with: .blue)
+                    markerEvent.map = mapView
+                    
+                case .failure(let error):
+                    print(error)
                 }
-                
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: 51.5014, longitude: -0.1419)
-                marker.title = "Buckingham Palace"
-                marker.snippet = "tour"
-                marker.icon = GMSMarker.markerImage(with: .blue)
-                marker.map = mapView
+                    
                 
                 
             }
