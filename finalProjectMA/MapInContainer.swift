@@ -46,7 +46,7 @@ class MapInContainer: UIViewController {
         marker.icon = GMSMarker.markerImage(with: .blue)
         marker.map = mapView
         
-        Alamofire.request("http://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood4&key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo").responseJSON
+        Alamofire.request("https://maps.googleapis.com/maps/api/directions/json?"+"origin=Disneyland&destination=Universal+Studios+Hollywood4&"+"key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo", method: .get).responseJSON
             { response in
                 print(response.request)  // original URL request
                 print(response.response) // HTTP URL response
