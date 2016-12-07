@@ -10,6 +10,10 @@ import UIKit
 
 class DetailOutputViewController: UIViewController {
 
+    @IBAction func homeButton(_ sender: Any) {
+         performSegue(withIdentifier: "showHomeView", sender: self)
+    }
+    
     @IBOutlet weak var title_event: UITextView!
     
     @IBOutlet weak var time: UITextView!
@@ -35,6 +39,8 @@ class DetailOutputViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*

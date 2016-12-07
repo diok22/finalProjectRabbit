@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,7 +26,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3h-pU-vEd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410" y="-263"/>
+            <point key="canvasLocation" x="-1161" y="-293"/>
         </scene>
         <!--Detail Output View Controller-->
         <scene sceneID="cWU-Yh-1ny">
@@ -62,8 +62,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCX-aR-YQj">
+                                <rect key="frame" x="167" y="617" width="41" height="30"/>
+                                <state key="normal" title="Home"/>
+                                <connections>
+                                    <action selector="homeButton:" destination="dIT-YQ-gDb" eventType="touchUpInside" id="MZE-2n-rXW"/>
+                                    <segue destination="S4R-Ja-viH" kind="show" identifier="showHomeView" id="coX-Jh-bah"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HCX-aR-YQj" firstAttribute="centerX" secondItem="lHH-Sh-MCF" secondAttribute="centerX" id="78a-Ni-5NB"/>
+                            <constraint firstItem="HCX-aR-YQj" firstAttribute="centerY" secondItem="lHH-Sh-MCF" secondAttribute="centerY" id="ehN-m3-kdi"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="invitees" destination="l5y-a8-PuL" id="CBv-Xf-kw4"/>
@@ -73,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RK-xX-D8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2057" y="6"/>
+            <point key="canvasLocation" x="1376.8" y="80.50974512743629"/>
         </scene>
         <!--Create Event View Controller-->
         <scene sceneID="chg-qz-pPs">
@@ -151,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NvY-98-KAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="586" y="6"/>
+            <point key="canvasLocation" x="473" y="82"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="agv-qk-2Bg">
@@ -247,12 +259,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-338" y="-963"/>
+            <point key="canvasLocation" x="-430" y="-294"/>
         </scene>
         <!--EventsListTableView-->
         <scene sceneID="3AU-6q-orj">
             <objects>
-                <tableViewController title="EventsListTableView" id="Fsk-yW-WWK" customClass="ShowEventsListTableViewController" sceneMemberID="viewController">
+                <tableViewController title="EventsListTableView" id="Fsk-yW-WWK" customClass="ShowEventsTableViewController" customModule="finalProjectMA" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xhv-Ai-wb5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,7 +287,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QtT-iv-IDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="684" y="-1084"/>
+            <point key="canvasLocation" x="473" y="-672"/>
         </scene>
         <!--Map In Container-->
         <scene sceneID="OnB-8r-CqO">
