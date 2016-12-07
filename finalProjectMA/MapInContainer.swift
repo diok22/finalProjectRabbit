@@ -13,24 +13,25 @@ import SwiftyJSON
 
 class MapInContainer: UIViewController {
 
+    var users : [[String:Any]] =
+        [
+            ["name": "Ed", "latitude": 51.55, "longitude": -0.173259, "eta":""],
+            ["name": "Dio", "latitude": 51.50, "longitude": -0.070, "eta":""],
+            ["name": "Manu", "latitude": 51.51, "longitude": -0.071, "eta":""]
+    ]
     
     override func viewDidLoad() {
         
         
-        let users : [[String:Any]] =
-            [
-                ["name": "Ed", "latitude": 51.55, "longitude": -0.073259],
-                ["name": "Dio", "latitude": 51.50, "longitude": -0.070],
-                ["name": "Manu", "latitude": 51.51, "longitude": -0.071]
-        ]
-        
+        for i in 0 ..< users.count {
+
         let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
         let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
-        let latString = "51.55"
-        let lonString = "-0.073259"
+        let latString = String(describing: users[i]["latitude"]!)
+        let lonString = String(describing: users[i]["longitude"]!)
         let urlLocation = "origin=" + latString + "," + lonString + "&"
         let url = urlAPI + urlLocation + "mode=transit&destination=51.5014,-0.1419&" + urlKey
-        print(url)
+        print("URL = " + url)
         
         print(1)
         Alamofire.request(url).responseJSON
@@ -39,23 +40,24 @@ class MapInContainer: UIViewController {
                 switch response.result {
                 case .success(let value):
                     print(2)
-
                     let json = JSON(value)
                     print((json["routes"][0].stringValue))
                     print(3)
-
+                    let eta = json["routes"][0]["legs"][0]["duration"]["text"]
+                    self.users[i]["eta"] = eta.stringValue
                     
-                    let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 11.0)
+                    let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 9.0)
                     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                     mapView.isMyLocationEnabled = true
                     self.view = mapView
                 
+                for i in 0 ..< self.users.count {
                     let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2D(latitude: users[0]["latitude"] as! CLLocationDegrees, longitude: users[0]["longitude"] as! CLLocationDegrees)
-                    marker.title = users[0]["name"] as! String?
-                    marker.snippet = (json["routes"][0]["legs"][0]["duration"]["text"]).stringValue
+                    marker.position = CLLocationCoordinate2D(latitude: self.users[i]["latitude"] as! CLLocationDegrees, longitude: self.users[i]["longitude"] as! CLLocationDegrees)
+                    marker.title = self.users[i]["name"] as! String?
+                    marker.snippet = self.users[i]["eta"] as! String?
                     marker.map = mapView
-                    
+                    }
                     print(4)
 
                     
@@ -71,6 +73,7 @@ class MapInContainer: UIViewController {
                 }
         
             }
+        }
         
     }
     
