@@ -37,7 +37,7 @@ class CreateEventViewController: UIViewController {
         
         let eventInstance = Event(name: eventName!, time: eventTime!, location: eventLocation!)
                                           
-        let eventInstanceRef = self.ref
+        let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
         
         performSegue(withIdentifier: "submitNewEvent", sender: self)
