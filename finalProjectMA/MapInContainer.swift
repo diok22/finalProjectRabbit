@@ -8,9 +8,9 @@
 
 import UIKit
 import GoogleMaps
+import Alamofire
 
 class MapInContainer: UIViewController {
-    
     
     let users : [[String:Any]] =
         [
@@ -18,15 +18,18 @@ class MapInContainer: UIViewController {
             ["name": "Dio", "latitude": 51.50, "longitude": -0.070],
             ["name": "Manu", "latitude": 51.51, "longitude": -0.071]
     ]
+
     
     
     override func viewDidLoad() {
+        
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: 52.86, longitude: 0.0, zoom: 6.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.01, zoom: 8.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.isMyLocationEnabled = true
         view = mapView
+        
         
         for i in 0 ..< users.count {
             let marker = GMSMarker()
@@ -42,6 +45,18 @@ class MapInContainer: UIViewController {
         marker.snippet = "tour"
         marker.icon = GMSMarker.markerImage(with: .blue)
         marker.map = mapView
+        
+        Alamofire.request("http://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood4&key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo").responseJSON
+            { response in
+                print(response.request)  // original URL request
+                print(response.response) // HTTP URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                }
+        }
         
     }
     
