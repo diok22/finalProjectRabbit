@@ -18,19 +18,18 @@ class ShowEventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //       
-//        ref.observe(.value, with: { snapshot in
-//            var newEvents: [Event] = []
-//            
-//            for event in snapshot.children {
-//                let eventInstance = Event(snapshot: event as! FIRDataSnapshot)
-//                newEvents.append(eventInstance)
-//            }
-//            self.events = newEvents
-//            self.tableView.reloadData()
-//            print(snapshot.value)
-//        })
+        ref.observe(.value, with: { snapshot in
+            var newEvents: [Event] = []
+            
+            for event in snapshot.children {
+                let eventInstance = Event(snapshot: event as! FIRDataSnapshot)
+                newEvents.append(eventInstance)
+            }
+            self.events = newEvents
+            self.tableView.reloadData()
+            print(snapshot.value)
+        })
         
-        events = [Event(name: "New Event", time: "now", location: "here"), Event(name: "New Event", time: "now", location: "here")]
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
