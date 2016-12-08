@@ -8,17 +8,24 @@
 
     import UIKit
     import GoogleMaps
-    
+
     class MapViewController: UIViewController {
         
+        @IBOutlet weak var user: UITextField!
         
+        @IBOutlet weak var user2: UITextField!
+        
+        @IBOutlet weak var user3: UITextField!
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            user.text = "Ed"
+            user2.text = "Dio"
+            user3.text = "Manu"
         }
         
+        
     }
-    
 
 
     /*
