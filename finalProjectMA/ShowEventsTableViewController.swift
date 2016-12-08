@@ -12,6 +12,9 @@ import Firebase
 class ShowEventsTableViewController: UITableViewController {
 
   
+    @IBAction func ShowEventMap(_ sender: Any) {
+         performSegue(withIdentifier: " showDetailMap", sender: self)
+    }
     
     let ref = FIRDatabase.database().reference(withPath: "events")
     var events: [Event] = []
