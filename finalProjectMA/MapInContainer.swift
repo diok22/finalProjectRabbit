@@ -39,6 +39,9 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         
+        var myUserInfo : [String:Any] = [:]
+
+        
         
         locationM.delegate = self
         locationM.desiredAccuracy = kCLLocationAccuracyBest
@@ -51,8 +54,18 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
             
             let enumerator = snapshot.children
             while let user = enumerator.nextObject() as? FIRDataSnapshot {
-                let userValue = user.value as! [String:AnyObject]
+                var userValue = user.value as! [String:AnyObject]
                 print(userValue["latitude"]!)
+                print(userValue["longitude"]!)
+                let userLatString = userValue["latitude"] as! String
+                let userLonString = userValue["longitude"] as! String
+                let userLatDouble = userValue["latitude"] as! Double
+                let userLonDouble = userValue["longitude"] as! Double
+                print(userLatString)
+                print(userLonString)
+                print(userLatDouble)
+                print(userLonDouble)
+                
             }
             
         })
@@ -78,7 +91,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
                         self.users[i]["eta"] = eta.stringValue
                         
-                        let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 9.0)
+                        let camera = GMSCameraPosition.camera(withLatitude: 51.5014, longitude: -0.1419, zoom: 9.0)
                         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                         mapView.isMyLocationEnabled = true
                         self.view = mapView
