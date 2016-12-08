@@ -20,7 +20,7 @@ class ShowEventsTableViewController: UITableViewController {
             self.selectedEvent = [events[(indexPath?[1])!]]
             print(self.selectedEvent)
             if let destination = segue.destination as? MapViewController {
-                destination.passedEventTitle = self.selectedEvent
+                destination.passedSelectedEvent = self.selectedEvent
             }
         }
     }

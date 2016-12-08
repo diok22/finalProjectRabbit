@@ -13,9 +13,9 @@ import SwiftyJSON
 
 class MapInContainer: UIViewController {
     
-    var passedEventTitleFromList: String = ""
+    var passedSelectedEventFromList: [Event] = []
     
-    var eventPosition: [Float] = []
+    
     
     var users : [[String:Any]] =
         [
@@ -25,7 +25,8 @@ class MapInContainer: UIViewController {
     ]
     
     override func viewDidLoad() {
-        print("container: \(self.passedEventTitleFromList)")
+        print(passedSelectedEventFromList)
+
         for i in 0 ..< users.count {
 
         let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"

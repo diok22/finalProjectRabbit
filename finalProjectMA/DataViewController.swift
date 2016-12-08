@@ -16,11 +16,9 @@ class DataViewController: UIViewController {
 
  
     @IBAction func ShowEventsListTable(_ sender: UIButton) {
-            performSegue(withIdentifier: "showEventsListTable", sender: self)
     }
     
     @IBAction func createEventForm(_ sender: UIButton!) {
-        performSegue(withIdentifier: "CreateNewEvent", sender: self)
     }
 
     override func viewDidLoad() {

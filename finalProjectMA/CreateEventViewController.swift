@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import finalProjectMA
 import Firebase
 import FirebaseDatabase
+import SwiftyJSON
+import Alamofire
 
 
 
@@ -24,23 +25,34 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var location: UITextField!
     
     @IBOutlet weak var invitees: UITextField!
+    var eventLocation: String = ""
     
     @IBAction func submitDetails(_ sender: Any) {
         
-//        guard let titleField = eventTitle,
-//            let title = titleField.text else { return }
-        
 //        Store event form data in firebase
-        let eventName = name.text
-        let eventTime = time.text
-        let eventLocation = location.text
+        let eventName = name.text!
+        let eventTime = time?.text
+        eventLocation = (location?.text)!
         
-        let eventInstance = Event(name: eventName!, time: eventTime!, location: eventLocation!)
+        
+        
+//        getGeoCodeLocation(address: "50 Commercial Street, London E1 6LT")
+      
+        
+        let eventInstance = Event(name: eventName, time: eventTime!, location: eventLocation)
                                           
-        let eventInstanceRef = self.ref.child(eventName!)
+        let eventInstanceRef = self.ref.child(eventName)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
-        
         performSegue(withIdentifier: "submitNewEvent", sender: self)
+        
+    }
+    
+   
+    
+
+    
+    func getGeoCodeLocation(address: String){
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,8 +67,39 @@ class CreateEventViewController: UIViewController {
         }
     }
     
+    let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
+    let apikey = "AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
+
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let data = "50 Commercial Street, London E1 6LT"
+//        
+//        
+//        let url = String("\(baseUrl)address=\(data)&key=\(apikey)")
+//        let data = NSData(contentsOf: url! as URL)
+//        let json = try! JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+//        if let result = json["results"] as? NSArray {
+//            if let geometry = result[0].geometry as? NSDictionary {
+//                if let location = geometry.location as? NSDictionary {
+//                    let latitude = location["lat"] as! Float
+//                    let longitude = location["lng"] as! Float
+//                    print("\n\(latitude), \(longitude)")
+//                }
+//            }
+//        }
+//        
+
+        
+//        Alamofire.request(url!).responseJson
+//            { response in
+//            switch response.result {
+//            case .success(let value):
+//                
+//            case .faliure(let error):
+//                print(error)
+//            }
+//            
+//        }
         // Do any additional setup after loading the view.
     }
 

@@ -11,7 +11,7 @@
 
     class MapViewController: UIViewController {
         
-        var passedEventTitle: [Event] = []
+        var passedSelectedEvent: [Event] = []
         
         @IBOutlet weak var user: UITextField!
         
@@ -31,8 +31,8 @@
             if segue.identifier == "mapView" {
                 
                 if let destination = segue.destination as? MapInContainer {
-                    let eventLocation: String = self.passedEventTitle[0].location
-                    destination.passedEventTitleFromList = eventLocation
+                    let event: [Event] = self.passedSelectedEvent
+                    destination.passedSelectedEventFromList = event
 
                 }
             }
