@@ -223,6 +223,7 @@
                                     <outlet property="eventLocationInCell" destination="mUj-q4-T2R" id="6RD-H1-rfc"/>
                                     <outlet property="eventTimeInCell" destination="H2l-Kb-Ifs" id="jCU-OC-ZrN"/>
                                     <outlet property="eventTitleInCell" destination="bog-wI-aza" id="3be-9g-nLl"/>
+                                    <segue destination="pf4-E3-sw1" kind="show" identifier="showDetailMapTap" id="4ru-Yj-PT1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -406,6 +407,10 @@
         <scene sceneID="Nht-dx-KMK">
             <objects>
                 <viewController id="p1C-tV-1fS" customClass="MapInContainer" customModule="finalProjectMA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NJ0-2J-ja3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ef6-gl-piz"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aNZ-Wp-4GB">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="246"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -417,4 +422,7 @@
             <point key="canvasLocation" x="1286" y="-1087"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4ru-Yj-PT1"/>
+    </inferredMetricsTieBreakers>
 </document>
