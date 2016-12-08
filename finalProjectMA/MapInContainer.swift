@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 
 class MapInContainer: UIViewController {
-
+    
     var users : [[String:Any]] =
         [
             ["name": "Ed", "latitude": 51.55, "longitude": -0.173259, "eta":""],
@@ -21,8 +21,6 @@ class MapInContainer: UIViewController {
     ]
     
     override func viewDidLoad() {
-        
-        
         for i in 0 ..< users.count {
 
         let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"

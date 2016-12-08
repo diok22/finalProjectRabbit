@@ -9,13 +9,13 @@
 import UIKit
 import finalProjectMA
 import Firebase
+import FirebaseDatabase
+
 
 
 class CreateEventViewController: UIViewController {
     
-    let ref = FIRDatabase.database().reference(withPath: "events")
-    
-    
+    let ref = FIRDatabase.database().reference(withPath: "events") 
 
     @IBOutlet weak var name: UITextField!
     
@@ -54,10 +54,6 @@ class CreateEventViewController: UIViewController {
             }
         }
     }
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

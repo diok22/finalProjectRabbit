@@ -22,9 +22,9 @@
             user.text = "Ed"
             user2.text = "Dio"
             user3.text = "Manu"
+            print(passedEventTitle)
         }
-        
-        
+        var passedEventTitle: [Event] = []
     }
 
 

@@ -8,13 +8,30 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class ShowEventsTableViewController: UITableViewController {
-
- 
   
     @IBAction func ShowEventMap(_ sender: Any) {
-         performSegue(withIdentifier: " showDetailMap", sender: self)
+         performSegue(withIdentifier: "showDetailMap", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailMapTap" {
+            
+            if let destination = segue.destination as? MapViewController {
+                destination.passedEventTitle = self.selectedEvent
+            }
+        }
+    }
+    
+    var selectedEvent: [Event] = []
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedEvent = [events[indexPath.row]]
+        performSegue(withIdentifier: "showDetailMapTap", sender: self)
+        
+        print("X = \(self.selectedEvent)")
     }
     
     let ref = FIRDatabase.database().reference(withPath: "events")

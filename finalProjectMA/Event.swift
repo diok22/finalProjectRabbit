@@ -8,6 +8,8 @@
 
 import Foundation
 import Firebase
+import FirebaseDatabase
+
 
 struct Event {
     let name: String
