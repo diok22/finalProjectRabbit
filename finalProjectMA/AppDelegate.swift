@@ -15,18 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    
-    func application(application: UIApplication,
-        // From console.firebase.google.com instructions
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)
-        -> Bool {
-            FIRApp.configure()
-            return true
-    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyBw7Q2LSl6tZi0WDXiJLSnUKRG1N5U11So")
         // Override point for customization after application launch.
+        FIRApp.configure()
+
         return true
     }
 
