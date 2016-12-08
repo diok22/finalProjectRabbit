@@ -6,4 +6,7 @@ target 'finalProjectMA' do
   pod 'Firebase/Core'
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
 end
