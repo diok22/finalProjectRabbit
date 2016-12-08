@@ -11,13 +11,26 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 import FirebaseDatabase
+import MapKit
+import CoreLocation
 
-class MapInContainer: UIViewController {
+class MapInContainer: UIViewController, CLLocationManagerDelegate {
     
     
     let ref = FIRDatabase.database().reference(withPath: "users")
- 
 
+    let locationM = CLLocationManager()
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+                
+        
+        print(location.coordinate.latitude)
+        print(location.coordinate.longitude)
+
+    }
+    
+    
     var users : [[String:Any]] =
         [
             ["name": "Ed", "latitude": 51.55, "longitude": -0.173259, "eta":""],
@@ -28,6 +41,28 @@ class MapInContainer: UIViewController {
     
     
     override func viewDidLoad() {
+
+        // Ask for Authorisation from the User.
+        
+        // For use in foreground
+        
+        locationM.delegate = self
+        locationM.desiredAccuracy = kCLLocationAccuracyBest
+        locationM.requestWhenInUseAuthorization()
+        locationM.startUpdatingLocation()
+        
+        
+//        if CLLocationManager.locationServicesEnabled() {
+//            //locationManager.delegate = CLLocationManagerDelegate
+//            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//            locationManager.startUpdatingLocation()
+//        }
+//        
+//        func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//            let locValue:CLLocationCoordinate2D = manager.location.coordinate
+//            print("locations = \(locValue.latitude) \(locValue.longitude)")
+//        }
+        
         
         ref.observe(.value, with:{ snapshot in
             print(snapshot)
