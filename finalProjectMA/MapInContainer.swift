@@ -31,7 +31,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
     
     var users : [[String:Any]] =
         [
-            ["name": "Ed", "latitude": 51.55, "longitude": -0.173259, "eta":""],
+            ["name": "Ed", "latitude": 51.55, "longitude": -0.173, "eta":""],
             ["name": "Dio", "latitude": 51.50, "longitude": -0.070, "eta":""],
             ["name": "Manu", "latitude": 51.51, "longitude": -0.071, "eta":""]
     ]
