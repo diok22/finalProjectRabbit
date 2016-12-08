@@ -16,28 +16,36 @@ import CoreLocation
 
 class MapInContainer: UIViewController, CLLocationManagerDelegate {
     
+    var myUserInfo : [String:Any] = [:]
+
     
     let ref = FIRDatabase.database().reference(withPath: "users")
 
     let locationM = CLLocationManager()
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        print(location.coordinate.latitude)
-        print(location.coordinate.longitude)
+    
+//    var users : [[String:Any]] =
+//        [
+//            ["name": "Ed", "latitude": 48.55, "longitude": 2.373259, "eta":""],
+//            ["name": "Dio", "latitude": 48.50, "longitude": 2.310, "eta":""],
+//            ["name": "Manu", "latitude": 48.51, "longitude": 2.471, "eta":""]
+//    ]
 
-    }
-    
-    
-    var users : [[String:Any]] =
-        [
-            ["name": "Ed", "latitude": 51.55, "longitude": -0.173259, "eta":""],
-            ["name": "Dio", "latitude": 51.50, "longitude": -0.070, "eta":""],
-            ["name": "Manu", "latitude": 51.51, "longitude": -0.071, "eta":""]
-    ]
-    
     
     override func viewDidLoad() {
+        
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            let location = locations[0]
+            print(location)
+            let myName = "Ed"
+            myUserInfo["name"] = myName
+            myUserInfo["latitude"] = (location.coordinate.latitude)
+            myUserInfo["longitude"] = (location.coordinate.longitude)
+        }
+        
+        
+        print("---")
+        print(myUserInfo)
 
         
         locationM.delegate = self
@@ -46,64 +54,66 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
         locationM.startUpdatingLocation()
         
         
-        ref.observe(.value, with:{ snapshot in
-            print(snapshot)
-            
-            let enumerator = snapshot.children
-            while let user = enumerator.nextObject() as? FIRDataSnapshot {
-                let userValue = user.value as! [String:AnyObject]
-                print(userValue["latitude"]!)
-            }
-            
-        })
         
         
-        for i in 0 ..< users.count {
+//        ref.observe(.value, with:{ snapshot in
+//            print(snapshot)
+//            
+//            let enumerator = snapshot.children
+//            while let user = enumerator.nextObject() as? FIRDataSnapshot {
+//                let userValue = user.value as! [String:AnyObject]
+//                print(userValue["latitude"]!)
+//            }
+//            
+//        })
+        
+        
+       // for i in 0 ..< users.count {
 
-        let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-        let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
-        let latString = String(describing: users[i]["latitude"]!)
-        let lonString = String(describing: users[i]["longitude"]!)
-        let urlLocation = "origin=" + latString + "," + lonString + "&"
-        let url = urlAPI + urlLocation + "mode=transit&destination=51.5014,-0.1419&" + urlKey
-        print("URL = " + url)
-
-        Alamofire.request(url).responseJSON
-            { response in
-                //print(response)
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    print((json["routes"][0].stringValue))
-                    let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                    self.users[i]["eta"] = eta.stringValue
-                    
-                    let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 9.0)
-                    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-                    mapView.isMyLocationEnabled = true
-                    self.view = mapView
-                
-                for i in 0 ..< self.users.count {
-                    let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2D(latitude: self.users[i]["latitude"] as! CLLocationDegrees, longitude: self.users[i]["longitude"] as! CLLocationDegrees)
-                    marker.title = self.users[i]["name"] as! String?
-                    marker.snippet = self.users[i]["eta"] as! String?
-                    marker.map = mapView
-                    }
-                    
-                    let markerEvent = GMSMarker()
-                    markerEvent.position = CLLocationCoordinate2D(latitude: 51.5014, longitude: -0.1419)
-                    markerEvent.title = "Buckingham Palace"
-                    markerEvent.snippet = "tour"
-                    markerEvent.icon = GMSMarker.markerImage(with: .blue)
-                    markerEvent.map = mapView
-                    
-                case .failure(let error):
-                    print(error)
-                }
-        
-            }
-        }
+//        let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
+//        let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
+//        let latString = String(describing: self.myUserInfo["latitude"]!)
+//        let lonString = String(describing: self.myUserInfo["longitude"]!)
+//        let urlLocation = "origin=" + latString + "," + lonString + "&"
+//        let url = urlAPI + urlLocation + "mode=transit&destination=51.5014,-0.1419&" + urlKey
+//        print("URL = " + url)
+//
+//        Alamofire.request(url).responseJSON
+//            { response in
+//                //print(response)
+//                switch response.result {
+//                case .success(let value):
+//                    let json = JSON(value)
+//                    print((json["routes"][0].stringValue))
+//                    let eta = json["routes"][0]["legs"][0]["duration"]["text"]
+//                    self.myUserInfo["eta"] = eta.stringValue
+//                    
+//                    let camera = GMSCameraPosition.camera(withLatitude: 48.5, longitude: 2.3411, zoom: 9.0)
+//                    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+//                    mapView.isMyLocationEnabled = true
+//                    self.view = mapView
+//                
+//              //   for i in 0 ..< self.users.count {
+//                    let marker = GMSMarker()
+//                    marker.position = CLLocationCoordinate2D(latitude: self.myUserInfo["latitude"] as! CLLocationDegrees, longitude: self.myUserInfo["longitude"] as! CLLocationDegrees)
+//                    marker.title = self.myUserInfo["name"] as! String?
+//                    marker.snippet = self.myUserInfo["eta"] as! String?
+//                    marker.map = mapView
+//                    // }
+//                    
+//                    let markerEvent = GMSMarker()
+//                    markerEvent.position = CLLocationCoordinate2D(latitude: 51.5014, longitude: -0.1419)
+//                    markerEvent.title = "Buckingham Palace"
+//                    markerEvent.snippet = "tour"
+//                    markerEvent.icon = GMSMarker.markerImage(with: .blue)
+//                    markerEvent.map = mapView
+//                    
+//                case .failure(let error):
+//                    print(error)
+//                }
+//        
+//            }
+//       // }
         
     }
     

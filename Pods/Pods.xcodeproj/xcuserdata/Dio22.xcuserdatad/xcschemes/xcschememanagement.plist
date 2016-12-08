@@ -8,16 +8,27 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-finalProjectMA.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -33,6 +44,16 @@
 			<true/>
 		</dict>
 		<key>ACD7C63E1FD46C2AC34E4302485AFC51</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D5D8B76AC4FA16F2B9E48D3F3F9935C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F62E3DC5EE4433EA987BC2F94DF95A22</key>
 		<dict>
 			<key>primary</key>
 			<true/>
