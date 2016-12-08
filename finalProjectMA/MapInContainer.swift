@@ -13,6 +13,10 @@ import SwiftyJSON
 
 class MapInContainer: UIViewController {
     
+    var passedEventTitleFromList: String = ""
+    
+    var eventPosition: [Float] = []
+    
     var users : [[String:Any]] =
         [
             ["name": "Ed", "latitude": 51.55, "longitude": -0.173259, "eta":""],
@@ -21,6 +25,7 @@ class MapInContainer: UIViewController {
     ]
     
     override func viewDidLoad() {
+        print("container: \(self.passedEventTitleFromList)")
         for i in 0 ..< users.count {
 
         let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
@@ -29,18 +34,14 @@ class MapInContainer: UIViewController {
         let lonString = String(describing: users[i]["longitude"]!)
         let urlLocation = "origin=" + latString + "," + lonString + "&"
         let url = urlAPI + urlLocation + "mode=transit&destination=51.5014,-0.1419&" + urlKey
-        print("URL = " + url)
         
-        print(1)
         Alamofire.request(url).responseJSON
             { response in
                 //print(response)
                 switch response.result {
                 case .success(let value):
-                    print(2)
                     let json = JSON(value)
                     print((json["routes"][0].stringValue))
-                    print(3)
                     let eta = json["routes"][0]["legs"][0]["duration"]["text"]
                     self.users[i]["eta"] = eta.stringValue
                     
@@ -56,7 +57,6 @@ class MapInContainer: UIViewController {
                     marker.snippet = self.users[i]["eta"] as! String?
                     marker.map = mapView
                     }
-                    print(4)
 
                     
                     let markerEvent = GMSMarker()

@@ -11,20 +11,34 @@
 
     class MapViewController: UIViewController {
         
+        var passedEventTitle: [Event] = []
+        
         @IBOutlet weak var user: UITextField!
         
         @IBOutlet weak var user2: UITextField!
         
         @IBOutlet weak var user3: UITextField!
         
+        
         override func viewDidLoad() {
-            super.viewDidLoad()
             user.text = "Ed"
             user2.text = "Dio"
             user3.text = "Manu"
-            print(passedEventTitle)
+           
         }
-        var passedEventTitle: [Event] = []
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "mapView" {
+                
+                if let destination = segue.destination as? MapInContainer {
+                    let eventLocation: String = self.passedEventTitle[0].location
+                    destination.passedEventTitleFromList = eventLocation
+
+                }
+            }
+        }
+
+        
     }
 
 

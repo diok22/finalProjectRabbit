@@ -19,7 +19,7 @@ class DataViewController: UIViewController {
             performSegue(withIdentifier: "showEventsListTable", sender: self)
     }
     
-    @IBAction func createEventForm(_ sender: UIButton) {
+    @IBAction func createEventForm(_ sender: UIButton!) {
         performSegue(withIdentifier: "CreateNewEvent", sender: self)
     }
 
