@@ -10,8 +10,13 @@ import UIKit
 import GoogleMaps
 import Alamofire
 import SwiftyJSON
+import FirebaseDatabase
 
 class MapInContainer: UIViewController {
+    
+    
+    let ref = FIRDatabase.database().reference(withPath: "users")
+ 
 
     var users : [[String:Any]] =
         [
@@ -20,7 +25,27 @@ class MapInContainer: UIViewController {
             ["name": "Manu", "latitude": 51.51, "longitude": -0.071, "eta":""]
     ]
     
+    
+    
     override func viewDidLoad() {
+        
+        ref.observe(.value, with:{ snapshot in
+            print(snapshot)
+            
+            let enumerator = snapshot.children
+            while let user = enumerator.nextObject() as? FIRDataSnapshot {
+                let userValue = user.value as! [String:AnyObject]
+                print(userValue["latitude"]!)
+            }
+            
+//            for user in snapshot.children as! [FIRDataSnapshot]{
+//                print(user)
+//                print(user)
+//                print("------")
+//                let json2 = JSON(user)
+//                print(json2.stringValue)
+//            }
+        })
         
         
         for i in 0 ..< users.count {
