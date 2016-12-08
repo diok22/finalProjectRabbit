@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import Firebase
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // From console.firebase.google.com instructions
                      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)
         -> Bool {
+            
+            
+            FBSDKApplicationDelegate.sharedInstance().application(<#T##application: UIApplication!##UIApplication!#>, didFinishLaunchingWithOptions: launchOptions)
+            
             FIRApp.configure()
             return true
     }
