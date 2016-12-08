@@ -23,8 +23,6 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-                
-        
         print(location.coordinate.latitude)
         print(location.coordinate.longitude)
 
@@ -39,29 +37,13 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
     ]
     
     
-    
     override func viewDidLoad() {
 
-        // Ask for Authorisation from the User.
-        
-        // For use in foreground
         
         locationM.delegate = self
         locationM.desiredAccuracy = kCLLocationAccuracyBest
         locationM.requestWhenInUseAuthorization()
         locationM.startUpdatingLocation()
-        
-        
-//        if CLLocationManager.locationServicesEnabled() {
-//            //locationManager.delegate = CLLocationManagerDelegate
-//            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-//            locationManager.startUpdatingLocation()
-//        }
-//        
-//        func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//            let locValue:CLLocationCoordinate2D = manager.location.coordinate
-//            print("locations = \(locValue.latitude) \(locValue.longitude)")
-//        }
         
         
         ref.observe(.value, with:{ snapshot in
@@ -73,13 +55,6 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
                 print(userValue["latitude"]!)
             }
             
-//            for user in snapshot.children as! [FIRDataSnapshot]{
-//                print(user)
-//                print(user)
-//                print("------")
-//                let json2 = JSON(user)
-//                print(json2.stringValue)
-//            }
         })
         
         
@@ -92,17 +67,14 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
         let urlLocation = "origin=" + latString + "," + lonString + "&"
         let url = urlAPI + urlLocation + "mode=transit&destination=51.5014,-0.1419&" + urlKey
         print("URL = " + url)
-        
-        print(1)
+
         Alamofire.request(url).responseJSON
             { response in
                 //print(response)
                 switch response.result {
                 case .success(let value):
-                    print(2)
                     let json = JSON(value)
                     print((json["routes"][0].stringValue))
-                    print(3)
                     let eta = json["routes"][0]["legs"][0]["duration"]["text"]
                     self.users[i]["eta"] = eta.stringValue
                     
@@ -118,8 +90,6 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
                     marker.snippet = self.users[i]["eta"] as! String?
                     marker.map = mapView
                     }
-                    print(4)
-
                     
                     let markerEvent = GMSMarker()
                     markerEvent.position = CLLocationCoordinate2D(latitude: 51.5014, longitude: -0.1419)
