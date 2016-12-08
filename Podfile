@@ -3,7 +3,8 @@ use_frameworks!
 target 'finalProjectMA' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Alamofire'
-  pod 'SwiftyJSON'
+  pod 'Firebase/Database'
 end
