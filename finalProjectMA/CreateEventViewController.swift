@@ -35,7 +35,6 @@ class CreateEventViewController: UIViewController {
         eventLocation = (location?.text)!
         
         
-        
 //        getGeoCodeLocation(address: "50 Commercial Street, London E1 6LT")
       
         
@@ -47,19 +46,13 @@ class CreateEventViewController: UIViewController {
         
     }
     
-   
-    
-
-    
-    func getGeoCodeLocation(address: String){
-        
-    }
+//    func getGeoCodeLocation(address: String){
+//        
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "submitNewEvent" {
-            
             if let destination = segue.destination as? DetailOutputViewController {
-                
                 destination.passedEventTitle = name.text
                 destination.passedEventTime = time.text
                 destination.passedInvitees = invitees.text
@@ -72,34 +65,33 @@ class CreateEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let data = "50 Commercial Street, London E1 6LT"
-//        
-//        
-//        let url = String("\(baseUrl)address=\(data)&key=\(apikey)")
-//        let data = NSData(contentsOf: url! as URL)
-//        let json = try! JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-//        if let result = json["results"] as? NSArray {
-//            if let geometry = result[0].geometry as? NSDictionary {
-//                if let location = geometry.location as? NSDictionary {
-//                    let latitude = location["lat"] as! Float
-//                    let longitude = location["lng"] as! Float
-//                    print("\n\(latitude), \(longitude)")
-//                }
-//            }
-//        }
-//        
+        let address: String = "50 Commercial Street London E1 6LT"
+    let array = address.components(separatedBy: " ")
+        let addressSearchString = (array.joined(separator: "+"))
+      print(addressSearchString)
+        let url = URL(string:"\(baseUrl)address=\(addressSearchString)&key=\(apikey)")
+        print(url)
+
+
 
         
-//        Alamofire.request(url!).responseJson
-//            { response in
-//            switch response.result {
-//            case .success(let value):
-//                
-//            case .faliure(let error):
-//                print(error)
-//            }
-//            
-//        }
+        Alamofire.request(url!).responseJSON
+            { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let result = json["results"][0]
+                let geometry = result["geometry"]
+                let location = geometry["location"]
+                let latitude = location["lat"]
+                let longitude = location["lng"]
+                print(latitude)
+                print(longitude)
+            case .failure(let error):
+                print(error)
+           }
+            
+        }
         // Do any additional setup after loading the view.
     }
 
