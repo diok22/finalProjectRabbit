@@ -13,8 +13,6 @@ import CoreLocation
 
 class DataViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var dataLabel: UILabel!
-    var dataObject: String = ""
     
     let locationM = CLLocationManager()
     
@@ -50,7 +48,6 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.dataLabel!.text = dataObject
     }
 
 }
