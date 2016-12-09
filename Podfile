@@ -8,4 +8,5 @@ target 'finalProjectMA' do
   pod 'Alamofire'
   pod 'Firebase/Database'
   pod 'SwiftyJSON'
+  pod 'Firebase/Auth'
 end
