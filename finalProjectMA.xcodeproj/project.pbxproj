@@ -18,9 +18,7 @@
 		D4990CF01DF82C0F00971A19 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CEF1DF82C0F00971A19 /* Event.swift */; };
 		D4990CF41DF875A800971A19 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CF31DF875A800971A19 /* EventTableViewCell.swift */; };
 		F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3880E1DF6CB810039771E /* AppDelegate.swift */; };
-		F5B388111DF6CB810039771E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388101DF6CB810039771E /* RootViewController.swift */; };
 		F5B388131DF6CB810039771E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388121DF6CB810039771E /* DataViewController.swift */; };
-		F5B388151DF6CB810039771E /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388141DF6CB810039771E /* ModelController.swift */; };
 		F5B388181DF6CB810039771E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B388161DF6CB810039771E /* Main.storyboard */; };
 		F5B3881A1DF6CB810039771E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B388191DF6CB810039771E /* Assets.xcassets */; };
 		F5B3881D1DF6CB810039771E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B3881B1DF6CB810039771E /* LaunchScreen.storyboard */; };
@@ -62,9 +60,7 @@
 		D4990CF31DF875A800971A19 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		F5B3880B1DF6CB810039771E /* finalProjectMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalProjectMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B3880E1DF6CB810039771E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F5B388101DF6CB810039771E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		F5B388121DF6CB810039771E /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		F5B388141DF6CB810039771E /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		F5B388171DF6CB810039771E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F5B388191DF6CB810039771E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5B3881C1DF6CB810039771E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -163,12 +159,10 @@
 				220DE9131DFAC9DD002DC596 /* LogiInViewController.swift */,
 				D4990CEF1DF82C0F00971A19 /* Event.swift */,
 				D4990CF31DF875A800971A19 /* EventTableViewCell.swift */,
-				F5B388101DF6CB810039771E /* RootViewController.swift */,
 				D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */,
 				F5B388121DF6CB810039771E /* DataViewController.swift */,
 				F5E7D9A31DF72BB00073D364 /* MapInContainer.swift */,
 				441F5C891DF71C9B00D17CCA /* MapViewController.swift */,
-				F5B388141DF6CB810039771E /* ModelController.swift */,
 				F5B388161DF6CB810039771E /* Main.storyboard */,
 				F5B388191DF6CB810039771E /* Assets.xcassets */,
 				F5B3881B1DF6CB810039771E /* LaunchScreen.storyboard */,
@@ -388,10 +382,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5B388111DF6CB810039771E /* RootViewController.swift in Sources */,
 				D4990CF41DF875A800971A19 /* EventTableViewCell.swift in Sources */,
 				131415FB1DF85E9600103C48 /* ShowEventsTableViewController.swift in Sources */,
-				F5B388151DF6CB810039771E /* ModelController.swift in Sources */,
 				224231F91DF705A70070BE16 /* DetailOutputViewController.swift in Sources */,
 				D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */,
 				F5B388131DF6CB810039771E /* DataViewController.swift in Sources */,
