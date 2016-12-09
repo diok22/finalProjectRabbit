@@ -20,8 +20,8 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        print(location.coordinate.latitude)
-        print(location.coordinate.longitude)
+      //  print(location.coordinate.latitude)
+      //  print(location.coordinate.longitude)
         
     }
 
