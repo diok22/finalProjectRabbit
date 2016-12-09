@@ -5,17 +5,25 @@
 //  Created by Edward Powderham on 07/12/2016.
 //
 //
-
+import Foundation
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class ShowEventsTableViewController: UITableViewController {
-
- 
-  
-    @IBAction func ShowEventMap(_ sender: Any) {
-         performSegue(withIdentifier: " showDetailMap", sender: self)
+    
+    var selectedEvent: [Event] = []
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailMapTap" {
+            let indexPath: IndexPath? = self.tableView.indexPathForSelectedRow
+            self.selectedEvent = [events[(indexPath?[1])!]]
+            if let destination = segue.destination as? MapViewController {
+                destination.passedSelectedEvent = self.selectedEvent
+            }
+        }
     }
+    
     
     let ref = FIRDatabase.database().reference(withPath: "events")
     var events: [Event] = []
@@ -31,7 +39,6 @@ class ShowEventsTableViewController: UITableViewController {
             }
             self.events = newEvents
             self.tableView.reloadData()
-            print(snapshot.value)
         })
         
         
@@ -54,8 +61,8 @@ class ShowEventsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier:"eventCell") as! EventTableViewCell
         cell.eventTitleInCell.text = events[indexPath.row].name
         cell.eventTimeInCell.text = events[indexPath.row].time
-        cell.eventLocationInCell.text = events[indexPath.row].location
-        
+        cell.eventLocationInCell.text = events[indexPath.row].address
+    
         
         return cell
     }

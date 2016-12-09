@@ -7,15 +7,16 @@
 //
 
 import UIKit
-import finalProjectMA
 import Firebase
+import FirebaseDatabase
+import SwiftyJSON
+import Alamofire
+
 
 
 class CreateEventViewController: UIViewController {
     
-    let ref = FIRDatabase.database().reference(withPath: "events")
-    
-    
+    let ref = FIRDatabase.database().reference(withPath: "events") 
 
     @IBOutlet weak var name: UITextField!
     
@@ -25,29 +26,63 @@ class CreateEventViewController: UIViewController {
     
     @IBOutlet weak var invitees: UITextField!
     
-    @IBAction func submitDetails(_ sender: Any) {
+    @IBAction func findAddress(_ sender: Any) {
+        let address: String = location.text!
+        let array = address.components(separatedBy: " ")
+        let addressSearchString = (array.joined(separator: "+"))
+        let url = URL(string:"\(baseUrl)address=\(addressSearchString)&key=\(apikey)")
         
-//        guard let titleField = eventTitle,
-//            let title = titleField.text else { return }
+        Alamofire.request(url!).responseJSON
+            { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    let result = json["results"][0]
+                    let geometry = result["geometry"]
+                    let location = geometry["location"]
+                    self.formattedAddress = result["formatted_address"].stringValue
+                    self.locationLatitude = location["lat"].stringValue
+                    self.locationLongitude = location["lng"].stringValue
+                    
+                case .failure(let error):
+                    print(error)
+                }
+                
+        }
+
+    
+    
+    }
+    
+    var eventLocation: String = ""
+    var formattedAddress: String = ""
+    var locationLatitude: String = ""
+    var locationLongitude: String = ""
+    
+    
+    @IBAction func submitDetails(_ sender: Any) {
         
 //        Store event form data in firebase
         let eventName = name.text
         let eventTime = time.text
-        let eventLocation = location.text
+        eventLocation = location.text!
         
-        let eventInstance = Event(name: eventName!, time: eventTime!, location: eventLocation!)
+        
+        let eventInstance = Event(name: eventName!, time: eventTime!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude)
                                           
         let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
-        
         performSegue(withIdentifier: "submitNewEvent", sender: self)
+        
     }
+    
+//    func getGeoCodeLocation(address: String){
+//        
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "submitNewEvent" {
-            
             if let destination = segue.destination as? DetailOutputViewController {
-                
                 destination.passedEventTitle = name.text
                 destination.passedEventTime = time.text
                 destination.passedInvitees = invitees.text
@@ -55,12 +90,12 @@ class CreateEventViewController: UIViewController {
         }
     }
     
-    
-    
-    
-    
+    let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
+    let apikey = "AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 

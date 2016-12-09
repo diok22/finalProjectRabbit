@@ -9,6 +9,7 @@
 import XCTest
 @testable import finalProjectMA
 
+
 class finalProjectMATests: XCTestCase {
     
     override func setUp() {
@@ -22,7 +23,7 @@ class finalProjectMATests: XCTestCase {
     }
     
         func testEventInitialization(){
-            let potentialEvent = Event(name: "New Event", time: "Today", location: "50 Commercial Street")
+            let potentialEvent = Event(name: "New Event", time: "Today", address: "50 Commercial Street", latitude:"latitude", longitude: "longitude")
             XCTAssertNotNil(potentialEvent)
         }
     

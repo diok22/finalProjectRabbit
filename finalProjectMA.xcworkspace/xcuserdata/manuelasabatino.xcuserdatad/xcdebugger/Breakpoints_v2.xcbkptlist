@@ -10,23 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "finalProjectMA/MapInContainer.swift"
-            timestampString = "502834750.476742"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "finalProjectMA/MapInContainer.swift"
-            timestampString = "502834750.476742"
+            timestampString = "502905830.341296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -42,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "finalProjectMA/MapInContainer.swift"
-            timestampString = "502834750.476742"
+            timestampString = "502905830.341296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "finalProjectMA/MapInContainer.swift"
-            timestampString = "502834750.476742"
+            timestampString = "502905830.341296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +58,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "finalProjectMA/MapInContainer.swift"
-            timestampString = "502834750.476742"
+            timestampString = "502905830.341296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "finalProjectMA/MapInContainer.swift"
+            timestampString = "502905830.341296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "finalProjectMA/MapInContainer.swift"
+            timestampString = "502905830.341296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -89,14 +105,76 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "finalProjectMA/MapInContainer.swift"
-            timestampString = "502834750.476742"
+            filePath = "finalProjectMA/ShowEventsTableViewController.swift"
+            timestampString = "502904250.916943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "ShowEventsTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "finalProjectMA.ShowEventsTableViewController.selectedEvent.setter : Swift.Array&lt;finalProjectMA.Event&gt;"
+                  moduleName = "finalProjectMA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelasabatino/Documents/finalProject/finalProjectRabbit/finalProjectMA/ShowEventsTableViewController.swift"
+                  timestampString = "502904252.536664"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "finalProjectMA.ShowEventsTableViewController.init (style : __C.UITableViewStyle) -&gt; finalProjectMA.ShowEventsTableViewController"
+                  moduleName = "finalProjectMA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelasabatino/Documents/finalProject/finalProjectRabbit/finalProjectMA/ShowEventsTableViewController.swift"
+                  timestampString = "502904252.540012"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "finalProjectMA.ShowEventsTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; finalProjectMA.ShowEventsTableViewController"
+                  moduleName = "finalProjectMA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelasabatino/Documents/finalProject/finalProjectRabbit/finalProjectMA/ShowEventsTableViewController.swift"
+                  timestampString = "502904252.543987"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "finalProjectMA.ShowEventsTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;finalProjectMA.ShowEventsTableViewController&gt;"
+                  moduleName = "finalProjectMA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelasabatino/Documents/finalProject/finalProjectRabbit/finalProjectMA/ShowEventsTableViewController.swift"
+                  timestampString = "502904252.546959"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -8,17 +8,24 @@
 
 import Foundation
 import Firebase
+import FirebaseDatabase
+import SwiftyJSON
+
 
 struct Event {
     let name: String
     let time: String
-    let location: String
+    let address: String!
+    let latitude: String!
+    let longitude: String!
     let ref: FIRDatabaseReference?
     
-    init(name:String, time:String, location:String){
+    init(name:String, time:String, address:String, latitude:String, longitude:String){
         self.name = name
         self.time = time
-        self.location = location
+        self.address = address
+        self.latitude = latitude
+        self.longitude = longitude
         self.ref = nil
     }
     
@@ -26,7 +33,9 @@ struct Event {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         name = snapshotValue["name"] as! String
         time = snapshotValue["time"] as! String
-        location = snapshotValue["location"] as! String
+        address = snapshotValue["address"] as! String
+        latitude = snapshotValue["latitude"] as! String
+        longitude = snapshotValue["longitude"] as! String
         ref = snapshot.ref
     }
     
@@ -34,7 +43,9 @@ struct Event {
         return [
             "name": name,
             "time": time,
-            "location": location
+            "address": address,
+            "latitude": latitude,
+            "longitude": longitude
         ]
     }
 }

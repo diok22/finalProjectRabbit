@@ -11,7 +11,6 @@ import UIKit
 class DetailOutputViewController: UIViewController {
 
     @IBAction func homeButton(_ sender: Any) {
-         performSegue(withIdentifier: "showHomeView", sender: self)
     }
     
     @IBOutlet weak var title_event: UITextView!
