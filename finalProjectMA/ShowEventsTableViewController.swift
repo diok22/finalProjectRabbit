@@ -39,7 +39,6 @@ class ShowEventsTableViewController: UITableViewController {
             }
             self.events = newEvents
             self.tableView.reloadData()
-            print(snapshot.value)
         })
         
         

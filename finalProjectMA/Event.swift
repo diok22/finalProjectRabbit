@@ -31,7 +31,6 @@ struct Event {
     
     init(snapshot: FIRDataSnapshot) {
         let snapshotValue = snapshot.value as! [String: AnyObject]
-        print(snapshotValue)
         name = snapshotValue["name"] as! String
         time = snapshotValue["time"] as! String
         address = snapshotValue["address"] as! String
