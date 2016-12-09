@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 import FirebaseDatabase
 
-class MapInContainer: UIViewController {
+class MapInContainer: UIViewController, CLLocationManagerDelegate  {
     
     var passedSelectedEventFromList: [Event] = []
     
@@ -21,6 +21,7 @@ class MapInContainer: UIViewController {
     var userFromFirebase : [String:Any] = [:]
     
     override func viewDidLoad() {
+        
         let meetingTime = self.passedSelectedEventFromList[0].time
         let fullAddress = self.passedSelectedEventFromList[0].address
         let lat = NSString(string: self.passedSelectedEventFromList[0].latitude).doubleValue
@@ -58,9 +59,9 @@ class MapInContainer: UIViewController {
                             let json = JSON(value)
                             let eta = json["routes"][0]["legs"][0]["duration"]["text"]
                             self.userFromFirebase["eta"] = eta.stringValue as AnyObject?
-                            
-                            
-                            let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 9.0)
+                            self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
+
+                            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 9.0)
                             let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                             mapView.isMyLocationEnabled = true
                             self.view = mapView
