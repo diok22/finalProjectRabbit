@@ -30,9 +30,9 @@ class MapInContainer: UIViewController {
         ref.observe(.value, with:{ snapshot in
             
             let enumerator = snapshot.children
+            
             while let user = enumerator.nextObject() as? FIRDataSnapshot {
                 var userValue = user.value as! [String:AnyObject]
-                print(userValue)
                 self.userFromFirebase["name"] = (userValue["name"] as AnyObject?)
                 self.userFromFirebase["latitude"] = (userValue["latitude"] as AnyObject?)
                 self.userFromFirebase["longitude"] = (userValue["longitude"] as AnyObject?)
@@ -48,7 +48,8 @@ class MapInContainer: UIViewController {
                 
                 let urlLocation = "origin=" + latString + "," + lonString + "&"
                 let urlDestination = "destination=" + eventLatString! + "," + eventLonString! + "&"
-                let url = urlAPI + urlLocation + "mode=transit&" + urlDestination + urlKey
+                let urlTransit = "mode=transit&"
+                let url = urlAPI + urlLocation + urlTransit + urlDestination + urlKey
                 
                 
                 Alamofire.request(url).responseJSON
@@ -58,6 +59,7 @@ class MapInContainer: UIViewController {
                             let json = JSON(value)
                             let eta = json["routes"][0]["legs"][0]["duration"]["text"]
                             self.userFromFirebase["eta"] = eta.stringValue as AnyObject?
+                            //print(self.userFromFirebase)
                             
                             let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 9.0)
                             let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -67,13 +69,15 @@ class MapInContainer: UIViewController {
                             let userlat = self.userFromFirebase["latitude"]!
                             let userlon = self.userFromFirebase["longitude"]!
                             
+                            //for i in 0 ..< snapshot.childrenCount {
+                           
                             let marker = GMSMarker()
                             marker.position = CLLocationCoordinate2D(latitude: userlat as! CLLocationDegrees, longitude: userlon as! CLLocationDegrees)
-                            print (marker.position)
+                            
                             marker.title = self.userFromFirebase["name"] as! String?
                             marker.snippet = self.userFromFirebase["eta"] as! String?
                             marker.map = mapView
-
+                           
                             
                             let markerEvent = GMSMarker()
                             markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
@@ -88,8 +92,8 @@ class MapInContainer: UIViewController {
                         
                 }
                 
-            }
             
+         }
         })
         
 
