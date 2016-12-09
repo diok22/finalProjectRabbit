@@ -11,22 +11,11 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 import FirebaseDatabase
-import MapKit
-import CoreLocation
 
-class MapInContainer: UIViewController, CLLocationManagerDelegate {
+class MapInContainer: UIViewController {
     
     
     let ref = FIRDatabase.database().reference(withPath: "users")
-    
-    let locationM = CLLocationManager()
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        print(location.coordinate.latitude)
-        print(location.coordinate.longitude)
-        
-    }
     
     
     var users : [[String:Any]] =
@@ -40,14 +29,6 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         
         var myUserInfo : [String:Any] = [:]
-
-        
-        
-        locationM.delegate = self
-        locationM.desiredAccuracy = kCLLocationAccuracyBest
-        locationM.requestWhenInUseAuthorization()
-        locationM.startUpdatingLocation()
-        
         
         ref.observe(.value, with:{ snapshot in
             print(snapshot)
@@ -55,10 +36,8 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
             let enumerator = snapshot.children
             while let user = enumerator.nextObject() as? FIRDataSnapshot {
                 var userValue = user.value as! [String:AnyObject]
-                print(userValue["latitude"]!)
-                print(userValue["longitude"]!)
-                let userLatString = userValue["latitude"] as! String
-                let userLonString = userValue["longitude"] as! String
+                let userLatString = (userValue["latitude"]!)
+                let userLonString = (userValue["longitude"]!)
                 let userLatDouble = userValue["latitude"] as! Double
                 let userLonDouble = userValue["longitude"] as! Double
                 print(userLatString)
@@ -71,12 +50,12 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
         })
         
         
-        for i in 0 ..< users.count {
+       //for i in 0 ..< users.count {
             
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
             let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
-            let latString = String(describing: users[i]["latitude"]!)
-            let lonString = String(describing: users[i]["longitude"]!)
+            let latString = String(describing: users[1]["latitude"]!)
+            let lonString = String(describing: users[1]["longitude"]!)
             let urlLocation = "origin=" + latString + "," + lonString + "&"
             let url = urlAPI + urlLocation + "mode=transit&destination=51.5014,-0.1419&" + urlKey
             print("URL = " + url)
@@ -89,20 +68,20 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
                         let json = JSON(value)
                         print((json["routes"][0].stringValue))
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                        self.users[i]["eta"] = eta.stringValue
+                        self.users[1]["eta"] = eta.stringValue
                         
                         let camera = GMSCameraPosition.camera(withLatitude: 51.5014, longitude: -0.1419, zoom: 9.0)
                         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                         mapView.isMyLocationEnabled = true
                         self.view = mapView
                         
-                        for i in 0 ..< self.users.count {
+                        //for i in 0 ..< self.users.count {
                             let marker = GMSMarker()
-                            marker.position = CLLocationCoordinate2D(latitude: self.users[i]["latitude"] as! CLLocationDegrees, longitude: self.users[i]["longitude"] as! CLLocationDegrees)
-                            marker.title = self.users[i]["name"] as! String?
-                            marker.snippet = self.users[i]["eta"] as! String?
+                            marker.position = CLLocationCoordinate2D(latitude: self.users[1]["latitude"] as! CLLocationDegrees, longitude: self.users[1]["longitude"] as! CLLocationDegrees)
+                            marker.title = self.users[1]["name"] as! String?
+                            marker.snippet = self.users[1]["eta"] as! String?
                             marker.map = mapView
-                        }
+                        //}
                         
                         let markerEvent = GMSMarker()
                         markerEvent.position = CLLocationCoordinate2D(latitude: 51.5014, longitude: -0.1419)
@@ -116,7 +95,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate {
                     }
                     
             }
-        }
+        //}
         
     }
     override func didReceiveMemoryWarning() {

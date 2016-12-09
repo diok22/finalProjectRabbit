@@ -28,7 +28,7 @@ struct Event {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         name = snapshotValue["name"] as! String
         time = snapshotValue["time"] as! String
-        location = snapshotValue["location"] as! String
+        location = snapshotValue["address"] as! String
         ref = snapshot.ref
     }
     

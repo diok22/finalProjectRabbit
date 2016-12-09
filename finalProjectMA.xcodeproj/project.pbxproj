@@ -264,8 +264,7 @@
 				TargetAttributes = {
 					F5B3880A1DF6CB810039771E = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 74NNGKW9ES;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -549,7 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = finalProjectMA/finalProjectMA.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 74NNGKW9ES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = finalProjectMA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.projectRabbit.finalProjectMA;
@@ -565,7 +564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = finalProjectMA/finalProjectMA.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 74NNGKW9ES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = finalProjectMA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.projectRabbit.finalProjectMA;
