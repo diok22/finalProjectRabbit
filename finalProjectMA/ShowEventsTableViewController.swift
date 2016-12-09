@@ -18,7 +18,6 @@ class ShowEventsTableViewController: UITableViewController {
         if segue.identifier == "showDetailMapTap" {
             let indexPath: IndexPath? = self.tableView.indexPathForSelectedRow
             self.selectedEvent = [events[(indexPath?[1])!]]
-            print(self.selectedEvent)
             if let destination = segue.destination as? MapViewController {
                 destination.passedSelectedEvent = self.selectedEvent
             }
@@ -63,8 +62,8 @@ class ShowEventsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier:"eventCell") as! EventTableViewCell
         cell.eventTitleInCell.text = events[indexPath.row].name
         cell.eventTimeInCell.text = events[indexPath.row].time
-        cell.eventLocationInCell.text = events[indexPath.row].location
-        
+        cell.eventLocationInCell.text = events[indexPath.row].address
+    
         
         return cell
     }

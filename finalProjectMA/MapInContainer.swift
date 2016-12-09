@@ -16,7 +16,6 @@ class MapInContainer: UIViewController {
     var passedSelectedEventFromList: [Event] = []
     
     
-    
     var users : [[String:Any]] =
         [
             ["name": "Ed", "latitude": 51.55, "longitude": -0.173259, "eta":""],
@@ -25,7 +24,11 @@ class MapInContainer: UIViewController {
     ]
     
     override func viewDidLoad() {
-        print(passedSelectedEventFromList)
+        let meetingTime = self.passedSelectedEventFromList[0].time
+        let fullAddress = self.passedSelectedEventFromList[0].address
+        let lat = NSString(string: self.passedSelectedEventFromList[0].latitude).doubleValue
+        let lng = NSString(string: self.passedSelectedEventFromList[0].longitude).doubleValue
+
 
         for i in 0 ..< users.count {
 
@@ -38,11 +41,9 @@ class MapInContainer: UIViewController {
         
         Alamofire.request(url).responseJSON
             { response in
-                //print(response)
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    print((json["routes"][0].stringValue))
                     let eta = json["routes"][0]["legs"][0]["duration"]["text"]
                     self.users[i]["eta"] = eta.stringValue
                     
@@ -61,9 +62,9 @@ class MapInContainer: UIViewController {
 
                     
                     let markerEvent = GMSMarker()
-                    markerEvent.position = CLLocationCoordinate2D(latitude: 51.5014, longitude: -0.1419)
-                    markerEvent.title = "Buckingham Palace"
-                    markerEvent.snippet = "tour"
+                    markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                    markerEvent.title = fullAddress
+                    markerEvent.snippet = meetingTime
                     markerEvent.icon = GMSMarker.markerImage(with: .blue)
                     markerEvent.map = mapView
                     

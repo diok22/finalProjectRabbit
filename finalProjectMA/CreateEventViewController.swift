@@ -25,22 +25,52 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var location: UITextField!
     
     @IBOutlet weak var invitees: UITextField!
+    
+    @IBAction func findAddress(_ sender: Any) {
+        let address: String = location.text!
+        let array = address.components(separatedBy: " ")
+        let addressSearchString = (array.joined(separator: "+"))
+        let url = URL(string:"\(baseUrl)address=\(addressSearchString)&key=\(apikey)")
+        
+        Alamofire.request(url!).responseJSON
+            { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    let result = json["results"][0]
+                    let geometry = result["geometry"]
+                    let location = geometry["location"]
+                    self.formattedAddress = result["formatted_address"].stringValue
+                    self.locationLatitude = location["lat"].stringValue
+                    self.locationLongitude = location["lng"].stringValue
+                    
+                case .failure(let error):
+                    print(error)
+                }
+                
+        }
+
+    
+    
+    }
+    
     var eventLocation: String = ""
+    var formattedAddress: String = ""
+    var locationLatitude: String = ""
+    var locationLongitude: String = ""
+    
     
     @IBAction func submitDetails(_ sender: Any) {
         
 //        Store event form data in firebase
-        let eventName = name.text!
-        let eventTime = time?.text
-        eventLocation = (location?.text)!
+        let eventName = name.text
+        let eventTime = time.text
+        eventLocation = location.text!
         
         
-//        getGeoCodeLocation(address: "50 Commercial Street, London E1 6LT")
-      
-        
-        let eventInstance = Event(name: eventName, time: eventTime!, location: eventLocation)
+        let eventInstance = Event(name: eventName!, time: eventTime!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude)
                                           
-        let eventInstanceRef = self.ref.child(eventName)
+        let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
         performSegue(withIdentifier: "submitNewEvent", sender: self)
         
@@ -65,33 +95,7 @@ class CreateEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let address: String = "50 Commercial Street London E1 6LT"
-    let array = address.components(separatedBy: " ")
-        let addressSearchString = (array.joined(separator: "+"))
-      print(addressSearchString)
-        let url = URL(string:"\(baseUrl)address=\(addressSearchString)&key=\(apikey)")
-        print(url)
 
-
-
-        
-        Alamofire.request(url!).responseJSON
-            { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                let result = json["results"][0]
-                let geometry = result["geometry"]
-                let location = geometry["location"]
-                let latitude = location["lat"]
-                let longitude = location["lng"]
-                print(latitude)
-                print(longitude)
-            case .failure(let error):
-                print(error)
-           }
-            
-        }
         // Do any additional setup after loading the view.
     }
 
