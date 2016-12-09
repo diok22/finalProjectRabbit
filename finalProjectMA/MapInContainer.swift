@@ -38,7 +38,6 @@ class MapInContainer: UIViewController {
                 self.userFromFirebase["longitude"] = (userValue["longitude"] as AnyObject?)
                 self.userFromFirebase["eta"] = (userValue["eta"] as AnyObject?)
                 
-                
                 let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
                 let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
                 let latString = String(describing: self.userFromFirebase["latitude"]!)
@@ -59,7 +58,7 @@ class MapInContainer: UIViewController {
                             let json = JSON(value)
                             let eta = json["routes"][0]["legs"][0]["duration"]["text"]
                             self.userFromFirebase["eta"] = eta.stringValue as AnyObject?
-                            //print(self.userFromFirebase)
+                            
                             
                             let camera = GMSCameraPosition.camera(withLatitude: 51.5, longitude: -0.11, zoom: 9.0)
                             let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -89,11 +88,8 @@ class MapInContainer: UIViewController {
                         case .failure(let error):
                             print(error)
                         }
-                        
-                }
-                
-            
-         }
+                     }
+                  }
         })
         
 
