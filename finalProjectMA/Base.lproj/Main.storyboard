@@ -100,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLZ-mi-5hi">
-                                <rect key="frame" x="128.5" y="28" width="119" height="21"/>
+                                <rect key="frame" x="128" y="28" width="119" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="119" id="smT-bc-Vnc"/>
                                 </constraints>
@@ -136,12 +136,6 @@
                                     <action selector="submitDetails:" destination="6Hs-Oz-oxC" eventType="touchUpInside" id="xhx-RG-QDA"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLW-Lj-JKh">
-                                <rect key="frame" x="16" y="358" width="343" height="226"/>
-                                <connections>
-                                    <segue destination="APn-tG-62C" kind="embed" id="tI5-Li-Rj1"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmW-PI-OIv">
                                 <rect key="frame" x="210" y="254" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -159,7 +153,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lLW-Lj-JKh" firstAttribute="leading" secondItem="ClG-g2-ssI" secondAttribute="leadingMargin" id="0M1-q6-AWH"/>
                             <constraint firstItem="aIQ-OI-028" firstAttribute="top" secondItem="cgr-Ko-BoO" secondAttribute="bottom" constant="48" id="1US-GD-Irq"/>
                             <constraint firstItem="RDa-ir-zVs" firstAttribute="trailing" secondItem="Aeu-i0-aNu" secondAttribute="trailing" id="2wO-0k-NxO"/>
                             <constraint firstItem="aIQ-OI-028" firstAttribute="leading" secondItem="ClG-g2-ssI" secondAttribute="leadingMargin" constant="11" id="5pn-A2-emw"/>
@@ -168,12 +161,9 @@
                             <constraint firstItem="fYc-Ld-kdc" firstAttribute="leading" secondItem="ClG-g2-ssI" secondAttribute="leading" constant="154" id="8jz-5F-rt9"/>
                             <constraint firstItem="RDa-ir-zVs" firstAttribute="leading" secondItem="ClG-g2-ssI" secondAttribute="leadingMargin" constant="10" id="AOb-FE-O2M"/>
                             <constraint firstItem="Aeu-i0-aNu" firstAttribute="top" secondItem="RDa-ir-zVs" secondAttribute="bottom" constant="13" id="Bp4-hi-0pv"/>
-                            <constraint firstItem="lLW-Lj-JKh" firstAttribute="trailing" secondItem="ClG-g2-ssI" secondAttribute="trailingMargin" id="JAa-Rb-JWs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aIQ-OI-028" secondAttribute="trailing" constant="9" id="MHN-vo-you"/>
                             <constraint firstItem="cLZ-mi-5hi" firstAttribute="top" secondItem="2xg-Tf-zzN" secondAttribute="bottom" constant="8" symbolic="YES" id="Uws-5F-bpn"/>
-                            <constraint firstItem="fYc-Ld-kdc" firstAttribute="top" secondItem="lLW-Lj-JKh" secondAttribute="bottom" constant="8" symbolic="YES" id="Vf5-fF-LmJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RDa-ir-zVs" secondAttribute="trailing" constant="10" id="WyT-cJ-Lsp"/>
-                            <constraint firstItem="lLW-Lj-JKh" firstAttribute="top" secondItem="aIQ-OI-028" secondAttribute="bottom" constant="36" id="btI-uR-kPf"/>
                             <constraint firstItem="RDa-ir-zVs" firstAttribute="top" secondItem="cLZ-mi-5hi" secondAttribute="bottom" constant="80" id="cNt-QB-2ii"/>
                             <constraint firstItem="FVW-rE-t6J" firstAttribute="top" secondItem="fYc-Ld-kdc" secondAttribute="bottom" constant="45" id="cUt-Oj-Tpe"/>
                             <constraint firstItem="cgr-Ko-BoO" firstAttribute="leading" secondItem="ClG-g2-ssI" secondAttribute="leadingMargin" constant="10" id="htj-Dh-PGL"/>
@@ -440,7 +430,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Cce-GT-cFe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jt0-tZ-NnO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iaz-DM-3er" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="bH3-zz-yxP">
@@ -452,22 +441,9 @@
                         <segue destination="703-4V-yAM" kind="relationship" relationship="rootViewController" id="8UG-9K-UOt"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jt0-tZ-NnO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1162.4000000000001" y="-293.70314842578711"/>
-        </scene>
-        <!--Map In Container-->
-        <scene sceneID="WsT-K9-IG8">
-            <objects>
-                <viewController id="APn-tG-62C" customClass="MapInContainer" customModule="finalProjectMA" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ezf-tu-mNV">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="226"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E3l-4L-Ztc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2259" y="362"/>
         </scene>
     </scenes>
 </document>
