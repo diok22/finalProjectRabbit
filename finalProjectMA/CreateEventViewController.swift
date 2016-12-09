@@ -47,11 +47,7 @@ class CreateEventViewController: UIViewController {
                 case .failure(let error):
                     print(error)
                 }
-                
-        }
-
-    
-    
+            }
     }
     
     var eventLocation: String = ""

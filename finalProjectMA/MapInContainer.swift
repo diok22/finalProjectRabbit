@@ -18,16 +18,7 @@ class MapInContainer: UIViewController {
     
     let ref = FIRDatabase.database().reference(withPath: "users")
     
-    
-    var users : [[String:Any]] =
-        [
-            ["name": "Ed", "latitude": 51.55, "longitude": -0.173259, "eta":""],
-            ["name": "Dio", "latitude": 51.50, "longitude": -0.070, "eta":""],
-            ["name": "Manu", "latitude": 51.51, "longitude": -0.071, "eta":""]
-    ]
-    
     var userFromFirebase : [String:Any] = [:]
-
     
     override func viewDidLoad() {
         let meetingTime = self.passedSelectedEventFromList[0].time
@@ -35,8 +26,7 @@ class MapInContainer: UIViewController {
         let lat = NSString(string: self.passedSelectedEventFromList[0].latitude).doubleValue
         let lng = NSString(string: self.passedSelectedEventFromList[0].longitude).doubleValue
         
-        
-        
+     
         ref.observe(.value, with:{ snapshot in
             
             let enumerator = snapshot.children
@@ -47,8 +37,6 @@ class MapInContainer: UIViewController {
                 self.userFromFirebase["latitude"] = (userValue["latitude"] as AnyObject?)
                 self.userFromFirebase["longitude"] = (userValue["longitude"] as AnyObject?)
                 self.userFromFirebase["eta"] = (userValue["eta"] as AnyObject?)
-                
-                print(self.userFromFirebase)
                 
                 
                 let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
@@ -76,20 +64,12 @@ class MapInContainer: UIViewController {
                             mapView.isMyLocationEnabled = true
                             self.view = mapView
                             
-                            var userLatString : Double = ((self.userFromFirebase["latitude"]) as? Double)!
-                            var userLonString : Double = ((self.userFromFirebase["longitude"]) as? Double)!
-                            
-                            print("Hello")
-                            print(userLonString)
-                            print(userLatString)
-                            print("Hello2")
-                            
-                            let userlat = userLatString
-                            let userlon = userLonString
-
+                            let userlat = self.userFromFirebase["latitude"]!
+                            let userlon = self.userFromFirebase["longitude"]!
                             
                             let marker = GMSMarker()
-                            marker.position = CLLocationCoordinate2D(latitude: userlat, longitude: userlon)
+                            marker.position = CLLocationCoordinate2D(latitude: userlat as! CLLocationDegrees, longitude: userlon as! CLLocationDegrees)
+                            print (marker.position)
                             marker.title = self.userFromFirebase["name"] as! String?
                             marker.snippet = self.userFromFirebase["eta"] as! String?
                             marker.map = mapView
