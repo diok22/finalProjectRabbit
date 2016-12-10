@@ -17,7 +17,14 @@ import FirebaseAuth
 
 class CreateEventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    let ref = FIRDatabase.database().reference(withPath: "events") 
+    let ref = FIRDatabase.database().reference(withPath: "events")
+    
+    var eventLocation: String = ""
+    var formattedAddress: String = ""
+    var locationLatitude: String = ""
+    var locationLongitude: String = ""
+    var user: User!
+    var invitees: [[String:String]] = []
 
     @IBOutlet weak var name: UITextField!
     
@@ -26,6 +33,38 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var location: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
+    
+// MARK: Find the address + API
+    
+    @IBAction func findAddress(_ sender: Any) {
+        print("finding address")
+        let address: String = location.text!
+        let array = address.components(separatedBy: " ")
+        let addressSearchString = (array.joined(separator: "+"))
+        let url = URL(string:"\(baseUrl)address=\(addressSearchString)&key=\(apikey)")
+        
+        Alamofire.request(url!).responseJSON
+            { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    let result = json["results"][0]
+                    let geometry = result["geometry"]
+                    let location = geometry["location"]
+                    self.formattedAddress = result["formatted_address"].stringValue
+                    self.locationLatitude = location["lat"].stringValue
+                    self.locationLongitude = location["lng"].stringValue
+                    print("address found: \(self.formattedAddress)")
+
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+    }
+    
+// MARK: Adding invitees to list
+    
     @IBAction func addInvitees(_ sender: UIButton) {
         let alert = UIAlertController(title: "Invitees",
                                       message: "Add people to invite them to the event",
@@ -61,45 +100,13 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
-
-    }
-    
-    @IBAction func findAddress(_ sender: Any) {
-        print("finding address")
-        let address: String = location.text!
-        let array = address.components(separatedBy: " ")
-        let addressSearchString = (array.joined(separator: "+"))
-        let url = URL(string:"\(baseUrl)address=\(addressSearchString)&key=\(apikey)")
         
-        Alamofire.request(url!).responseJSON
-            { response in
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    let result = json["results"][0]
-                    let geometry = result["geometry"]
-                    let location = geometry["location"]
-                    self.formattedAddress = result["formatted_address"].stringValue
-                    self.locationLatitude = location["lat"].stringValue
-                    self.locationLongitude = location["lng"].stringValue
-                    print("address found: \(self.formattedAddress)")
-
-                    
-                case .failure(let error):
-                    print(error)
-                }
-            }
     }
-    var eventLocation: String = ""
-    var formattedAddress: String = ""
-    var locationLatitude: String = ""
-    var locationLongitude: String = ""
-    var user: User!
-    var invitees: [[String:String]] = []
+
+// MARK: Submit data and store in Firebase
     
     @IBAction func submitDetails(_ sender: Any) {
         
-//        Store event form data in firebase
         let eventName = name.text
         let eventTime = time.text
         eventLocation = location.text!
@@ -133,12 +140,16 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
 
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+// MARK: Invitee TableView
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            invitees.remove(at: indexPath.row)
+            self.tableView.reloadData()
+        }
     }
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -151,18 +162,11 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return invitees.count
     }
-
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    */
 
 }
