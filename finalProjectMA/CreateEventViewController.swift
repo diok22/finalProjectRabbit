@@ -15,7 +15,7 @@ import FirebaseAuth
 
 
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     let ref = FIRDatabase.database().reference(withPath: "events") 
 
@@ -25,7 +25,6 @@ class CreateEventViewController: UIViewController {
     
     @IBOutlet weak var location: UITextField!
     
-    @IBOutlet weak var invitees: UITextField!
     
     @IBAction func findAddress(_ sender: Any) {
         print("finding address")
@@ -58,7 +57,11 @@ class CreateEventViewController: UIViewController {
     var locationLatitude: String = ""
     var locationLongitude: String = ""
     var user: User!
-    
+    var invitees: [[String:String]] = [
+        ["name": "Test1", "email": "test1@gmail.com"],
+        ["name": "Test2", "email": "test2@gmail.com"],
+        ["name": "Test3", "email": "test3@gmail.com"],
+    ]
     
     @IBAction func submitDetails(_ sender: Any) {
         
@@ -66,26 +69,19 @@ class CreateEventViewController: UIViewController {
         let eventName = name.text
         let eventTime = time.text
         eventLocation = location.text!
-        let invitees = ["test1@gmail.com", "test2@gmail.com", "test3@gmail.com"]
+       
         let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: eventTime!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: invitees)
-        
         let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
-//        eventInstanceRef.child("Invitees").setValue(invitees)
         performSegue(withIdentifier: "submitNewEvent", sender: self)
-        
     }
     
-//    func getGeoCodeLocation(address: String){
-//        
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "submitNewEvent" {
             if let destination = segue.destination as? DetailOutputViewController {
                 destination.passedEventTitle = name.text
                 destination.passedEventTime = time.text
-                destination.passedInvitees = invitees.text
             }
         }
     }
@@ -110,6 +106,19 @@ class CreateEventViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return invitees.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "inviteeCell") as! InviteeTableViewCell
+        cell.inviteeName.text = invitees[indexPath.row]["name"]
+        cell.inviteeEmail.text = invitees[indexPath.row]["email"]
+        
+        return cell
+    }
+
+    
     
 
     /*
