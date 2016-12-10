@@ -45,5 +45,27 @@
 		<string>googlechromes</string>
 		<string>comgooglemaps</string>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb690284737815810</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>690284737815810</string>
+    <key>FacebookDisplayName</key>
+    <string>finalProject</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>{human-readable reason for photo access}</string>
 </dict>
 </plist>

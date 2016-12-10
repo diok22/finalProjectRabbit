@@ -2,4 +2,84 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "finalProjectMA/AppDelegate.swift"
+            timestampString = "503073090.413097"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "finalProjectMA.AppDelegate.__deallocating_deinit"
+                  moduleName = "finalProjectMA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/akramrasikh/clutch/finalProjectRabbit/finalProjectMA/AppDelegate.swift"
+                  timestampString = "503072161.520225"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "finalProjectMA.AppDelegate.init () -&gt; finalProjectMA.AppDelegate"
+                  moduleName = "finalProjectMA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/akramrasikh/clutch/finalProjectRabbit/finalProjectMA/AppDelegate.swift"
+                  timestampString = "503072161.523296"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "finalProjectMA.AppDelegate.__allocating_init () -&gt; finalProjectMA.AppDelegate"
+                  moduleName = "finalProjectMA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/akramrasikh/clutch/finalProjectRabbit/finalProjectMA/AppDelegate.swift"
+                  timestampString = "503072161.524739"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "finalProjectMA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/akramrasikh/clutch/finalProjectRabbit/finalProjectMA/AppDelegate.swift"
+                  timestampString = "503072161.526429"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
