@@ -20,10 +20,10 @@ struct Event {
     let address: String!
     let latitude: String!
     let longitude: String!
-    let invitees: [[String:String]]
+    let invitees: [[String:Any]]
     let ref: FIRDatabaseReference?
     
-    init(addedByUser: String, name:String, time:String, address:String, latitude:String, longitude:String, invitees:[[String:String]]){
+    init(addedByUser: String, name:String, time:String, address:String, latitude:String, longitude:String, invitees:[[String:Any]]){
         self.addedByUser = addedByUser
         self.name = name
         self.time = time
@@ -42,7 +42,7 @@ struct Event {
         address = snapshotValue["address"] as! String
         latitude = snapshotValue["latitude"] as! String
         longitude = snapshotValue["longitude"] as! String
-        invitees = snapshotValue["invitees"] as! [[String:String]]
+        invitees = snapshotValue["invitees"] as! [[String:Any]]
         ref = snapshot.ref
     }
     

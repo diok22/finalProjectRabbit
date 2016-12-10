@@ -44,7 +44,7 @@ class ShowEventsTableViewController: UITableViewController {
             for event in snapshot.children {
                 let eventInstance = Event(snapshot: event as! FIRDataSnapshot)
                 for i in 0..<eventInstance.invitees.count {
-                if (eventInstance.invitees[i]["email"]?.contains(self.currentUser.email))! || eventInstance.addedByUser == self.currentUser.email {
+                if ((eventInstance.invitees[i]["email"] as! String).contains(self.currentUser.email)) || eventInstance.addedByUser == self.currentUser.email {
                     newEvents.append(eventInstance)
                     break
                 }

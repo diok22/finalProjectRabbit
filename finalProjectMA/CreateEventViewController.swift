@@ -19,12 +19,15 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     
     let ref = FIRDatabase.database().reference(withPath: "events")
     
+    let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
+    let apikey = "AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
+    
     var eventLocation: String = ""
     var formattedAddress: String = ""
     var locationLatitude: String = ""
     var locationLongitude: String = ""
     var user: User!
-    var invitees: [[String:String]] = []
+    var invitees: [[String:Any]] = []
 
     @IBOutlet weak var name: UITextField!
     
@@ -74,12 +77,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                                        style: .default) { action in
                                         let inviteeEmailField = alert.textFields![0]
                                         let inviteeNameField = alert.textFields![1]
-                                        let newInvitee = ["name" : inviteeNameField.text, "email" : inviteeEmailField.text]
-                                        self.invitees.append(newInvitee as! Dictionary<String, String>)
-                                        print("saveaction")
-                                        print(newInvitee)
-                                        
-                                        print(self.invitees)
+                                        let newInvitee : [String:Any]
+                                        newInvitee = ["name" : inviteeNameField.text ?? "Default Name", "email" : inviteeEmailField.text!, "confirmed" : false]
+                                        self.invitees.append(newInvitee as! Dictionary<String, Any>)
                                         self.tableView.reloadData()
                                         
         }
@@ -126,9 +126,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
-    
-    let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
-    let apikey = "AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,8 +152,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "inviteeCell") as! InviteeTableViewCell
-        cell.inviteeName.text = invitees[indexPath.row]["name"]
-        cell.inviteeEmail.text = invitees[indexPath.row]["email"]
+        cell.inviteeName.text = invitees[indexPath.row]["name"] as! String?
+        cell.inviteeEmail.text = invitees[indexPath.row]["email"] as! String?
         
         return cell
     }
