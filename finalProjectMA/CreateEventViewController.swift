@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import SwiftyJSON
 import Alamofire
+import FirebaseAuth
 
 
 
@@ -27,6 +28,7 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var invitees: UITextField!
     
     @IBAction func findAddress(_ sender: Any) {
+        print("finding address")
         let address: String = location.text!
         let array = address.components(separatedBy: " ")
         let addressSearchString = (array.joined(separator: "+"))
@@ -43,17 +45,19 @@ class CreateEventViewController: UIViewController {
                     self.formattedAddress = result["formatted_address"].stringValue
                     self.locationLatitude = location["lat"].stringValue
                     self.locationLongitude = location["lng"].stringValue
+                    print("address found: \(self.formattedAddress)")
+
                     
                 case .failure(let error):
                     print(error)
                 }
             }
     }
-    
     var eventLocation: String = ""
     var formattedAddress: String = ""
     var locationLatitude: String = ""
     var locationLongitude: String = ""
+    var user: User!
     
     
     @IBAction func submitDetails(_ sender: Any) {
@@ -62,12 +66,12 @@ class CreateEventViewController: UIViewController {
         let eventName = name.text
         let eventTime = time.text
         eventLocation = location.text!
-        
-        let eventInstance = Event(name: eventName!, time: eventTime!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude)
         let invitees = ["test1@gmail.com", "test2@gmail.com", "test3@gmail.com"]
+        let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: eventTime!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: invitees)
+        
         let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
-        eventInstanceRef.child("Invitees").setValue(invitees)
+//        eventInstanceRef.child("Invitees").setValue(invitees)
         performSegue(withIdentifier: "submitNewEvent", sender: self)
         
     }
@@ -91,6 +95,13 @@ class CreateEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("loading current user")
+        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = User(authData: user)
+            print("current users email: \(self.user.email)")
+        }
+        
 
         // Do any additional setup after loading the view.
     }

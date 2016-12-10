@@ -53,6 +53,7 @@ class LogInViewController: UIViewController {
                                                                         FIRAuth.auth()!.signIn(withEmail: self.emailField.text!,
                                                                                                password: self.passwordField.text!)
                                                                     }
+                                                                    else { print(error)}
                                         }
 
         }

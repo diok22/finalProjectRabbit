@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class ShowEventsTableViewController: UITableViewController {
     
     var selectedEvent: [Event] = []
+    var currentUser: User!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailMapTap" {
@@ -29,13 +31,23 @@ class ShowEventsTableViewController: UITableViewController {
     var events: [Event] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-//       
+        print("loading current user")
+        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.currentUser = User(authData: user)
+            print("current users email in events list view: \(self.currentUser.email)")
+        }
+//
         ref.observe(.value, with: { snapshot in
             var newEvents: [Event] = []
             
             for event in snapshot.children {
                 let eventInstance = Event(snapshot: event as! FIRDataSnapshot)
-                newEvents.append(eventInstance)
+                if eventInstance.invitees.contains(self.currentUser.email) {
+                    newEvents.append(eventInstance)
+
+                }
+                
             }
             self.events = newEvents
             self.tableView.reloadData()
@@ -46,7 +58,7 @@ class ShowEventsTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,7 +69,6 @@ class ShowEventsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
         let cell = tableView.dequeueReusableCell(withIdentifier:"eventCell") as! EventTableViewCell
         cell.eventTitleInCell.text = events[indexPath.row].name
         cell.eventTimeInCell.text = events[indexPath.row].time
