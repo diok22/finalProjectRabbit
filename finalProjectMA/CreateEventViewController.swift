@@ -25,6 +25,44 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var location: UITextField!
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBAction func addInvitees(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Invitees",
+                                      message: "Add people to invite them to the event",
+                                      preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Add",
+                                       style: .default) { action in
+                                        let inviteeEmailField = alert.textFields![0]
+                                        let inviteeNameField = alert.textFields![1]
+                                        let newInvitee = ["name" : inviteeNameField.text, "email" : inviteeEmailField.text]
+                                        self.invitees.append(newInvitee as! Dictionary<String, String>)
+                                        print("saveaction")
+                                        print(newInvitee)
+                                        
+                                        print(self.invitees)
+                                        self.tableView.reloadData()
+                                        
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+        alert.addTextField { textEmail in
+            textEmail.placeholder = "Email"
+        }
+        
+        alert.addTextField { textFirstName in
+            textFirstName.placeholder = "First Name"
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+
+    }
     
     @IBAction func findAddress(_ sender: Any) {
         print("finding address")
@@ -57,11 +95,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     var locationLatitude: String = ""
     var locationLongitude: String = ""
     var user: User!
-    var invitees: [[String:String]] = [
-        ["name": "Test1", "email": "test1@gmail.com"],
-        ["name": "Test2", "email": "test2@gmail.com"],
-        ["name": "Test3", "email": "test3@gmail.com"],
-    ]
+    var invitees: [[String:String]] = []
     
     @IBAction func submitDetails(_ sender: Any) {
         
@@ -107,15 +141,15 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return invitees.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "inviteeCell") as! InviteeTableViewCell
         cell.inviteeName.text = invitees[indexPath.row]["name"]
         cell.inviteeEmail.text = invitees[indexPath.row]["email"]
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return invitees.count
     }
 
     
