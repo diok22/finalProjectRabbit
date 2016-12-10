@@ -24,9 +24,7 @@ class LogInViewController: UIViewController {
                                password: passwordField.text!) {
                                 (user, error) in
                                 if user != nil {
-                                    print(error)
-                                    print(user)
-                                    print("hi")
+                        
                                     self.performSegue(withIdentifier: "logInSegue", sender: nil)
                                 }
                                 

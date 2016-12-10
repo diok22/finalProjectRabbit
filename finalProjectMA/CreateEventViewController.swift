@@ -63,11 +63,11 @@ class CreateEventViewController: UIViewController {
         let eventTime = time.text
         eventLocation = location.text!
         
-        
         let eventInstance = Event(name: eventName!, time: eventTime!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude)
-                                          
+        let invitees = ["test1@gmail.com", "test2@gmail.com", "test3@gmail.com"]
         let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
+        eventInstanceRef.child("Invitees").setValue(invitees)
         performSegue(withIdentifier: "submitNewEvent", sender: self)
         
     }

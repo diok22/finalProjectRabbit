@@ -10,7 +10,9 @@ import UIKit
 import GoogleMaps
 import MapKit
 import CoreLocation
+import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 
 class DataViewController: UIViewController, CLLocationManagerDelegate {
@@ -35,6 +37,8 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     override func viewDidLoad() {
+        let user = FIRAuth.auth()?.currentUser
+        print(user?.email)
         super.viewDidLoad()
         locationM.delegate = self
         locationM.desiredAccuracy = kCLLocationAccuracyBest
