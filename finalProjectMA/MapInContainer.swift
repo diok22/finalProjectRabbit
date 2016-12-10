@@ -17,6 +17,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
     var passedSelectedEventFromList: [Event] = []
     
     let ref = FIRDatabase.database().reference(withPath: "users")
+
     
     var userFromFirebase : [String:Any] = [:]
     
@@ -27,84 +28,18 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         let lat = NSString(string: self.passedSelectedEventFromList[0].latitude).doubleValue
         let lng = NSString(string: self.passedSelectedEventFromList[0].longitude).doubleValue
         
-     
-        ref.observe(.value, with:{ snapshot in
+        ref.child("Manuela").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            print(value)
             
-            let enumerator = snapshot.children
-
-            
-            while let user = enumerator.nextObject() as? FIRDataSnapshot {
-                print(user)
-                var userValue = user.value as! [String:AnyObject]
-                self.userFromFirebase["name"] = (userValue["name"] as AnyObject?)
-                self.userFromFirebase["latitude"] = (userValue["latitude"] as AnyObject?)
-                self.userFromFirebase["longitude"] = (userValue["longitude"] as AnyObject?)
-                self.userFromFirebase["eta"] = (userValue["eta"] as AnyObject?)
-                
-                let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-                let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
-                let latString = String(describing: self.userFromFirebase["latitude"]!)
-                let lonString = String(describing: self.userFromFirebase["longitude"]!)
-                let eventLatString = self.passedSelectedEventFromList[0].latitude
-                let eventLonString = self.passedSelectedEventFromList[0].longitude
-                
-                let urlLocation = "origin=" + latString + "," + lonString + "&"
-                let urlDestination = "destination=" + eventLatString! + "," + eventLonString! + "&"
-                let urlTransit = "mode=transit&"
-                let url = urlAPI + urlLocation + urlTransit + urlDestination + urlKey
-                
-                print(url)
-                
-                
-                Alamofire.request(url).responseJSON
-                    { response in
-                        switch response.result {
-                        case .success(let value):
-                            let json = JSON(value)
-                            let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                            self.userFromFirebase["eta"] = eta.stringValue as AnyObject?
-                            self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
-
-                            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 9.0)
-                            let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-                            mapView.isMyLocationEnabled = true
-                            self.view = mapView
-                            
-                            let userlat = self.userFromFirebase["latitude"]!
-                            let userlon = self.userFromFirebase["longitude"]!
-                            
-                            let markerEvent = GMSMarker()
-                            markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                            markerEvent.title = fullAddress
-                            markerEvent.snippet = meetingTime
-                            markerEvent.icon = GMSMarker.markerImage(with: .blue)
-                            mapView.isMyLocationEnabled = true
-                            markerEvent.map = mapView
-                            
-                            print(userlon)
-                            
-                          // for i in 0 ..< snapshot.childrenCount {  //
-                           
-                            let marker = GMSMarker()
-                            marker.position = CLLocationCoordinate2D(latitude: userlat as! CLLocationDegrees, longitude: userlon as! CLLocationDegrees)
-                            
-                            marker.title = self.userFromFirebase["name"] as! String?
-                            marker.snippet = self.userFromFirebase["eta"] as! String?
-                            marker.map = mapView
-                            
-                          // } //
-                
-                            
-                        case .failure(let error):
-                            print(error)
-                        }
-                     }
-            }
-        })
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
-
         
-    }
+    } // viewDidLoad
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
