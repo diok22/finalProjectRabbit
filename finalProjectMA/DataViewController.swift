@@ -24,7 +24,6 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        print(location)
         self.ref.child("Manuela").setValue(["latitude": location.coordinate.latitude, "longitude":  location.coordinate.longitude, "name": "Manuela"])
         locationM.stopUpdatingLocation()
     }

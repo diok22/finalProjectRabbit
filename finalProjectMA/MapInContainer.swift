@@ -31,8 +31,10 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         ref.observe(.value, with:{ snapshot in
             
             let enumerator = snapshot.children
+
             
             while let user = enumerator.nextObject() as? FIRDataSnapshot {
+                print(user)
                 var userValue = user.value as! [String:AnyObject]
                 self.userFromFirebase["name"] = (userValue["name"] as AnyObject?)
                 self.userFromFirebase["latitude"] = (userValue["latitude"] as AnyObject?)
@@ -51,6 +53,8 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                 let urlTransit = "mode=transit&"
                 let url = urlAPI + urlLocation + urlTransit + urlDestination + urlKey
                 
+                print(url)
+                
                 
                 Alamofire.request(url).responseJSON
                     { response in
@@ -58,7 +62,6 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                         case .success(let value):
                             let json = JSON(value)
                             let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                            print(eta)
                             self.userFromFirebase["eta"] = eta.stringValue as AnyObject?
                             self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
 
@@ -70,7 +73,17 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             let userlat = self.userFromFirebase["latitude"]!
                             let userlon = self.userFromFirebase["longitude"]!
                             
-                            //for i in 0 ..< snapshot.childrenCount {
+                            let markerEvent = GMSMarker()
+                            markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                            markerEvent.title = fullAddress
+                            markerEvent.snippet = meetingTime
+                            markerEvent.icon = GMSMarker.markerImage(with: .blue)
+                            mapView.isMyLocationEnabled = true
+                            markerEvent.map = mapView
+                            
+                            print(userlon)
+                            
+                          // for i in 0 ..< snapshot.childrenCount {  //
                            
                             let marker = GMSMarker()
                             marker.position = CLLocationCoordinate2D(latitude: userlat as! CLLocationDegrees, longitude: userlon as! CLLocationDegrees)
@@ -78,20 +91,15 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             marker.title = self.userFromFirebase["name"] as! String?
                             marker.snippet = self.userFromFirebase["eta"] as! String?
                             marker.map = mapView
-                           
                             
-                            let markerEvent = GMSMarker()
-                            markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                            markerEvent.title = fullAddress
-                            markerEvent.snippet = meetingTime
-                            markerEvent.icon = GMSMarker.markerImage(with: .blue)
-                            markerEvent.map = mapView
+                          // } //
+                
                             
                         case .failure(let error):
                             print(error)
                         }
                      }
-                  }
+            }
         })
         
 
