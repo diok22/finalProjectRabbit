@@ -12,4 +12,7 @@ target 'finalProjectMA' do
   pod 'SwiftyJSON'
   pod 'Firebase/Auth'
   pod 'FBSDKLoginKit'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
 end
