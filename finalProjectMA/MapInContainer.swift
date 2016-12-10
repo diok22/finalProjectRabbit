@@ -58,6 +58,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                         case .success(let value):
                             let json = JSON(value)
                             let eta = json["routes"][0]["legs"][0]["duration"]["text"]
+                            print(eta)
                             self.userFromFirebase["eta"] = eta.stringValue as AnyObject?
                             self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
 
