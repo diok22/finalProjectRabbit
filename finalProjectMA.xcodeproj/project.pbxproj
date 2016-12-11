@@ -15,6 +15,7 @@
 		225B2D2AD276890E452F4BAF /* Pods_finalProjectMA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3C7BCD1FD140B106FA3F6 /* Pods_finalProjectMA.framework */; };
 		441F5C8A1DF71C9B00D17CCA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441F5C891DF71C9B00D17CCA /* MapViewController.swift */; };
 		D412F3371DFC9F2000300C44 /* InviteeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412F3361DFC9F2000300C44 /* InviteeTableViewCell.swift */; };
+		D412F3391DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412F3381DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift */; };
 		D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */; };
 		D4990CF01DF82C0F00971A19 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CEF1DF82C0F00971A19 /* Event.swift */; };
 		D4990CF41DF875A800971A19 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CF31DF875A800971A19 /* EventTableViewCell.swift */; };
@@ -58,6 +59,7 @@
 		808951FDFF276AFADAD8669A /* Pods-finalProjectMA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProjectMA.release.xcconfig"; path = "Pods/Target Support Files/Pods-finalProjectMA/Pods-finalProjectMA.release.xcconfig"; sourceTree = "<group>"; };
 		C4E3C7BCD1FD140B106FA3F6 /* Pods_finalProjectMA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finalProjectMA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D412F3361DFC9F2000300C44 /* InviteeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteeTableViewCell.swift; sourceTree = "<group>"; };
+		D412F3381DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteeMapViewTableViewCell.swift; sourceTree = "<group>"; };
 		D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		D4990CEF1DF82C0F00971A19 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D4990CF31DF875A800971A19 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				F5B388121DF6CB810039771E /* DataViewController.swift */,
 				F5E7D9A31DF72BB00073D364 /* MapInContainer.swift */,
 				441F5C891DF71C9B00D17CCA /* MapViewController.swift */,
+				D412F3381DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift */,
 				F5B388161DF6CB810039771E /* Main.storyboard */,
 				F5B388191DF6CB810039771E /* Assets.xcassets */,
 				F5B3881B1DF6CB810039771E /* LaunchScreen.storyboard */,
@@ -395,6 +398,7 @@
 				224231F91DF705A70070BE16 /* DetailOutputViewController.swift in Sources */,
 				D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */,
 				F5B388131DF6CB810039771E /* DataViewController.swift in Sources */,
+				D412F3391DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift in Sources */,
 				441F5C8A1DF71C9B00D17CCA /* MapViewController.swift in Sources */,
 				D4990CF01DF82C0F00971A19 /* Event.swift in Sources */,
 				F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */,
