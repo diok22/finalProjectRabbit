@@ -16,14 +16,14 @@ import FirebaseAuth
 struct Event {
     let addedByUser: String
     let name: String
-    let time: String
+    let time: NSNumber!
     let address: String!
     let latitude: String!
     let longitude: String!
     let invitees: [[String:Any]]
     let ref: FIRDatabaseReference?
     
-    init(addedByUser: String, name:String, time:String, address:String, latitude:String, longitude:String, invitees:[[String:Any]]){
+    init(addedByUser: String, name:String, time:NSNumber, address:String, latitude:String, longitude:String, invitees:[[String:Any]]){
         self.addedByUser = addedByUser
         self.name = name
         self.time = time
@@ -38,7 +38,7 @@ struct Event {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         addedByUser = snapshotValue["addedByUser"] as! String
         name = snapshotValue["name"] as! String
-        time = snapshotValue["time"] as! String
+        time = snapshotValue["time"] as! NSNumber
         address = snapshotValue["address"] as! String
         latitude = snapshotValue["latitude"] as! String
         longitude = snapshotValue["longitude"] as! String
