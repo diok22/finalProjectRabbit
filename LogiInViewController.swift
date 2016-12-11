@@ -17,6 +17,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var errorLabel: UILabel!
 
 
     @IBAction func logIn(_ sender: Any) {
@@ -26,6 +27,8 @@ class LogInViewController: UIViewController {
                                 if user != nil {
                         
                                     self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                                } else {
+                                    self.errorLabel.text = (error?.localizedDescription)! as String
                                 }
                                 
         }
@@ -53,7 +56,9 @@ class LogInViewController: UIViewController {
                                                                         FIRAuth.auth()!.signIn(withEmail: self.emailField.text!,
                                                                                                password: self.passwordField.text!)
                                                                     }
-                                                                    else { print(error)}
+                                                                    else {
+                                                                        self.errorLabel.text = (error?.localizedDescription)! as String
+                                                                    }
                                         }
 
         }
@@ -83,6 +88,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.errorLabel.text = ""
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.performSegue(withIdentifier: "logInSegue", sender: nil)
