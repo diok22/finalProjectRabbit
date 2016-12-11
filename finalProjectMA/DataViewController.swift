@@ -22,13 +22,13 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationM = CLLocationManager()
     
-     let currentUser = FIRAuth.auth()?.currentUser
+    let currentUser = FIRAuth.auth()?.currentUser
     
     var userLocationGPS : [String:Double] = [:]
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        self.ref.child("Manuela").setValue(["latitude": location.coordinate.latitude, "longitude":  location.coordinate.longitude, "name": "Manuela"])
+        self.ref.child((currentUser?.uid)!).setValue(["latitude": location.coordinate.latitude, "longitude":  location.coordinate.longitude, "email": currentUser?.email])
         locationM.stopUpdatingLocation()
     }
 
