@@ -24,7 +24,7 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        self.ref.child("Manuela").setValue(["latitude": location.coordinate.latitude, "longitude":  location.coordinate.longitude, "name": "Manuela"])
+        // self.ref.child("Manuela").setValue(["latitude": location.coordinate.latitude, "longitude":  location.coordinate.longitude, "name": "Manuela"])
         locationM.stopUpdatingLocation()
     }
 
@@ -40,7 +40,6 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         locationM.desiredAccuracy = kCLLocationAccuracyBest
         locationM.requestWhenInUseAuthorization()
         locationM.startUpdatingLocation()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {

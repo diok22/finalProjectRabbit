@@ -48,7 +48,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                        self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
+                       // self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
                     case .failure(let error):
                         print(error)
                     }
@@ -58,12 +58,12 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             print(error.localizedDescription)
         }
         
-        var usersArray : [[String:Any]] = []
+        var usersArray : [[String:AnyObject]] = []
 
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             let enumerator = snapshot.children
           while let user = enumerator.nextObject() as? FIRDataSnapshot {
-              var userValue = user.value as! [String:AnyObject]
+              let userValue = user.value as! [String:AnyObject]
                 usersArray.append(userValue)
             
             }
@@ -81,9 +81,13 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             mapView.isMyLocationEnabled = true
             markerEvent.map = mapView
             
+
+            
             for i in 0 ..< usersArray.count {
                 let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: usersArray[0]["latitude"] as! CLLocationDegrees, longitude: usersArray[0]["longitude"] as! CLLocationDegrees)
+                
+                
+                marker.position = CLLocationCoordinate2D(latitude: usersArray[i]["latitude"] as! CLLocationDegrees, longitude: usersArray[i]["longitude"] as! CLLocationDegrees)
                 marker.title = usersArray[i]["name"] as! String?
                 marker.snippet = usersArray[i]["eta"] as! String?
                 marker.map = mapView
