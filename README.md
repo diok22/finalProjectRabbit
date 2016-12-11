@@ -1,3 +1,11 @@
+##### Track the E.T.A of a group of friends going to the same event
+Team members: [Manuela Sabatino](https://github.com/ManuCiao), [Akram Rasikh](https://github.com/AkramRasikh), [Ed Powderham](https://github.com/powderham), [Laszlo Bogacsi](https://github.com/LaszloBogacsi), [Dionysis Kastellanis](https://github.com/diok22)
+
+
+
+
+### M.V.P  
+
 As a user  
 So that I can meet my friends  
 I’d like to create an event (title, time, location)  
