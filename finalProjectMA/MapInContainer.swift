@@ -48,7 +48,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                       // self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
+                        self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
                     case .failure(let error):
                         print(error)
                     }
