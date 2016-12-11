@@ -23,7 +23,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     let apikey = "AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
     
     var eventLocation: String = ""
-    var eventDateInterval: Double!
+    var eventDateInterval: NSNumber!
     var formattedAddress: String = ""
     var locationLatitude: String = ""
     var locationLongitude: String = ""
@@ -44,9 +44,10 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         formatter.timeStyle = .short
         self.time.text = formatter.string(from: sender.date)
         
-        var dateTime = sender.date
+        let dateTime = sender.date
         var interval = Double()
         interval = dateTime.timeIntervalSince1970
+        self.eventDateInterval = interval as NSNumber!
         
         
         
@@ -124,8 +125,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         
         let eventName = name.text
         eventLocation = location.text!
+        print(self.eventDateInterval)
        
-        let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: self.eventDate!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: self.invitees)
+        let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: self.eventDateInterval!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: self.invitees)
         let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
         performSegue(withIdentifier: "submitNewEvent", sender: self)

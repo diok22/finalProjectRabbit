@@ -73,11 +73,13 @@ class ShowEventsTableViewController: UITableViewController {
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"eventCell") as! EventTableViewCell
         cell.eventTitleInCell.text = events[indexPath.row].name
-        let eventDateTime = events[indexPath.row].time
+        let eventDateTimeInterval = events[indexPath.row].time
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.dateStyle = .medium
-        cell.eventTimeInCell.text = formatter.string(from: eventDateTime!)
+        var eventDateTime = NSDate()
+        eventDateTime = NSDate(timeIntervalSince1970: eventDateTimeInterval as! TimeInterval)
+        cell.eventTimeInCell.text = formatter.string(from: eventDateTime as Date)
         cell.eventLocationInCell.text = events[indexPath.row].address
     
         
