@@ -82,7 +82,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             let markerEvent = GMSMarker()
                             markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                             markerEvent.title = fullAddress
-                            markerEvent.snippet = meetingTime
+//                            markerEvent.snippet = meetingTime
                             markerEvent.icon = GMSMarker.markerImage(with: .blue)
                             markerEvent.map = mapView
                             

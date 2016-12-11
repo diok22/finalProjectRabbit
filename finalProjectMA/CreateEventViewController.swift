@@ -23,6 +23,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     let apikey = "AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
     
     var eventLocation: String = ""
+    var eventDateInterval: Double!
     var formattedAddress: String = ""
     var locationLatitude: String = ""
     var locationLongitude: String = ""
@@ -31,11 +32,25 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet weak var name: UITextField!
     
-    @IBOutlet weak var time: UITextField!
-    
     @IBOutlet weak var location: UITextField!
     
+    @IBOutlet weak var time: UILabel!
+   
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func datePicker(_ sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        self.time.text = formatter.string(from: sender.date)
+        
+        var dateTime = sender.date
+        var interval = Double()
+        interval = dateTime.timeIntervalSince1970
+        
+        
+        
+    }
     
 // MARK: Find the address + API
     
@@ -108,10 +123,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func submitDetails(_ sender: Any) {
         
         let eventName = name.text
-        let eventTime = time.text
         eventLocation = location.text!
        
-        let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: eventTime!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: self.invitees)
+        let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: self.eventDate!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: self.invitees)
         let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
         performSegue(withIdentifier: "submitNewEvent", sender: self)

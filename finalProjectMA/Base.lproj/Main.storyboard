@@ -221,14 +221,17 @@
                                 <date key="date" timeIntervalSinceReferenceDate="503118838.20781797">
                                     <!--2016-12-11 03:13:58 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePicker:" destination="6Hs-Oz-oxC" eventType="valueChanged" id="S1D-8y-rnR"/>
+                                </connections>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date/time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1G-8W-sbi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a date and time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1G-8W-sbi">
                                 <rect key="frame" x="30" y="130" width="354" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="zS0-5u-EtB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPy-sM-MYG">
@@ -282,6 +285,7 @@
                         <outlet property="location" destination="cgr-Ko-BoO" id="M1Y-28-E9t"/>
                         <outlet property="name" destination="RDa-ir-zVs" id="ezo-nF-8T7"/>
                         <outlet property="tableView" destination="3IQ-gK-77p" id="lNw-ii-Eo6"/>
+                        <outlet property="time" destination="b1G-8W-sbi" id="jDe-hO-ErR"/>
                         <segue destination="dIT-YQ-gDb" kind="show" identifier="submitNewEvent" id="cdW-XU-djG"/>
                     </connections>
                 </viewController>
@@ -537,7 +541,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fY2-Qr-hHB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pMc-xp-LGd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pMc-xp-LGd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
