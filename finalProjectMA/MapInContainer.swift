@@ -72,7 +72,28 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             
             }
             
-            print(usersArray)
+            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 9.0)
+            let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+            mapView.isMyLocationEnabled = true
+            self.view = mapView
+            
+            let markerEvent = GMSMarker()
+            markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            markerEvent.title = fullAddress
+            markerEvent.snippet = meetingTime
+            markerEvent.icon = GMSMarker.markerImage(with: .blue)
+            mapView.isMyLocationEnabled = true
+            markerEvent.map = mapView
+            
+            for i in 0 ..< usersArray.count {
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: usersArray[0]["latitude"] as! CLLocationDegrees, longitude: usersArray[0]["longitude"] as! CLLocationDegrees)
+                marker.title = usersArray[i]["name"] as! String?
+                marker.snippet = usersArray[i]["eta"] as! String?
+                marker.map = mapView
+                
+            }
+            
             
             
             
