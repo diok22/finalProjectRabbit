@@ -28,10 +28,11 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         let lat = NSString(string: self.passedSelectedEventFromList[0].latitude).doubleValue
         let lng = NSString(string: self.passedSelectedEventFromList[0].longitude).doubleValue
         
+        
         ref.child("Manuela").observeSingleEvent(of: .value, with: { (userSnapshot) in
             let currentUserValue = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDQV6uhxWYGAQJsahwHTfoKx8Yzg7K9CG0"
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo22"
             let latString = String(describing: currentUserValue["latitude"]!)
             let lonString = String(describing: currentUserValue["longitude"]!)
             let eventLatString = self.passedSelectedEventFromList[0].latitude
@@ -47,8 +48,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                        self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
-                        print(eta)
+                        // self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
                     case .failure(let error):
                         print(error)
                     }
@@ -58,45 +58,30 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             print(error.localizedDescription)
         }
         
-        ref.observe(.value, with:{ snapshot in
-            
+        var usersArray : [[String:Any]] = []
+
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             let enumerator = snapshot.children
+          while let user = enumerator.nextObject() as? FIRDataSnapshot {
+              var userValue = user.value as! [String:AnyObject]
+                usersArray.append(userValue)
+//                self.userFromFirebase["name"] = (userValue["name"] as AnyObject?)
+//                self.userFromFirebase["latitude"] = (userValue["latitude"] as AnyObject?)
+//                self.userFromFirebase["longitude"] = (userValue["longitude"] as AnyObject?)
+//                self.userFromFirebase["eta"] = (userValue["eta"] as AnyObject?)
             
-            while let user = enumerator.nextObject() as? FIRDataSnapshot {
-                var userValue = user.value as! [String:AnyObject]
-                print(userValue)
-                self.userFromFirebase["name"] = (userValue["name"] as AnyObject?)
-                self.userFromFirebase["latitude"] = (userValue["latitude"] as AnyObject?)
-                self.userFromFirebase["longitude"] = (userValue["longitude"] as AnyObject?)
-                self.userFromFirebase["eta"] = (userValue["eta"] as AnyObject?)
-                
-                let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 9.0)
-                let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-                mapView.isMyLocationEnabled = true
-                self.view = mapView
-                
-                let userlat = self.userFromFirebase["latitude"]!
-                let userlon = self.userFromFirebase["longitude"]!
-                
-                let markerEvent = GMSMarker()
-                markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                markerEvent.title = fullAddress
-                markerEvent.snippet = meetingTime
-                markerEvent.icon = GMSMarker.markerImage(with: .blue)
-                mapView.isMyLocationEnabled = true
-                markerEvent.map = mapView
-                
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: userlat as! CLLocationDegrees, longitude: userlon as! CLLocationDegrees)
-                
-                marker.title = self.userFromFirebase["name"] as! String?
-                marker.snippet = self.userFromFirebase["eta"] as! String?
-                marker.map = mapView
-            
-        
             }
             
-        })
+            print(usersArray)
+            
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+            
+
         
         
     } // viewDidLoad
