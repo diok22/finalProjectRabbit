@@ -16,6 +16,8 @@ class ShowEventsTableViewController: UITableViewController {
     var selectedEvent: [Event] = []
     var currentUser: User!
     
+    @IBOutlet weak var countDown: UILabel!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailMapTap" {
             let indexPath: IndexPath? = self.tableView.indexPathForSelectedRow
@@ -29,8 +31,27 @@ class ShowEventsTableViewController: UITableViewController {
     
     let ref = FIRDatabase.database().reference(withPath: "events")
     var events: [Event] = []
+    
+    let formatter = DateFormatter()
+    let userCalendar = Calendar.current;
+    let requestedComponent : Set<Calendar.Component> = [
+        Calendar.Component.month,
+        Calendar.Component.day,
+        Calendar.Component.hour,
+        Calendar.Component.minute,
+        Calendar.Component.second
+    ]
+    
+    
+    
+
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("loading current user")
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
@@ -61,6 +82,22 @@ class ShowEventsTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        
+        /// countdown
+        func printTime() {
+            formatter.dateFormat = "dd/MM/yy hh:mm:ss a"
+            let startTime = NSDate()
+            let endTime = formatter.date(from: "25/12/16 12:00 a")
+            let timeDifference = userCalendar.dateComponents(requestedComponent, from: startTime as Date, to: endTime!)
+            
+            countDown.text = "\(timeDifference.month!) Months \(timeDifference.day!) Days \(timeDifference.minute!) Minutes \(timeDifference.second!) Seconds"
+        }
+        
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
