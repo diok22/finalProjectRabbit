@@ -56,7 +56,6 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
         locationM.desiredAccuracy = kCLLocationAccuracyBest
         locationM.requestWhenInUseAuthorization()
         locationM.startUpdatingLocation()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {
