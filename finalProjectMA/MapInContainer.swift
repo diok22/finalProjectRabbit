@@ -11,13 +11,15 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 import FirebaseDatabase
+import FirebaseAuth
 
 class MapInContainer: UIViewController, CLLocationManagerDelegate  {
     
     var passedSelectedEventFromList: [Event] = []
     
     let ref = FIRDatabase.database().reference(withPath: "users")
-
+    
+    let currentUser = FIRAuth.auth()?.currentUser
     
     var userFromFirebase : [String:Any] = [:]
     
@@ -29,7 +31,8 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         let lng = NSString(string: self.passedSelectedEventFromList[0].longitude).doubleValue
         
         
-        ref.child("Manuela").observeSingleEvent(of: .value, with: { (userSnapshot) in
+        // create url for eta of current logged in user
+        ref.child((currentUser?.uid)!).observeSingleEvent(of: .value, with: { (userSnapshot) in
             let currentUserValue = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
             let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
@@ -48,7 +51,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                        self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
+                        self.ref.child((self.currentUser?.uid)!).updateChildValues(["eta": String(describing: eta)])
                         
                         // push users going to event in array
                         var usersArray : [[String:AnyObject]] = []
