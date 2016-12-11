@@ -48,7 +48,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                        // self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
+                        self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
                     case .failure(let error):
                         print(error)
                     }
@@ -65,10 +65,6 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
           while let user = enumerator.nextObject() as? FIRDataSnapshot {
               var userValue = user.value as! [String:AnyObject]
                 usersArray.append(userValue)
-//                self.userFromFirebase["name"] = (userValue["name"] as AnyObject?)
-//                self.userFromFirebase["latitude"] = (userValue["latitude"] as AnyObject?)
-//                self.userFromFirebase["longitude"] = (userValue["longitude"] as AnyObject?)
-//                self.userFromFirebase["eta"] = (userValue["eta"] as AnyObject?)
             
             }
             
@@ -93,10 +89,6 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                 marker.map = mapView
                 
             }
-            
-            
-            
-            
             
         }) { (error) in
             print(error.localizedDescription)
