@@ -31,6 +31,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         let lng = NSString(string: self.passedSelectedEventFromList[0].longitude).doubleValue
         
         
+        // create url for eta of current logged in user
         ref.child((currentUser?.uid)!).observeSingleEvent(of: .value, with: { (userSnapshot) in
             let currentUserValue = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
