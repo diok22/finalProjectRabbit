@@ -17,6 +17,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var errorLabel: UILabel!
 
 
     @IBAction func logIn(_ sender: Any) {
@@ -24,10 +25,10 @@ class LogInViewController: UIViewController {
                                password: passwordField.text!) {
                                 (user, error) in
                                 if user != nil {
-                                    print(error)
-                                    print(user)
-                                    print("hi")
+                        
                                     self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                                } else {
+                                    self.errorLabel.text = (error?.localizedDescription)! as String
                                 }
                                 
         }
@@ -54,6 +55,9 @@ class LogInViewController: UIViewController {
                                                                         
                                                                         FIRAuth.auth()!.signIn(withEmail: self.emailField.text!,
                                                                                                password: self.passwordField.text!)
+                                                                    }
+                                                                    else {
+                                                                        self.errorLabel.text = (error?.localizedDescription)! as String
                                                                     }
                                         }
 
@@ -84,6 +88,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.errorLabel.text = ""
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.performSegue(withIdentifier: "logInSegue", sender: nil)

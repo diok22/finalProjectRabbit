@@ -9,24 +9,37 @@
     import UIKit
     import GoogleMaps
 
-    class MapViewController: UIViewController {
+    class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         var passedSelectedEvent: [Event] = []
+        var inviteesArray : [[String:Any]] = []
         
-        @IBOutlet weak var user: UITextField!
-        
-        @IBOutlet weak var user2: UITextField!
-        
-        @IBOutlet weak var user3: UITextField!
+        @IBOutlet weak var tableView: UITableView!
         
         
         override func viewDidLoad() {
-            user.text = "Ed"
-            user2.text = "Dio"
-            user3.text = "Manu"
-           
+            super.viewDidLoad()
+            self.inviteesArray = passedSelectedEvent[0].invitees
+        }
+// MARK: TableView
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return self.inviteesArray.count
         }
         
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "InviteeOnMapViewCell") as! InviteeMapViewTableViewCell
+            cell.firstName.text = self.inviteesArray[indexPath.row]["name"] as! String?
+            let status = self.inviteesArray[indexPath.row] as [String:Any]?
+            print(status!)
+            if ((status?["confirmed"]as! Bool) == false) {
+                cell.confirmedLabel.textColor = UIColor.red
+            } else {
+                cell.confirmedLabel.textColor = UIColor.green
+            }
+            
+            return cell
+        }
+//MARK: Prepare for segue
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "mapView" {
                 
@@ -41,14 +54,4 @@
         
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 

@@ -10,7 +10,9 @@ import UIKit
 import GoogleMaps
 import MapKit
 import CoreLocation
+import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 
 class DataViewController: UIViewController, CLLocationManagerDelegate {
@@ -19,6 +21,8 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     let ref = FIRDatabase.database().reference(withPath: "users")
     
     let locationM = CLLocationManager()
+    
+     let currentUser = FIRAuth.auth()?.currentUser
     
     var userLocationGPS : [String:Double] = [:]
     
@@ -34,7 +38,19 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func createEventForm(_ sender: UIButton!) {
     }
 
+    @IBAction func logOut(_ sender: Any) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+             print("\(self.currentUser?.email) is signing out")
+            try firebaseAuth?.signOut()
+           
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
     override func viewDidLoad() {
+       
+        print("signed in as: \(self.currentUser?.email)")
         super.viewDidLoad()
         locationM.delegate = self
         locationM.desiredAccuracy = kCLLocationAccuracyBest
