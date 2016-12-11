@@ -32,7 +32,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         ref.child("Manuela").observeSingleEvent(of: .value, with: { (userSnapshot) in
             let currentUserValue = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo22"
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
             let latString = String(describing: currentUserValue["latitude"]!)
             let lonString = String(describing: currentUserValue["longitude"]!)
             let eventLatString = self.passedSelectedEventFromList[0].latitude
@@ -42,13 +42,52 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             let urlTransit = "mode=transit&"
             let url = urlAPI + urlLocation + urlTransit + urlDestination + urlKey
             
-            Alamofire.request(url).responseJSON
+            Alamofire.request(url).responseJSON  //eta request
                 { response in
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
                         self.ref.child("Manuela").updateChildValues(["eta": String(describing: eta)])
+                        
+                        // push users going to event in array
+                        var usersArray : [[String:AnyObject]] = []
+                        self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                            let enumerator = snapshot.children
+                            while let user = enumerator.nextObject() as? FIRDataSnapshot {
+                                let userValue = user.value as! [String:AnyObject]
+                                usersArray.append(userValue)
+                            }
+                            
+                            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 9.0)
+                            let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+                            mapView.isMyLocationEnabled = true
+                            self.view = mapView
+                            
+                            // event marker
+                            let markerEvent = GMSMarker()
+                            markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                            markerEvent.title = fullAddress
+                            markerEvent.snippet = meetingTime
+                            markerEvent.icon = GMSMarker.markerImage(with: .blue)
+                            mapView.isMyLocationEnabled = true
+                            markerEvent.map = mapView
+                            
+                            
+                            // markers for users
+                            for i in 0 ..< usersArray.count {
+                                let marker = GMSMarker()
+                                marker.position = CLLocationCoordinate2D(latitude: usersArray[i]["latitude"] as! CLLocationDegrees, longitude: usersArray[i]["longitude"] as! CLLocationDegrees)
+                                marker.title = usersArray[i]["name"] as! String?
+                                marker.snippet = usersArray[i]["eta"] as! String?
+                                marker.map = mapView
+                                
+                            }
+                            
+                        }) { (error) in
+                            print(error.localizedDescription)
+                        }
+                        
                     case .failure(let error):
                         print(error)
                     }
@@ -57,49 +96,6 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-        var usersArray : [[String:AnyObject]] = []
-
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            let enumerator = snapshot.children
-          while let user = enumerator.nextObject() as? FIRDataSnapshot {
-              let userValue = user.value as! [String:AnyObject]
-                usersArray.append(userValue)
-            
-            }
-            
-            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 9.0)
-            let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-            mapView.isMyLocationEnabled = true
-            self.view = mapView
-            
-            let markerEvent = GMSMarker()
-            markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-            markerEvent.title = fullAddress
-            markerEvent.snippet = meetingTime
-            markerEvent.icon = GMSMarker.markerImage(with: .blue)
-            mapView.isMyLocationEnabled = true
-            markerEvent.map = mapView
-            
-
-            
-            for i in 0 ..< usersArray.count {
-                let marker = GMSMarker()
-                
-                
-                marker.position = CLLocationCoordinate2D(latitude: usersArray[i]["latitude"] as! CLLocationDegrees, longitude: usersArray[i]["longitude"] as! CLLocationDegrees)
-                marker.title = usersArray[i]["name"] as! String?
-                marker.snippet = usersArray[i]["eta"] as! String?
-                marker.map = mapView
-                
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-            
-
-        
         
     } // viewDidLoad
     
