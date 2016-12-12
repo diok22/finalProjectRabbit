@@ -6,23 +6,24 @@
 //  Copyright © 2016 MAfinalProjectGroup. All rights reserved.
 //
 
-    import UIKit
-    import GoogleMaps
-    import Firebase
+import UIKit
+import GoogleMaps
+import Firebase
 
-    class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
-        var passedSelectedEvent: [Event] = []
-        var inviteesArray : [[String:Any]] = []
+    var passedSelectedEvent: [Event] = []
+    var inviteesArray : [[String:Any]] = []
+    
+    @IBOutlet weak var tableView: UITableView!
+    
         
-        @IBOutlet weak var tableView: UITableView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            
-            self.inviteesArray = passedSelectedEvent[0].invitees
+        self.title = passedSelectedEvent[0].name // changes the title of page to viewing event
+
+        self.inviteesArray = passedSelectedEvent[0].invitees
         }
 // MARK: TableView
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
