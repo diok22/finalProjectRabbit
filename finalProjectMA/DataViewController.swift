@@ -13,24 +13,19 @@ import CoreLocation
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import APScheduledLocationManager
 
 
-class DataViewController: UIViewController, CLLocationManagerDelegate {
+
+
+
+
+class DataViewController: UIViewController, CLLocationManagerDelegate, APScheduledLocationManagerDelegate {
 
     
     let ref = FIRDatabase.database().reference(withPath: "users")
-    
-    let locationM = CLLocationManager()
-    
     let currentUser = FIRAuth.auth()?.currentUser
-    
-    var userLocationGPS : [String:Double] = [:]
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        self.ref.child((currentUser?.uid)!).setValue(["latitude": location.coordinate.latitude, "longitude":  location.coordinate.longitude, "email": currentUser?.email])
-        locationM.stopUpdatingLocation()
-    }
+    private var manager: APScheduledLocationManager!
 
     @IBAction func ShowEventsListTable(_ sender: UIButton) {
     }
@@ -50,13 +45,31 @@ class DataViewController: UIViewController, CLLocationManagerDelegate {
     }
     override func viewDidLoad() {
        
+       
         print("signed in as: \(self.currentUser?.email)")
         super.viewDidLoad()
-        locationM.delegate = self
-        locationM.desiredAccuracy = kCLLocationAccuracyBest
-        locationM.requestWhenInUseAuthorization()
-        locationM.startUpdatingLocation()
+        manager = APScheduledLocationManager(delegate: self)
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation(interval: 170, acceptableLocationAccuracy: 100)
+
     }
+    
+    func scheduledLocationManager(_ manager: APScheduledLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let l = locations.first!
+        
+        self.ref.child((currentUser?.uid)!).setValue(["latitude": l.coordinate.latitude, "longitude":  l.coordinate.longitude, "email": currentUser?.email])
+        
+    }
+    
+    func scheduledLocationManager(_ manager: APScheduledLocationManager, didFailWithError error: Error) {
+        
+    }
+    
+    func scheduledLocationManager(_ manager: APScheduledLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+    }
+    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
