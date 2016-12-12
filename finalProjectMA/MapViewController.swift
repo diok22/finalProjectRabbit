@@ -8,6 +8,7 @@
 
     import UIKit
     import GoogleMaps
+    import Firebase
 
     class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
@@ -19,6 +20,8 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            
             self.inviteesArray = passedSelectedEvent[0].invitees
         }
 // MARK: TableView
