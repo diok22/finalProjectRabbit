@@ -273,6 +273,9 @@
 						DevelopmentTeam = KNZ6LWPSAQ;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
