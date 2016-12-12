@@ -41,7 +41,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         ref.child((currentUser?.uid)!).observeSingleEvent(of: .value, with: { (userSnapshot) in
             let currentUserValue = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"  // X to break key
             let latString = String(describing: currentUserValue["latitude"]!)
             let lonString = String(describing: currentUserValue["longitude"]!)
             let eventLatString = self.passedSelectedEventFromList[0].latitude
@@ -81,7 +81,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                                 
                             }
                             
-                            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 9.0)
+                            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 10.0)
                             let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                             mapView.isMyLocationEnabled = true
                             self.view = mapView
@@ -113,7 +113,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .failure(let error):
                         print(error)
                     }
-            }
+            } // alamofire request
             
         }) { (error) in
             print(error.localizedDescription)
