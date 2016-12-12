@@ -82,7 +82,7 @@ class ShowEventsTableViewController: UITableViewController {
         cell.eventTimeInCell.text = formatter.string(from: eventDateTime as Date)
         cell.eventLocationInCell.text = events[indexPath.row].address
     
-        
+         
         return cell
     }
     

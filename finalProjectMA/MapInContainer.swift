@@ -23,19 +23,19 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
     
     var userFromFirebase : [String:Any] = [:]
     
+    
     override func viewDidLoad() {
         
         let meetingTime = self.passedSelectedEventFromList[0].time
         let fullAddress = self.passedSelectedEventFromList[0].address
         let lat = NSString(string: self.passedSelectedEventFromList[0].latitude).doubleValue
         let lng = NSString(string: self.passedSelectedEventFromList[0].longitude).doubleValue
-        
-        
-        // create url for eta of current logged in user
+       
+// create url for eta of current logged in user
         ref.child((currentUser?.uid)!).observeSingleEvent(of: .value, with: { (userSnapshot) in
             let currentUserValue = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"
             let latString = String(describing: currentUserValue["latitude"]!)
             let lonString = String(describing: currentUserValue["longitude"]!)
             let eventLatString = self.passedSelectedEventFromList[0].latitude
@@ -54,12 +54,25 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                         self.ref.child((self.currentUser?.uid)!).updateChildValues(["eta": String(describing: eta)])
                         
                         // push users going to event in array
+                        
+                        
                         var usersArray : [[String:AnyObject]] = []
                         self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
                             let enumerator = snapshot.children
                             while let user = enumerator.nextObject() as? FIRDataSnapshot {
                                 let userValue = user.value as! [String:AnyObject]
-                                usersArray.append(userValue)
+                                var inviteesArray = self.passedSelectedEventFromList[0].invitees
+                                print(inviteesArray)
+                                for i in 0..<inviteesArray.count {
+                                    let email = inviteesArray[i]["email"] as! String
+                                    let userEmail = userValue["email"] as! String
+                                    if userEmail == email {
+                                        usersArray.append(userValue)
+                                    }
+                                }
+
+                               
+                                
                             }
                             
                             let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lng, zoom: 9.0)
