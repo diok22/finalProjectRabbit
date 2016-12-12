@@ -270,21 +270,26 @@
 				TargetAttributes = {
 					F5B3880A1DF6CB810039771E = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 74NNGKW9ES;
+						DevelopmentTeam = 4HZ4ACYFZV;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
 					};
 					F5B388221DF6CB810039771E = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 4HZ4ACYFZV;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F5B3880A1DF6CB810039771E;
 					};
 					F5B3882D1DF6CB810039771E = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 4HZ4ACYFZV;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F5B3880A1DF6CB810039771E;
 					};
@@ -481,19 +486,17 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Akram Rasikh (FUVHW68682)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4HZ4ACYFZV;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -503,6 +506,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "365d89b3-3b8f-476c-862b-93958604b015";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -531,9 +535,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Akram Rasikh (FUVHW68682)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Akram Rasikh (FUVHW68682)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4HZ4ACYFZV;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -547,6 +553,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "365d89b3-3b8f-476c-862b-93958604b015";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -557,14 +564,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68248754C5929E491B69A817 /* Pods-finalProjectMA.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = finalProjectMA/finalProjectMA.entitlements;
-				DEVELOPMENT_TEAM = 74NNGKW9ES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Akram Rasikh (FUVHW68682)";
+				DEVELOPMENT_TEAM = 4HZ4ACYFZV;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "\"$(inherited)\"";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "$(inherited)";
+				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = "";
 				INFOPLIST_FILE = finalProjectMA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.projectRabbit.finalProjectRabbitMA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -573,11 +586,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 808951FDFF276AFADAD8669A /* Pods-finalProjectMA.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = finalProjectMA/finalProjectMA.entitlements;
-				DEVELOPMENT_TEAM = 74NNGKW9ES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Akram Rasikh (FUVHW68682)";
+				DEVELOPMENT_TEAM = 4HZ4ACYFZV;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "\"$(inherited)\"";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = "";
 				INFOPLIST_FILE = finalProjectMA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.projectRabbit.finalProjectRabbitMA;
 				PRODUCT_NAME = "$(TARGET_NAME)";

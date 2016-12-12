@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseMessaging
+import FirebaseInstanceID
 
 
 class LogInViewController: UIViewController {
@@ -94,6 +96,8 @@ class LogInViewController: UIViewController {
                 self.performSegue(withIdentifier: "logInSegue", sender: nil)
             }
         }
+        
+        FIRMessaging.messaging().subscribe(toTopic: "trackUsers")
         // Do any additional setup after loading the view.
     }
 

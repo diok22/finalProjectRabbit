@@ -9,4 +9,5 @@ target 'finalProjectMA' do
   pod 'Firebase/Database'
   pod 'SwiftyJSON'
   pod 'Firebase/Auth'
+  pod 'Firebase/Messaging'
 end
