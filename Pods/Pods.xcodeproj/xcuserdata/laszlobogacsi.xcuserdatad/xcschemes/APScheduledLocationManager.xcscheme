@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '88E9EC28B8B46C3631E6B242B50F4442'
-               BlueprintName = 'Alamofire'
+               BlueprintIdentifier = '2629F2A9C43F48870DE3DEC54F6527B2'
+               BlueprintName = 'APScheduledLocationManager'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Alamofire.framework'>
+               BuildableName = 'APScheduledLocationManager.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
