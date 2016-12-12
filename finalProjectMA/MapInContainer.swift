@@ -81,7 +81,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             for i in 0 ..< usersArray.count {
                                 let marker = GMSMarker()
                                 marker.position = CLLocationCoordinate2D(latitude: usersArray[i]["latitude"] as! CLLocationDegrees, longitude: usersArray[i]["longitude"] as! CLLocationDegrees)
-                                marker.title = usersArray[i]["name"] as! String?
+                                marker.title = usersArray[i]["email"] as! String?
                                 marker.snippet = usersArray[i]["eta"] as! String?
                                 marker.map = mapView
                                 
