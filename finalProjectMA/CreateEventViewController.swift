@@ -94,6 +94,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                                         let inviteeEmailField = alert.textFields![0]
                                         let inviteeNameField = alert.textFields![1]
                                         let newInvitee : [String:Any]
+                                        
                                         newInvitee = ["name" : inviteeNameField.text ?? "Default Name", "email" : inviteeEmailField.text!, "confirmed" : false]
                                         self.invitees.append(newInvitee)
                                         self.tableView.reloadData()
@@ -126,6 +127,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         let eventName = name.text
         eventLocation = location.text!
         print(self.eventDateInterval)
+        let currentUser = ["name" : self.user.email, "email" : self.user.email, "confirmed" : true] as [String : Any]
+        self.invitees.append(currentUser)
+
        
         let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: self.eventDateInterval!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: self.invitees)
         let eventInstanceRef = self.ref.child(eventName!)
