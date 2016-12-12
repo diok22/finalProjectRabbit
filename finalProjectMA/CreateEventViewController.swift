@@ -134,12 +134,12 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: self.eventDateInterval!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: self.invitees)
         let eventInstanceRef = self.ref.child(eventName!)
         eventInstanceRef.setValue(eventInstance.toAnyObject())
-        performSegue(withIdentifier: "submitNewEvent", sender: self)
+        performSegue(withIdentifier: "fromNewEventToMyEvents", sender: self)
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "submitNewEvent" {
+        if segue.identifier == "fromNewEventToMyEvents" {
             if let destination = segue.destination as? DetailOutputViewController {
                 destination.passedEventTitle = name.text
                 destination.passedEventTime = time.text

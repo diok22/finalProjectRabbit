@@ -26,7 +26,13 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
     
     override func viewDidLoad() {
         
-        let meetingTime = self.passedSelectedEventFromList[0].time
+        let meetingTimeInterval = self.passedSelectedEventFromList[0].time as Double
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        let meetingTimeDateObject = Date(timeIntervalSince1970: meetingTimeInterval)
+        let meetingTime = formatter.string(from: meetingTimeDateObject)
+        
         let fullAddress = self.passedSelectedEventFromList[0].address
         let lat = NSString(string: self.passedSelectedEventFromList[0].latitude).doubleValue
         let lng = NSString(string: self.passedSelectedEventFromList[0].longitude).doubleValue
@@ -84,7 +90,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             let markerEvent = GMSMarker()
                             markerEvent.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                             markerEvent.title = fullAddress
-//                            markerEvent.snippet = meetingTime
+                            markerEvent.snippet = meetingTime
                             markerEvent.icon = GMSMarker.markerImage(with: .blue)
                             mapView.isMyLocationEnabled = true
                             markerEvent.map = mapView
