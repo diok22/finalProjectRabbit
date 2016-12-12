@@ -14,7 +14,6 @@ import Alamofire
 import FirebaseAuth
 
 
-
 class CreateEventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     let ref = FIRDatabase.database().reference(withPath: "events")
