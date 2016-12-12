@@ -18,8 +18,6 @@ import APScheduledLocationManager
 
 
 
-
-
 class DataViewController: UIViewController, CLLocationManagerDelegate, APScheduledLocationManagerDelegate {
 
     
@@ -50,7 +48,7 @@ class DataViewController: UIViewController, CLLocationManagerDelegate, APSchedul
         super.viewDidLoad()
         manager = APScheduledLocationManager(delegate: self)
         manager.requestAlwaysAuthorization()
-        manager.startUpdatingLocation(interval: 170, acceptableLocationAccuracy: 100)
+        manager.startUpdatingLocation(interval: 300, acceptableLocationAccuracy: 100)
 
     }
     
@@ -58,6 +56,8 @@ class DataViewController: UIViewController, CLLocationManagerDelegate, APSchedul
         let l = locations.first!
         
         self.ref.child((currentUser?.uid)!).setValue(["latitude": l.coordinate.latitude, "longitude":  l.coordinate.longitude, "email": currentUser?.email])
+        
+        
         
     }
     

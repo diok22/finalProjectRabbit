@@ -20,7 +20,7 @@ public protocol APScheduledLocationManagerDelegate {
 
 public class APScheduledLocationManager: NSObject, CLLocationManagerDelegate {
     
-    private let MaxBGTime: TimeInterval = 170
+    private let MaxBGTime: TimeInterval = 300
     private let MinBGTime: TimeInterval = 2
     private let MinAcceptableLocationAccuracy: CLLocationAccuracy = 5
     private let WaitForLocationsTime: TimeInterval = 3
