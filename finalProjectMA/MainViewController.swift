@@ -66,7 +66,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
             }
             
             
-        })
+        
         let userId = self.currentUser?.uid
         let myEventInstanceRef = self.refUsers.child(userId!).child("myEvents")
         
@@ -77,7 +77,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
         self.myEventsCountLocal = NSNumber(value: self.myEvents.count)
         self.myEventsCount.text = self.myEventsCountLocal.stringValue
         
-        
+       }) 
         
         
         
