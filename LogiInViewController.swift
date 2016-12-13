@@ -77,14 +77,11 @@ class LogInViewController: UIViewController {
             textPassword.isSecureTextEntry = true
             textPassword.placeholder = "Enter your password"
         }
-        print(1)
 
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
-        print(2)
 
         present(alert, animated: true, completion: nil)
-        print(3)
 
     }
     
@@ -97,8 +94,19 @@ class LogInViewController: UIViewController {
             }
         }
         
-        FIRMessaging.messaging().subscribe(toTopic: "trackUsers")
-        // Do any additional setup after loading the view.
+            // [START get_iid_token]
+            let token = FIRInstanceID.instanceID().token()
+            print("InstanceID token: \(token!)")
+            // [END get_iid_token]
+        
+        
+       
+            // [START subscribe_topic]
+            FIRMessaging.messaging().subscribe(toTopic: "/topics/news")
+            print("Subscribed to news topic")
+            // [END subscribe_topic]
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
