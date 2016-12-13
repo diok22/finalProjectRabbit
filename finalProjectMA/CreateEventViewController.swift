@@ -125,7 +125,6 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         
         let eventName = name.text
         eventLocation = location.text!
-        print(self.eventDateInterval)
         let currentUser = ["name" : self.user.email, "email" : self.user.email, "confirmed" : true] as [String : Any]
         self.invitees.append(currentUser)
 

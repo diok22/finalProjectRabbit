@@ -15,7 +15,7 @@ import FirebaseAuth
 
 struct Event {
     let addedByUser: String
-    let name: String
+    let name: String!
     let time: NSNumber!
     let address: String!
     let latitude: String!

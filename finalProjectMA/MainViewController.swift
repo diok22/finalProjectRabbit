@@ -15,50 +15,81 @@ import FirebaseDatabase
 import FirebaseAuth
 import APScheduledLocationManager
 
-
-
-
-class DataViewController: UIViewController, CLLocationManagerDelegate, APScheduledLocationManagerDelegate {
-
+class MainViewController: UIViewController, CLLocationManagerDelegate, APScheduledLocationManagerDelegate {
     
-    let ref = FIRDatabase.database().reference(withPath: "users")
+    
+    let refUsers = FIRDatabase.database().reference(withPath: "users")
+    let refEvents = FIRDatabase.database().reference(withPath: "events")
     let currentUser = FIRAuth.auth()?.currentUser
     private var manager: APScheduledLocationManager!
-
+    var myEvents: [Any] = []
+    var myEventsCountLocal:NSNumber = 0
+    
+    
+    @IBOutlet weak var myEventsCount: UILabel!
+    
     @IBAction func ShowEventsListTable(_ sender: UIButton) {
     }
     
     @IBAction func createEventForm(_ sender: UIButton!) {
     }
-
+    
     @IBAction func logOut(_ sender: Any) {
         let firebaseAuth = FIRAuth.auth()
         do {
-             print("\(self.currentUser?.email) is signing out")
+            print("\(self.currentUser?.email) is signing out")
             try firebaseAuth?.signOut()
-           
+            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
     }
     override func viewDidLoad() {
-       
-       
         print("signed in as: \(self.currentUser?.email)")
         super.viewDidLoad()
         manager = APScheduledLocationManager(delegate: self)
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation(interval: 300, acceptableLocationAccuracy: 100)
-
+        
+        self.refEvents.observe(.value, with: { snapshot in
+            let events = snapshot.children.allObjects as! [FIRDataSnapshot]
+            
+            for event in events {
+                let myEventInstance = Event(snapshot: event )
+                for i in 0..<myEventInstance.invitees.count{
+                    let currentUserEmail = self.currentUser?.email
+                    if ((myEventInstance.invitees[i]["email"] as! String).contains(currentUserEmail!)){
+                        self.myEvents.append(myEventInstance.toAnyObject())
+                        break
+                    }
+                }
+            }
+            
+            
+        })
+        let userId = self.currentUser?.uid
+        let myEventInstanceRef = self.refUsers.child(userId!).child("myEvents")
+        
+        
+        
+        myEventInstanceRef.setValue(self.myEvents)
+        myEventInstanceRef.child("eventCount").setValue(self.myEvents.count)
+        self.myEventsCountLocal = NSNumber(value: self.myEvents.count)
+        self.myEventsCount.text = self.myEventsCountLocal.stringValue
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didUpdateLocations locations: [CLLocation]) {
         let l = locations.first!
         
-        self.ref.child((currentUser?.uid)!).setValue(["latitude": l.coordinate.latitude, "longitude":  l.coordinate.longitude, "email": currentUser?.email])
-        
-        
-        
+        self.refUsers.child((currentUser?.uid)!).child("userData").setValue(["latitude": l.coordinate.latitude, "longitude":  l.coordinate.longitude, "email": currentUser?.email])
     }
     
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didFailWithError error: Error) {
@@ -69,16 +100,14 @@ class DataViewController: UIViewController, CLLocationManagerDelegate, APSchedul
         
     }
     
-   
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
+    
 }
 
