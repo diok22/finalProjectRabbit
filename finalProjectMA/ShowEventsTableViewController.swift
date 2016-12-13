@@ -18,19 +18,48 @@ class ShowEventsTableViewController: UITableViewController {
     var myEventsKey:[String]=[]
     var selectedEventKey:String=""
 
-    @IBAction func confirmSwitch(_ sender: UISwitch) {
-        
-        
-    }
+
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailMapTap" {
             let indexPath: IndexPath? = self.tableView.indexPathForSelectedRow
             self.selectedEventKey = self.myEventsKey[(indexPath?[1])!]
             print(self.selectedEventKey)
+            
+            let eventRef = FIRDatabase.database().reference(withPath: "events")
+                eventRef.child(self.selectedEventKey).child("invitees").observe(.value, with:{snapshot in
+                    var usersArray : [[String:AnyObject]] = []
+                    let enumerator = snapshot.children
+                    while let invitedUser = enumerator.nextObject() as? FIRDataSnapshot {
+                        let userValue = invitedUser.value as! [String:AnyObject]
+                        print(userValue)
+//                        for i in 0..<inviteesArray.count {
+//                            let email = inviteesArray[i]["email"] as! String
+//                            let userEmail = userValue["email"] as! String
+//                            if userEmail == email {
+//                                usersArray.append(userValue)
+//                            }
+//                        }
+
+                    
+             
+//                    for i in 0..<invitees.count {
+//                        var currentInvitee = invitees[i] as! [String:Any]
+//                    if self.currentUser.email == currentInvitee["email"] as! String{
+//                        eventRef.child(String(i)).child("confirmed").setValue(true)
+//
+//                    }
+//                }
+                    }
+            })
+            
+            
+            
+            }
+            
             if let destination = segue.destination as? MapViewController {
                 destination.passedSelectedEventKey = self.selectedEventKey
             }
-        }
+        
     }
     
     
@@ -46,9 +75,10 @@ class ShowEventsTableViewController: UITableViewController {
             guard let user = user else { return }
             self.currentUser = User(authData: user)
             print("current users email in events list view: \(self.currentUser.email)")
-            self.currentUserEventsRef = FIRDatabase.database().reference(withPath: "users").child((self.currentUser?.uid)!).child("myEvents")
+            self.currentUserEventsRef = FIRDatabase.database().reference(withPath: "users").child(self.currentUser.uid).child("myEvents")
             self.currentUserEventsRef.observe(.value, with: {snapshot in
                 var myEvents:[Event] = []
+                print(snapshot)
                 for myEvent in snapshot.children.allObjects as! [FIRDataSnapshot]{
                     self.myEventsKey.append(myEvent.key)
                     let eventInstance = Event(snapshot: myEvent as! FIRDataSnapshot)
@@ -108,7 +138,6 @@ class ShowEventsTableViewController: UITableViewController {
         cell.eventTimeInCell.text = formatter.string(from: eventDateTime as Date)
         cell.eventLocationInCell.text = events[indexPath.row].address
     
-         
         return cell
     }
     

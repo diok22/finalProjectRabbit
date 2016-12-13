@@ -60,7 +60,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         ref.child((currentUser?.uid)!).child("userData").observeSingleEvent(of: .value, with: { (userSnapshot) in
             let currentUserData = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"  // X to break key
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"  // X to break key
             let latString = String(describing: currentUserData["latitude"]!)
             let lonString = String(describing: currentUserData["longitude"]!)
             let eventLatString = self.currentEvent.latitude
@@ -76,7 +76,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                        self.ref.child((self.currentUser?.uid)!).updateChildValues(["eta": String(describing: eta)])
+                        self.ref.child((self.currentUser?.uid)!).child("myEvents").child(self.passedSelectedEventKey).updateChildValues(["eta": String(describing: eta)])
 
                         
                             let camera = GMSCameraPosition.camera(withLatitude: self.lat, longitude: self.lng, zoom: 10.0)
