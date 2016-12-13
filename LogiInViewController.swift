@@ -13,6 +13,7 @@ import FirebaseAuth
 
 
 class LogInViewController: UIViewController {
+    var activeUser: FIRUser!
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -24,9 +25,12 @@ class LogInViewController: UIViewController {
         FIRAuth.auth()!.signIn(withEmail: emailField.text!,
                                password: passwordField.text!) {
                                 (user, error) in
-                                if user != nil {
-                        
-                                    self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                                if let user = user {
+                                    if self.activeUser != user {
+                                        self.activeUser = user
+                                        self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                                    }
+                                    
                                 } else {
                                     self.errorLabel.text = (error?.localizedDescription)! as String
                                 }
@@ -89,9 +93,14 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.errorLabel.text = ""
+        print("hello")
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.performSegue(withIdentifier: "logInSegue", sender: nil)
+            if let user = user {
+                if self.activeUser != user {
+                    self.activeUser = user
+                    self.performSegue(withIdentifier: "logInSegue", sender: nil)
+
+                }
             }
         }
         // Do any additional setup after loading the view.

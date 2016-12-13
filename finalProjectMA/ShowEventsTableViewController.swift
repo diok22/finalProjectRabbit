@@ -15,45 +15,69 @@ class ShowEventsTableViewController: UITableViewController {
     
     var selectedEvent: [Event] = []
     var currentUser: User!
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    var myEventsKey:[String]=[]
+    var selectedEventKey:String=""
+
+
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailMapTap" {
             let indexPath: IndexPath? = self.tableView.indexPathForSelectedRow
-            self.selectedEvent = [events[(indexPath?[1])!]]
+            self.selectedEventKey = self.myEventsKey[(indexPath?[1])!]
+            
+            
             if let destination = segue.destination as? MapViewController {
-                destination.passedSelectedEvent = self.selectedEvent
+                destination.passedSelectedEventKey = self.selectedEventKey
             }
         }
+        
     }
     
     
     let ref = FIRDatabase.database().reference(withPath: "events")
     var events: [Event] = []
+    var currentUserEventsRef: FIRDatabaseReference!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loading current user")
+                print("loading current user")
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
             self.currentUser = User(authData: user)
             print("current users email in events list view: \(self.currentUser.email)")
+            self.currentUserEventsRef = FIRDatabase.database().reference(withPath: "users").child(self.currentUser.uid).child("myEvents")
+            self.currentUserEventsRef.observe(.value, with: {snapshot in
+                var myEvents:[Event] = []
+                for myEvent in snapshot.children.allObjects as! [FIRDataSnapshot]{
+                    self.myEventsKey.append(myEvent.key)
+                    let eventInstance = Event(snapshot: myEvent as! FIRDataSnapshot)
+                    myEvents.append(eventInstance)
+                }
+                self.events = myEvents
+                self.tableView.reloadData()
+            })
+
         }
-//
-        ref.observe(.value, with: { snapshot in
-            var newEvents: [Event] = []
-            
-            for event in snapshot.children {
-                let eventInstance = Event(snapshot: event as! FIRDataSnapshot)
-                for i in 0..<eventInstance.invitees.count {
-                if ((eventInstance.invitees[i]["email"] as! String).contains(self.currentUser.email)) || eventInstance.addedByUser == self.currentUser.email {
-                    newEvents.append(eventInstance)
-                    break
-                }
-                }
-                
-            }
-            self.events = newEvents
-            self.tableView.reloadData()
-        })
+
+        
+        
+    
+//        ref.observe(.value, with: { snapshot in
+//            var newEvents: [Event] = []
+//            
+//            for event in snapshot.children {
+//                let eventInstance = Event(snapshot: event as! FIRDataSnapshot)
+//                for i in 0..<eventInstance.invitees.count {
+//                if ((eventInstance.invitees[i]["email"] as! String).contains(self.currentUser.email)) || eventInstance.addedByUser == self.currentUser.email {
+//                    newEvents.append(eventInstance)
+//                    break
+//                }
+//                }
+//                
+//            }
+//            self.events = newEvents
+//            self.tableView.reloadData()
+//        })
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -82,7 +106,6 @@ class ShowEventsTableViewController: UITableViewController {
         cell.eventTimeInCell.text = formatter.string(from: eventDateTime as Date)
         cell.eventLocationInCell.text = events[indexPath.row].address
     
-         
         return cell
     }
     

@@ -21,7 +21,7 @@
 		D4990CF41DF875A800971A19 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4990CF31DF875A800971A19 /* EventTableViewCell.swift */; };
 		D4BD3C981DFC525C00BBB213 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD3C971DFC525C00BBB213 /* User.swift */; };
 		F5B3880F1DF6CB810039771E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3880E1DF6CB810039771E /* AppDelegate.swift */; };
-		F5B388131DF6CB810039771E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388121DF6CB810039771E /* DataViewController.swift */; };
+		F5B388131DF6CB810039771E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B388121DF6CB810039771E /* MainViewController.swift */; };
 		F5B388181DF6CB810039771E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B388161DF6CB810039771E /* Main.storyboard */; };
 		F5B3881A1DF6CB810039771E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B388191DF6CB810039771E /* Assets.xcassets */; };
 		F5B3881D1DF6CB810039771E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B3881B1DF6CB810039771E /* LaunchScreen.storyboard */; };
@@ -66,7 +66,7 @@
 		D4BD3C971DFC525C00BBB213 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F5B3880B1DF6CB810039771E /* finalProjectMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalProjectMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B3880E1DF6CB810039771E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F5B388121DF6CB810039771E /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		F5B388121DF6CB810039771E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F5B388171DF6CB810039771E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F5B388191DF6CB810039771E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5B3881C1DF6CB810039771E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				D412F3361DFC9F2000300C44 /* InviteeTableViewCell.swift */,
 				D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */,
 				D4BD3C971DFC525C00BBB213 /* User.swift */,
-				F5B388121DF6CB810039771E /* DataViewController.swift */,
+				F5B388121DF6CB810039771E /* MainViewController.swift */,
 				F5E7D9A31DF72BB00073D364 /* MapInContainer.swift */,
 				441F5C891DF71C9B00D17CCA /* MapViewController.swift */,
 				D412F3381DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift */,
@@ -400,7 +400,7 @@
 				131415FB1DF85E9600103C48 /* ShowEventsTableViewController.swift in Sources */,
 				224231F91DF705A70070BE16 /* DetailOutputViewController.swift in Sources */,
 				D4990CEC1DF6DD5A00971A19 /* CreateEventViewController.swift in Sources */,
-				F5B388131DF6CB810039771E /* DataViewController.swift in Sources */,
+				F5B388131DF6CB810039771E /* MainViewController.swift in Sources */,
 				D412F3391DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift in Sources */,
 				441F5C8A1DF71C9B00D17CCA /* MapViewController.swift in Sources */,
 				D4990CF01DF82C0F00971A19 /* Event.swift in Sources */,
