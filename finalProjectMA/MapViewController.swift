@@ -28,14 +28,12 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 self.currentEvent = eventInstance
             self.title = self.currentEvent.name // changes the title of page to viewing event
             self.inviteesArray = self.currentEvent.invitees
-            print(self.inviteesArray.count)
             self.tableView.reloadData()
 
             })
     }
 // MARK: TableView
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            print(self.inviteesArray.count)
             return self.inviteesArray.count
         }
         

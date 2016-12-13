@@ -38,7 +38,13 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             self.currentEvent = eventInstance
             self.title = self.currentEvent.name // changes the title of page to viewing event
             self.inviteesArray = self.currentEvent.invitees
-            print(self.inviteesArray.count)
+            
+            for i in 0..<self.inviteesArray.count {
+                if self.currentUser?.email == self.inviteesArray[i]["email"] as! String {
+                    currentEventRef.child("invitees").child(String(i)).updateChildValues(["confirmed" : true])
+                }
+            }
+            
             let meetingTimeInterval = self.currentEvent.time as Double
             let formatter = DateFormatter()
             formatter.dateStyle = .short
