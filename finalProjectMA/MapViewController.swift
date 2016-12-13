@@ -12,21 +12,30 @@ import Firebase
 
 class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
-    var passedSelectedEvent: [Event] = []
+    var passedSelectedEventKey: String = ""
     var inviteesArray : [[String:Any]] = []
     
     @IBOutlet weak var tableView: UITableView!
+    var currentEvent:Event!
     
-        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = passedSelectedEvent[0].name // changes the title of page to viewing event
 
-        self.inviteesArray = passedSelectedEvent[0].invitees
-        }
+        let currentEventRef = FIRDatabase.database().reference(withPath: "events").child(self.passedSelectedEventKey)
+        currentEventRef.observe(.value, with: {snapshot in
+            let theEvent = snapshot
+                let eventInstance = Event(snapshot: theEvent )
+                self.currentEvent = eventInstance
+            self.title = self.currentEvent.name // changes the title of page to viewing event
+            self.inviteesArray = self.currentEvent.invitees
+            print(self.inviteesArray.count)
+            self.tableView.reloadData()
+
+            })
+    }
 // MARK: TableView
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            print(self.inviteesArray.count)
             return self.inviteesArray.count
         }
         
@@ -48,8 +57,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             if segue.identifier == "mapView" {
                 
                 if let destination = segue.destination as? MapInContainer {
-                    let event: [Event] = self.passedSelectedEvent
-                    destination.passedSelectedEventFromList = event
+                    let eventKey: String = self.passedSelectedEventKey
+                    destination.passedSelectedEventKey = eventKey
 
                 }
             }

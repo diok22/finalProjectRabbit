@@ -65,16 +65,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
                     if ((myEventInstance.invitees[i]["email"] as! String).contains(currentUserEmail!)){
                         self.myEvents.append(myEventInstance.toAnyObject())
                         myEventInstanceRef.child(event.key).setValue(myEventInstance.toAnyObject())
-                        myEventInstanceRef.child("eventCount").setValue(self.myEvents.count)
+//                        myEventInstanceRef.child("eventCount").setValue(self.myEvents.count)
 
                         break
                     }
                 }
                 
             }
-            
-            
-            
         
                self.myEventsCountLocal = NSNumber(value: self.myEvents.count)
         self.myEventsCount.text = self.myEventsCountLocal.stringValue
