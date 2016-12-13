@@ -53,6 +53,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
         
         self.refEvents.observe(.value, with: { snapshot in
             let events = snapshot.children.allObjects as! [FIRDataSnapshot]
+            let userId = self.currentUser?.uid
+            let myEventInstanceRef = self.refUsers.child(userId!).child("myEvents")
+            
+
             
             for event in events {
                 let myEventInstance = Event(snapshot: event )
@@ -60,24 +64,22 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
                     let currentUserEmail = self.currentUser?.email
                     if ((myEventInstance.invitees[i]["email"] as! String).contains(currentUserEmail!)){
                         self.myEvents.append(myEventInstance.toAnyObject())
+                        myEventInstanceRef.child(event.key).setValue(myEventInstance.toAnyObject())
+                        myEventInstanceRef.child("eventCount").setValue(self.myEvents.count)
+
                         break
                     }
                 }
+                
             }
             
             
+            
         
-        let userId = self.currentUser?.uid
-        let myEventInstanceRef = self.refUsers.child(userId!).child("myEvents")
-        
-        
-        
-        myEventInstanceRef.setValue(self.myEvents)
-        myEventInstanceRef.child("eventCount").setValue(self.myEvents.count)
-        self.myEventsCountLocal = NSNumber(value: self.myEvents.count)
+               self.myEventsCountLocal = NSNumber(value: self.myEvents.count)
         self.myEventsCount.text = self.myEventsCountLocal.stringValue
         
-       }) 
+       })
         
         
         
