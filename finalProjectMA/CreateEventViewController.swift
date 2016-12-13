@@ -126,12 +126,18 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         
         let eventName = name.text
         eventLocation = location.text!
-        let currentUser = ["name" : self.user.email, "email" : self.user.email, "confirmed" : false, "eta" : "", "lat" : 0, "lng" : 0] as [String : Any]
+        let currentUser = ["name" : self.user.email, "email" : self.user.email, "confirmed" : "false", "eta" : "", "lat" : 0, "lng" : 0] as [String : Any]
         self.invitees.append(currentUser)
 
        
         let eventInstance = Event(addedByUser: self.user.email, name: eventName!, time: self.eventDateInterval!, address: self.formattedAddress, latitude: self.locationLatitude, longitude: self.locationLongitude, invitees: self.invitees)
         let eventInstanceRef = self.ref.childByAutoId()
+        for i in 0..<invitees.count {
+            let invEmail : String = self.invitees[i]["email"] as! String
+            print(invEmail)
+            let invEmailAr = invEmail.components(separatedBy: ".").first
+            eventInstanceRef.child(invEmailAr!).setValue(currentUser)
+        }
         eventInstanceRef.setValue(eventInstance.toAnyObject())
         performSegue(withIdentifier: "fromNewEventToMyEvents", sender: self)
     }
