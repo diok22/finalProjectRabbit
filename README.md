@@ -1,4 +1,4 @@
-##### Track the E.T.A of a group of friends going to the same event
+##### Swift 3, XCode 8: Track the E.T.A of a group of friends going to the same event
 Team members: [Manuela Sabatino](https://github.com/ManuCiao), [Akram Rasikh](https://github.com/AkramRasikh), [Ed Powderham](https://github.com/powderham), [Laszlo Bogacsi](https://github.com/LaszloBogacsi), [Dionysis Kastellanis](https://github.com/diok22)
 
 
