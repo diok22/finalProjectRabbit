@@ -73,6 +73,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
                     self.locationLatitude = location["lat"].stringValue
                     self.locationLongitude = location["lng"].stringValue
                     print("address found: \(self.formattedAddress)")
+                    self.location.text = self.formattedAddress
 
                     
                 case .failure(let error):
