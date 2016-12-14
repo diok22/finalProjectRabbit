@@ -10,4 +10,7 @@ target 'finalProjectMA' do
   pod 'SwiftyJSON'
   pod 'Firebase/Auth'
   pod 'APScheduledLocationManager'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
 end
