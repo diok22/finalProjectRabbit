@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>APScheduledLocationManager.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -50,7 +55,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2629F2A9C43F48870DE3DEC54F6527B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC1495EE8360F667F566506B76F0BACB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -66,6 +81,11 @@
 			<true/>
 		</dict>
 		<key>D5D8B76AC4FA16F2B9E48D3F3F9935C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E08C5C3EA54387F6C8AEF25FCE364E9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

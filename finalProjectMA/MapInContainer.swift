@@ -75,7 +75,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         ref.child((currentUser?.uid)!).child("userData").observe(.value, with: { (userSnapshot) in
             let currentUserData = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"  // X to break key
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"  // X to break key
             self.latString = String(describing: currentUserData["latitude"]!)
             self.lonString = String(describing: currentUserData["longitude"]!)
             let eventLatString = self.currentEvent.latitude
@@ -94,14 +94,17 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                        print("hhhhahahahahaahha")
-                        print(eta)
                         let etaString = String(describing: eta)
                         
+                        let date = Date()
+                        let calendar = Calendar.current
+                        let hour = calendar.component(.hour, from: date)
+                        let minutes = calendar.component(.minute, from: date)
+                        let seconds = calendar.component(.second, from: date)
+                        let lastUpdate : String = " | updated: "+("\(hour):\(minutes)")
                         
-                        
-                        print("ETA updated")
-                        currentEventRef.child("invitees").child(String(self.currentUserIndex)).updateChildValues(["eta" : etaString])
+                        let etaLastUpdate = etaString + lastUpdate
+                        currentEventRef.child("invitees").child(String(self.currentUserIndex)).updateChildValues(["eta" : etaLastUpdate])
                         
                         
                             let camera = GMSCameraPosition.camera(withLatitude: self.lat, longitude: self.lng, zoom: 10.0)
