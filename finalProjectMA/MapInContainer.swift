@@ -23,6 +23,9 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
     var fullAddress:String = ""
     var lat:Double = 0
     var lng:Double = 0
+    var latString:String = "0"
+    var lonString:String = "0"
+    var currentUserIndex:Int!
     
     let currentUser = FIRAuth.auth()?.currentUser
     
@@ -31,6 +34,8 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
     
 
     override func viewDidLoad() {
+        
+        // after eta request
         let currentEventRef = FIRDatabase.database().reference(withPath: "events").child(self.passedSelectedEventKey)
         currentEventRef.observe(.value, with: {snapshot in
             let theEvent = snapshot
@@ -41,7 +46,9 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             
             for i in 0..<self.inviteesArray.count {
                 if self.currentUser?.email == self.inviteesArray[i]["email"] as! String {
-                    currentEventRef.child("invitees").child(String(i)).updateChildValues(["confirmed" : true])
+                
+                    currentEventRef.child("invitees").child(String(i)).updateChildValues(["confirmed" : "true"])
+                    self.currentUserIndex = i
                 }
             }
             
@@ -55,26 +62,31 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             self.fullAddress = self.currentEvent.address
             self.lat = NSString(string: self.currentEvent.latitude).doubleValue
             self.lng = NSString(string: self.currentEvent.longitude).doubleValue
+            
+            
 
             
             
-        })
+        }) // ref to events
 
 
        
 // create url for eta of current logged in user
-        ref.child((currentUser?.uid)!).child("userData").observeSingleEvent(of: .value, with: { (userSnapshot) in
+        ref.child((currentUser?.uid)!).child("userData").observe(.value, with: { (userSnapshot) in
             let currentUserData = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"  // X to break key
-            let latString = String(describing: currentUserData["latitude"]!)
-            let lonString = String(describing: currentUserData["longitude"]!)
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"  // X to break key
+            self.latString = String(describing: currentUserData["latitude"]!)
+            self.lonString = String(describing: currentUserData["longitude"]!)
             let eventLatString = self.currentEvent.latitude
             let eventLonString = self.currentEvent.longitude
-            let urlLocation = "origin=" + latString + "," + lonString + "&"
+            let urlLocation = "origin=" + self.latString + "," + self.lonString + "&"
             let urlDestination = "destination=" + eventLatString! + "," + eventLonString! + "&"
             let urlTransit = "mode=transit&"
             let url = urlAPI + urlLocation + urlTransit + urlDestination + urlKey
+            
+            
+
             
             Alamofire.request(url).responseJSON  //eta request
                 { response in
@@ -82,8 +94,15 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
-                        self.ref.child((self.currentUser?.uid)!).child("myEvents").child(self.passedSelectedEventKey).updateChildValues(["eta": String(describing: eta)])
-
+                        print("hhhhahahahahaahha")
+                        print(eta)
+                        let etaString = String(describing: eta)
+                        
+                        
+                        
+                        print("ETA updated")
+                        currentEventRef.child("invitees").child(String(self.currentUserIndex)).updateChildValues(["eta" : etaString])
+                        
                         
                             let camera = GMSCameraPosition.camera(withLatitude: self.lat, longitude: self.lng, zoom: 10.0)
                             let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -91,6 +110,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             self.view = mapView
                             
                             // event marker
+                        
                             let markerEvent = GMSMarker()
                             markerEvent.position = CLLocationCoordinate2D(latitude: self.lat, longitude: self.lng)
                             markerEvent.title = self.fullAddress
@@ -99,16 +119,27 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             mapView.isMyLocationEnabled = true
                             markerEvent.map = mapView
                             
-                            
+                        
+                        
+                        
                             // markers for users
-                            for i in 0 ..< self.inviteesArray.count {
+                            currentEventRef.observe(.value, with: {snapshot in
+                                
+                                let theEvent = snapshot
+                                let eventInstance = Event(snapshot: theEvent )
+                                self.currentEvent = eventInstance
+                                self.title = self.currentEvent.name // changes the title of page to viewing event
+                                self.inviteesArray = self.currentEvent.invitees
+                                
+                                for i in 0 ..< self.inviteesArray.count {
                                 let marker = GMSMarker()
                                 marker.position = CLLocationCoordinate2D(latitude: self.inviteesArray[i]["lat"] as! CLLocationDegrees, longitude: self.inviteesArray[i]["lng"] as! CLLocationDegrees)
                                 marker.title = self.inviteesArray[i]["email"] as! String?
                                 marker.snippet = self.inviteesArray[i]["eta"] as! String?
                                 marker.map = mapView
+                                }
                                 
-                            }
+                            })
                             
 
                         

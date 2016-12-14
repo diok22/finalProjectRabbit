@@ -263,7 +263,7 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitDetails:" destination="6Hs-Oz-oxC" eventType="touchUpInside" id="xhx-RG-QDA"/>
-                                    <segue destination="ftT-xG-bVT" kind="show" identifier="fromNewEventToMyEvents" id="uNF-QO-Ih1"/>
+                                    <segue destination="S4R-Ja-viH" kind="show" identifier="fromNewEventToMain" id="a6d-yL-Slq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -637,7 +637,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+
+        <segue reference="a6d-yL-Slq"/>
         <segue reference="ZqN-43-byR"/>
-        <segue reference="tck-0k-Lr2"/>
     </inferredMetricsTieBreakers>
 </document>
