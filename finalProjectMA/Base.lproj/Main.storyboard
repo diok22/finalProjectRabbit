@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fY2-Qr-hHB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fY2-Qr-hHB">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -101,6 +101,54 @@
             </objects>
             <point key="canvasLocation" x="592.75362318840587" y="-295.92391304347831"/>
         </scene>
+        <!--Upcoming Events Table View Controller-->
+        <scene sceneID="U26-d6-svx">
+            <objects>
+                <tableViewController id="DzJ-Vj-uaE" customClass="UpcomingEventsTableViewController" customModule="finalProjectMA" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="UYg-1V-GxG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingEventCell" rowHeight="50" id="xey-55-GIr" userLabel="eventCell" customClass="UpcomingEventTableViewCell" customModule="finalProjectMA" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xey-55-GIr" id="ndf-fc-wRc">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3My-RJ-b9H">
+                                            <rect key="frame" x="30" y="0.0" width="101" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7X-S3-VHg">
+                                            <rect key="frame" x="30" y="22" width="376" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="eventTimeInCell" destination="k7X-S3-VHg" id="ksU-ka-NKz"/>
+                                    <outlet property="eventTitleInCell" destination="3My-RJ-b9H" id="f8S-C2-LXA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DzJ-Vj-uaE" id="6d7-c0-Ib7"/>
+                            <outlet property="delegate" destination="DzJ-Vj-uaE" id="BFe-RP-45T"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b3n-1n-zeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1444.9275362318842" y="650.54347826086962"/>
+        </scene>
         <!--New Event-->
         <scene sceneID="chg-qz-pPs">
             <objects>
@@ -137,7 +185,7 @@
                                         <rect key="frame" x="0.0" y="28" width="344" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rpL-g8-1uz" id="3y9-hZ-xzw">
-                                            <rect key="frame" x="0.0" y="0.0" width="344" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="344" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzp-Kf-xk0">
@@ -248,7 +296,6 @@
                             <constraint firstItem="fYc-Ld-kdc" firstAttribute="top" secondItem="3IQ-gK-77p" secondAttribute="bottom" constant="8" symbolic="YES" id="m6A-WR-UNW"/>
                             <constraint firstItem="mmW-PI-OIv" firstAttribute="leading" secondItem="ClG-g2-ssI" secondAttribute="leadingMargin" constant="125" id="nWI-K1-XfG"/>
                             <constraint firstItem="FVW-rE-t6J" firstAttribute="top" secondItem="kyM-5A-5AG" secondAttribute="bottom" constant="246" id="p9i-29-one"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fYc-Ld-kdc" secondAttribute="trailing" constant="157" id="qlB-9b-S81"/>
                             <constraint firstItem="FVW-rE-t6J" firstAttribute="top" secondItem="mmW-PI-OIv" secondAttribute="bottom" constant="458" id="wtz-KW-UFt"/>
                             <constraint firstItem="kyM-5A-5AG" firstAttribute="leading" secondItem="ClG-g2-ssI" secondAttribute="leadingMargin" constant="-16" id="yrq-YE-vJk"/>
                         </constraints>
@@ -262,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NvY-98-KAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2328.8000000000002" y="58.020989505247378"/>
+            <point key="canvasLocation" x="2329" y="358"/>
         </scene>
         <!--My Events-->
         <scene sceneID="wqJ-d5-s8r">
@@ -277,7 +324,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rax-p0-MM7" id="BOE-np-Mtk">
-                                    <rect key="frame" x="0.0" y="0.0" width="381" height="90.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bog-wI-aza">
@@ -374,7 +421,7 @@
                                         <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ueR-jE-kun" id="yFz-6F-kvt">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMq-i4-Zpy">
@@ -478,26 +525,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1b-V9-EN7">
                                 <rect key="frame" x="20" y="45" width="374" height="671"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDf-do-58r">
-                                        <rect key="frame" x="110" y="152" width="129" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Create New Event"/>
-                                        <connections>
-                                            <action selector="createEventForm:" destination="S4R-Ja-viH" eventType="touchUpInside" id="qqm-Zs-oLf"/>
-                                            <segue destination="6Hs-Oz-oxC" kind="show" identifier="CreateNewEvent" id="XW2-xR-5m2"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUn-Ss-SKi">
-                                        <rect key="frame" x="117" y="204" width="101" height="30"/>
+                                        <rect key="frame" x="0.0" y="145" width="374" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="My Events"/>
+                                        <state key="normal" title="View all events"/>
                                         <connections>
                                             <action selector="ShowEventsListTable:" destination="S4R-Ja-viH" eventType="touchUpInside" id="4Kh-Ns-gdV"/>
                                             <segue destination="ftT-xG-bVT" kind="show" identifier="showEventsListTable" id="tck-0k-Lr2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLl-nG-zTm">
-                                        <rect key="frame" x="148" y="286" width="53" height="30"/>
+                                        <rect key="frame" x="313" y="0.0" width="53" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="LogOut"/>
                                         <connections>
@@ -506,9 +544,32 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EventCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrT-Cd-0tZ">
-                                        <rect key="frame" x="226" y="209" width="85" height="21"/>
+                                        <rect key="frame" x="247" y="150" width="85" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDf-do-58r">
+                                        <rect key="frame" x="4" y="56" width="370" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Create New Event"/>
+                                        <connections>
+                                            <action selector="createEventForm:" destination="S4R-Ja-viH" eventType="touchUpInside" id="qqm-Zs-oLf"/>
+                                            <segue destination="6Hs-Oz-oxC" kind="show" identifier="CreateNewEvent" id="XW2-xR-5m2"/>
+                                        </connections>
+                                    </button>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IiC-La-BYn">
+                                        <rect key="frame" x="4" y="331" width="366" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="DzJ-Vj-uaE" kind="embed" id="pAh-yy-60D"/>
+                                        </connections>
+                                    </containerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All my events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqm-LQ-At7">
+                                        <rect key="frame" x="8" y="302" width="198" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -543,7 +604,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Ef6-gl-piz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aNZ-Wp-4GB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="421"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -576,6 +637,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+
         <segue reference="a6d-yL-Slq"/>
         <segue reference="ZqN-43-byR"/>
     </inferredMetricsTieBreakers>
