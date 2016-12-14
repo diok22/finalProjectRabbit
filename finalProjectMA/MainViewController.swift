@@ -44,6 +44,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
             print ("Error signing out: %@", signOutError)
         }
     }
+    
+    var myEventsRefs:[String] = []
+    
     override func viewDidLoad() {
         print("signed in as: \(self.currentUser?.email)")
         super.viewDidLoad()
@@ -63,6 +66,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
                 for i in 0..<myEventInstance.invitees.count{
                     let currentUserEmail = self.currentUser?.email
                     if ((myEventInstance.invitees[i]["email"] as! String).contains(currentUserEmail!)){
+                        self.myEventsRefs.append("events/\(event.key)/invitees/\(i)")
+                        print(self.myEventsRefs)
                         self.myEvents.append(myEventInstance.toAnyObject())
                         myEventInstanceRef.child(event.key).setValue(myEventInstance.toAnyObject())
 //                        myEventInstanceRef.child("eventCount").setValue(self.myEvents.count)
@@ -88,6 +93,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didUpdateLocations locations: [CLLocation]) {
         let l = locations.first!
         self.refUsers.child((currentUser?.uid)!).child("userData").setValue(["latitude": l.coordinate.latitude, "longitude":  l.coordinate.longitude, "email": currentUser?.email])
+        for i in 0..<self.myEventsRefs.count {
+            var eventInviteesRef = FIRDatabase.database().reference(withPath: self.myEventsRefs[i])
+            eventInviteesRef.observeSingleEvent(of: .value, with: {snapshot in
+                let userStatus = snapshot.value as! [String:AnyObject]
+                if userStatus["confirmed"]as! String == "true"  {
+                    print("I'm changing the user coordinates")
+                    eventInviteesRef.updateChildValues(["lat" : l.coordinate.latitude, "lng" : l.coordinate.longitude])
+                }
+            })
+           
+        }
     }
     
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didFailWithError error: Error) {
