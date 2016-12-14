@@ -23,13 +23,16 @@ class LogInViewController: UIViewController {
         let facebookLogin = FBSDKLoginManager()
         
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
-         
+            print("1")
             if error != nil {
                 print("Akram: unable to authen with facebook - \(error)")
             } else if result?.isCancelled == true {
                 print("Akram User cancelled FB auth")
             } else {
+                print("2")
+                print(user.self)
                 print("Akram: successful authen with FB")
+                print("3")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 self.firebaseAuth(credential)
             }
@@ -41,11 +44,13 @@ class LogInViewController: UIViewController {
             if error != nil {
                 print("Akram: unable to authenticate with - \(error)")
             } else {
-                print("Akram, successful authen with FB")
+                print("4")
+                print(user!)
+                print("Akram: successful authen with FB")
+                
             }
         })
-    }
-    
+    }    
     
     
     @IBOutlet weak var emailField: UITextField!
