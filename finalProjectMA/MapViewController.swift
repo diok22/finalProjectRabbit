@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import Firebase
+import FirebaseDatabase
 
 class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
@@ -42,7 +43,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.firstName.text = self.inviteesArray[indexPath.row]["name"] as! String?
             let status = self.inviteesArray[indexPath.row] as [String:Any]?
             print(status!)
-            if ((status?["confirmed"]as! Bool) == false) {
+            if ((status?["confirmed"])as! String == "false") {
                 cell.confirmedLabel.textColor = UIColor.red
             } else {
                 cell.confirmedLabel.textColor = UIColor.green
