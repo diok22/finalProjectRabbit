@@ -65,6 +65,19 @@
                                     <action selector="facebookBtnTapped:" destination="OV5-k4-U8A" eventType="touchUpInside" id="wSd-Dy-etT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCL-zB-97x">
+                                <rect key="frame" x="106" y="382" width="162" height="36"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="OV5-k4-U8A" eventType="touchUpInside" id="h3x-wg-epl"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRN-hM-I0k">
                                 <rect key="frame" x="106" y="290" width="162" height="36"/>
                                 <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,19 +95,12 @@
                                     <action selector="logIn:" destination="OV5-k4-U8A" eventType="touchUpInside" id="7Ka-V8-CP0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCL-zB-97x">
-                                <rect key="frame" x="106" y="382" width="162" height="36"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signUp:" destination="OV5-k4-U8A" eventType="touchUpInside" id="h3x-wg-epl"/>
-                                </connections>
-                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sign up if you haven't already" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLr-Pg-Lja">
+                                <rect key="frame" x="25" y="350" width="324" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -114,16 +120,20 @@
                             <constraint firstItem="iru-yE-T6m" firstAttribute="top" secondItem="Dfj-Ue-Wp5" secondAttribute="bottom" constant="19" id="UUN-kO-8Aa"/>
                             <constraint firstItem="pbk-t2-lbh" firstAttribute="top" secondItem="nmj-rk-KTj" secondAttribute="bottom" constant="8" symbolic="YES" id="Xu3-6u-NPM"/>
                             <constraint firstItem="nmj-rk-KTj" firstAttribute="trailing" secondItem="b0k-KV-TaB" secondAttribute="trailing" id="ZHx-Vc-OlT"/>
+                            <constraint firstItem="iLr-Pg-Lja" firstAttribute="leading" secondItem="b0k-KV-TaB" secondAttribute="leading" id="aex-FQ-b94"/>
                             <constraint firstItem="MRN-hM-I0k" firstAttribute="top" secondItem="b0k-KV-TaB" secondAttribute="bottom" constant="27" id="fQs-1P-EmN"/>
                             <constraint firstItem="Vox-nd-jVh" firstAttribute="centerX" secondItem="F5F-Ml-u5a" secondAttribute="centerX" id="gkY-KO-kAR"/>
                             <constraint firstItem="MRN-hM-I0k" firstAttribute="firstBaseline" secondItem="sCL-zB-97x" secondAttribute="firstBaseline" constant="-92" id="m0b-mb-Ro6"/>
+                            <constraint firstItem="iLr-Pg-Lja" firstAttribute="trailing" secondItem="b0k-KV-TaB" secondAttribute="trailing" id="nqV-Jx-AvA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pbk-t2-lbh" secondAttribute="trailing" constant="-10" id="oR5-1P-W4c"/>
                             <constraint firstItem="pbk-t2-lbh" firstAttribute="trailing" secondItem="sCL-zB-97x" secondAttribute="trailing" constant="101" id="qGw-wu-A2C"/>
                             <constraint firstItem="sCL-zB-97x" firstAttribute="leading" secondItem="MRN-hM-I0k" secondAttribute="trailing" constant="-162" id="qTd-T1-2H8"/>
                             <constraint firstItem="MRN-hM-I0k" firstAttribute="top" secondItem="sCL-zB-97x" secondAttribute="top" constant="-92" id="r2k-S5-EgJ"/>
                             <constraint firstItem="pbk-t2-lbh" firstAttribute="leading" secondItem="MRN-hM-I0k" secondAttribute="leading" constant="-61" id="rAF-cg-OM4"/>
+                            <constraint firstItem="iLr-Pg-Lja" firstAttribute="top" secondItem="MRN-hM-I0k" secondAttribute="bottom" constant="24" id="rK8-dh-GDe"/>
                             <constraint firstItem="Vox-nd-jVh" firstAttribute="top" secondItem="Xnz-nL-e3f" secondAttribute="bottom" constant="83" id="uK8-1K-iWp"/>
                             <constraint firstItem="nmj-rk-KTj" firstAttribute="leading" secondItem="b0k-KV-TaB" secondAttribute="leading" id="yKV-CP-vk1"/>
+                            <constraint firstItem="sCL-zB-97x" firstAttribute="top" secondItem="iLr-Pg-Lja" secondAttribute="bottom" constant="2" id="yY7-wm-JzD"/>
                             <constraint firstItem="Vox-nd-jVh" firstAttribute="trailing" secondItem="nmj-rk-KTj" secondAttribute="trailing" id="zfQ-Xc-ayD"/>
                         </constraints>
                     </view>
@@ -137,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3lv-Jz-grQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="592.75362318840587" y="-295.92391304347831"/>
+            <point key="canvasLocation" x="591.20000000000005" y="-296.40179910044981"/>
         </scene>
         <!--Upcoming Events Table View Controller-->
         <scene sceneID="U26-d6-svx">
@@ -509,13 +519,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMq-i4-Zpy">
-                                                    <rect key="frame" x="8" y="8" width="99" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="68" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E.T.A.:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7o-aY-AEU">
-                                                    <rect key="frame" x="138" y="8" width="47" height="21"/>
+                                                    <rect key="frame" x="107" y="8" width="47" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="47" id="CsS-fp-iaL"/>
                                                     </constraints>
@@ -524,7 +534,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mins" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isb-LT-ja9">
-                                                    <rect key="frame" x="193" y="8" width="42" height="21"/>
+                                                    <rect key="frame" x="162" y="8" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="f84-W4-0Jn"/>
                                                     </constraints>
@@ -533,7 +543,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tan-I7-97k">
-                                                    <rect key="frame" x="275" y="8" width="78" height="21"/>
+                                                    <rect key="frame" x="244" y="8" width="78" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="78" id="QG0-Gb-Xuh"/>
                                                     </constraints>
@@ -746,7 +756,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fY2-Qr-hHB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pMc-xp-LGd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pMc-xp-LGd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
