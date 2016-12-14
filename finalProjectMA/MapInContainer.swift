@@ -76,7 +76,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         ref.child((currentUser?.uid)!).child("userData").observe(.value, with: { (userSnapshot) in
             let currentUserData = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"  // X to break key
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"  // X to break key
             self.latString = String(describing: currentUserData["latitude"]!)
             self.lonString = String(describing: currentUserData["longitude"]!)
             let eventLatString = self.currentEvent.latitude
@@ -86,8 +86,8 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             let urlTransit = "mode=transit&"
             let url = urlAPI + urlLocation + urlTransit + urlDestination + urlKey
             
-            print("RUNNING FASTER THAN BOLT")
-            currentEventRef.child("invitees").child(String(self.currentUserIndex)).updateChildValues(["confirmed" : "true", "lat" : Double(self.latString), "lng" : Double(self.lonString)])
+            
+
             
             Alamofire.request(url).responseJSON  //eta request
                 { response in
@@ -95,19 +95,15 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
+                        print("hhhhahahahahaahha")
                         print(eta)
-                        self.ref.child((self.currentUser?.uid)!).child("myEvents").child(self.passedSelectedEventKey).updateChildValues(["eta": String(describing: eta)])
-                        
-                        
-                        ////
+                        let etaString = String(describing: eta)
                         
                         
                         
+                        print("RUNNING FASTER THAN BOLT")
+                        currentEventRef.child("invitees").child(String(self.currentUserIndex)).updateChildValues(["confirmed" : "true", "lat" : Double(self.latString), "lng" : Double(self.lonString), "eta" : etaString])
                         
-                        
-                        ////
-                        
-
                         
                             let camera = GMSCameraPosition.camera(withLatitude: self.lat, longitude: self.lng, zoom: 10.0)
                             let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -115,6 +111,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             self.view = mapView
                             
                             // event marker
+                        
                             let markerEvent = GMSMarker()
                             markerEvent.position = CLLocationCoordinate2D(latitude: self.lat, longitude: self.lng)
                             markerEvent.title = self.fullAddress
@@ -123,18 +120,27 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                             mapView.isMyLocationEnabled = true
                             markerEvent.map = mapView
                             
-                            
+                        
+                        
+                        
                             // markers for users
-                            for i in 0 ..< self.inviteesArray.count {
+                            currentEventRef.observe(.value, with: {snapshot in
                                 
+                                let theEvent = snapshot
+                                let eventInstance = Event(snapshot: theEvent )
+                                self.currentEvent = eventInstance
+                                self.title = self.currentEvent.name // changes the title of page to viewing event
+                                self.inviteesArray = self.currentEvent.invitees
                                 
+                                for i in 0 ..< self.inviteesArray.count {
                                 let marker = GMSMarker()
                                 marker.position = CLLocationCoordinate2D(latitude: self.inviteesArray[i]["lat"] as! CLLocationDegrees, longitude: self.inviteesArray[i]["lng"] as! CLLocationDegrees)
                                 marker.title = self.inviteesArray[i]["email"] as! String?
                                 marker.snippet = self.inviteesArray[i]["eta"] as! String?
                                 marker.map = mapView
+                                }
                                 
-                            }
+                            })
                             
 
                         
