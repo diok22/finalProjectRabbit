@@ -46,11 +46,8 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             
             for i in 0..<self.inviteesArray.count {
                 if self.currentUser?.email == self.inviteesArray[i]["email"] as! String {
-                    print(["confirmed" : "true", "lat" : self.latString, "lng" : self.lonString])
-                    print("THE BATTLE")
-                    print(["confirmed" : "true", "lat" : Double(self.latString), "lng" : Double(self.lonString)])
-                    print("Hans Zimmer")
-                    currentEventRef.child("invitees").child(String(i)).updateChildValues(["confirmed" : "true", "lat" : Double(self.latString), "lng" : Double(self.lonString)])
+                
+                    currentEventRef.child("invitees").child(String(i)).updateChildValues(["confirmed" : "true"])
                     self.currentUserIndex = i
                 }
             }
@@ -65,6 +62,8 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             self.fullAddress = self.currentEvent.address
             self.lat = NSString(string: self.currentEvent.latitude).doubleValue
             self.lng = NSString(string: self.currentEvent.longitude).doubleValue
+            
+            
 
             
             
@@ -76,7 +75,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         ref.child((currentUser?.uid)!).child("userData").observe(.value, with: { (userSnapshot) in
             let currentUserData = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"  // X to break key
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"  // X to break key
             self.latString = String(describing: currentUserData["latitude"]!)
             self.lonString = String(describing: currentUserData["longitude"]!)
             let eventLatString = self.currentEvent.latitude
@@ -101,8 +100,8 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                         
                         
                         
-                        print("RUNNING FASTER THAN BOLT")
-                        currentEventRef.child("invitees").child(String(self.currentUserIndex)).updateChildValues(["confirmed" : "true", "lat" : Double(self.latString), "lng" : Double(self.lonString), "eta" : etaString])
+                        print("ETA updated")
+                        currentEventRef.child("invitees").child(String(self.currentUserIndex)).updateChildValues(["eta" : etaString])
                         
                         
                             let camera = GMSCameraPosition.camera(withLatitude: self.lat, longitude: self.lng, zoom: 10.0)
