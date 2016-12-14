@@ -41,7 +41,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
             
             for i in 0..<self.inviteesArray.count {
                 if self.currentUser?.email == self.inviteesArray[i]["email"] as! String {
-                    currentEventRef.child("invitees").child(String(i)).updateChildValues(["confirmed" : true])
+                    currentEventRef.child("invitees").child(String(i)).updateChildValues(["confirmed" : "true"])
                 }
             }
             
@@ -82,6 +82,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
                     case .success(let value):
                         let json = JSON(value)
                         let eta = json["routes"][0]["legs"][0]["duration"]["text"]
+                        print(eta)
                         self.ref.child((self.currentUser?.uid)!).child("myEvents").child(self.passedSelectedEventKey).updateChildValues(["eta": String(describing: eta)])
 
                         
