@@ -49,7 +49,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
         super.viewDidLoad()
         manager = APScheduledLocationManager(delegate: self)
         manager.requestAlwaysAuthorization()
-        manager.startUpdatingLocation(interval: 300, acceptableLocationAccuracy: 100)
+        manager.startUpdatingLocation(interval: 5, acceptableLocationAccuracy: 100)
         
         self.refEvents.observe(.value, with: { snapshot in
             let events = snapshot.children.allObjects as! [FIRDataSnapshot]
@@ -87,7 +87,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
     
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didUpdateLocations locations: [CLLocation]) {
         let l = locations.first!
-        
         self.refUsers.child((currentUser?.uid)!).child("userData").setValue(["latitude": l.coordinate.latitude, "longitude":  l.coordinate.longitude, "email": currentUser?.email])
     }
     
