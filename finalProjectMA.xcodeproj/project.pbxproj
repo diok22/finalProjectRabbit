@@ -276,7 +276,7 @@
 				TargetAttributes = {
 					F5B3880A1DF6CB810039771E = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = KNZ6LWPSAQ;
+						DevelopmentTeam = 4HZ4ACYFZV;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -571,7 +571,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = finalProjectMA/finalProjectMA.entitlements;
-				DEVELOPMENT_TEAM = KNZ6LWPSAQ;
+				DEVELOPMENT_TEAM = 4HZ4ACYFZV;
 				INFOPLIST_FILE = finalProjectMA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.projectRabbit.finalProjectMA;
@@ -587,7 +587,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = finalProjectMA/finalProjectMA.entitlements;
-				DEVELOPMENT_TEAM = KNZ6LWPSAQ;
+				DEVELOPMENT_TEAM = 4HZ4ACYFZV;
 				INFOPLIST_FILE = finalProjectMA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.projectRabbit.finalProjectMA;
