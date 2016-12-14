@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1308C6C61E015CCD001A8518 /* UpcomingEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308C6C51E015CCD001A8518 /* UpcomingEventsViewController.swift */; };
+		1308C6C81E0164F7001A8518 /* UpcomingEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308C6C71E0164F7001A8518 /* UpcomingEventTableViewCell.swift */; };
 		131415FB1DF85E9600103C48 /* ShowEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131415FA1DF85E9600103C48 /* ShowEventsTableViewController.swift */; };
 		137C1BE91DF6ED200082DCA2 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137C1BE81DF6ED200082DCA2 /* keys.plist */; };
 		137C1BEE1DF704140082DCA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137C1BED1DF704140082DCA2 /* GoogleService-Info.plist */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1308C6C51E015CCD001A8518 /* UpcomingEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventsViewController.swift; sourceTree = "<group>"; };
+		1308C6C71E0164F7001A8518 /* UpcomingEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventTableViewCell.swift; sourceTree = "<group>"; };
 		131415FA1DF85E9600103C48 /* ShowEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowEventsTableViewController.swift; sourceTree = "<group>"; };
 		131415FC1DF8613300103C48 /* finalProjectMA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = finalProjectMA.entitlements; sourceTree = "<group>"; };
 		137C1BE81DF6ED200082DCA2 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				220DE9131DFAC9DD002DC596 /* LogiInViewController.swift */,
 				D4990CEF1DF82C0F00971A19 /* Event.swift */,
 				D4990CF31DF875A800971A19 /* EventTableViewCell.swift */,
+				1308C6C71E0164F7001A8518 /* UpcomingEventTableViewCell.swift */,
 				D412F3361DFC9F2000300C44 /* InviteeTableViewCell.swift */,
 				D4990CEB1DF6DD5A00971A19 /* CreateEventViewController.swift */,
 				D4BD3C971DFC525C00BBB213 /* User.swift */,
@@ -177,6 +182,7 @@
 				F5B3881B1DF6CB810039771E /* LaunchScreen.storyboard */,
 				F5B3881E1DF6CB810039771E /* Info.plist */,
 				224231F81DF705A70070BE16 /* DetailOutputViewController.swift */,
+				1308C6C51E015CCD001A8518 /* UpcomingEventsViewController.swift */,
 			);
 			path = finalProjectMA;
 			sourceTree = "<group>";
@@ -395,7 +401,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1308C6C81E0164F7001A8518 /* UpcomingEventTableViewCell.swift in Sources */,
 				D412F3371DFC9F2000300C44 /* InviteeTableViewCell.swift in Sources */,
+				1308C6C61E015CCD001A8518 /* UpcomingEventsViewController.swift in Sources */,
 				D4990CF41DF875A800971A19 /* EventTableViewCell.swift in Sources */,
 				131415FB1DF85E9600103C48 /* ShowEventsTableViewController.swift in Sources */,
 				224231F91DF705A70070BE16 /* DetailOutputViewController.swift in Sources */,

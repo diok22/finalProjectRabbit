@@ -44,18 +44,21 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
             print ("Error signing out: %@", signOutError)
         }
     }
+    
+    var myEventsRefs:[String] = []
+    
     override func viewDidLoad() {
         print("signed in as: \(self.currentUser?.email)")
         super.viewDidLoad()
         manager = APScheduledLocationManager(delegate: self)
         manager.requestAlwaysAuthorization()
-        manager.startUpdatingLocation(interval: 300, acceptableLocationAccuracy: 100)
+        manager.startUpdatingLocation(interval: 5, acceptableLocationAccuracy: 100)
         
         self.refEvents.observe(.value, with: { snapshot in
             let events = snapshot.children.allObjects as! [FIRDataSnapshot]
             let userId = self.currentUser?.uid
             let myEventInstanceRef = self.refUsers.child(userId!).child("myEvents")
-            
+            var myEventsRefsLocal:[String] = []
 
             
             for event in events {
@@ -63,6 +66,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
                 for i in 0..<myEventInstance.invitees.count{
                     let currentUserEmail = self.currentUser?.email
                     if ((myEventInstance.invitees[i]["email"] as! String).contains(currentUserEmail!)){
+                        myEventsRefsLocal.append("events/\(event.key)/invitees/\(i)")
                         self.myEvents.append(myEventInstance.toAnyObject())
                         myEventInstanceRef.child(event.key).setValue(myEventInstance.toAnyObject())
 //                        myEventInstanceRef.child("eventCount").setValue(self.myEvents.count)
@@ -72,7 +76,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
                 }
                 
             }
-        
+            self.myEventsRefs = myEventsRefsLocal
+            print(self.myEventsRefs)
                self.myEventsCountLocal = NSNumber(value: self.myEvents.count)
         self.myEventsCount.text = self.myEventsCountLocal.stringValue
         
@@ -87,8 +92,18 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
     
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didUpdateLocations locations: [CLLocation]) {
         let l = locations.first!
-        
         self.refUsers.child((currentUser?.uid)!).child("userData").setValue(["latitude": l.coordinate.latitude, "longitude":  l.coordinate.longitude, "email": currentUser?.email])
+        for i in 0..<self.myEventsRefs.count {
+            var eventInviteesRef = FIRDatabase.database().reference(withPath: self.myEventsRefs[i])
+            eventInviteesRef.observeSingleEvent(of: .value, with: {snapshot in
+                let userStatus = snapshot.value as! [String:AnyObject]
+                if userStatus["confirmed"]as! String == "true"  {
+                    print("I'm changing the user coordinates")
+                    eventInviteesRef.updateChildValues(["lat" : l.coordinate.latitude, "lng" : l.coordinate.longitude])
+                }
+            })
+           
+        }
     }
     
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didFailWithError error: Error) {
