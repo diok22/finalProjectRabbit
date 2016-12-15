@@ -13,6 +13,7 @@ import FirebaseAuth
 import FBSDKCoreKit
 import FBSDKShareKit
 import FBSDKLoginKit
+import FirebaseMessaging
 
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
