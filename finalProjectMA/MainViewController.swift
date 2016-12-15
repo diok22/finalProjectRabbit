@@ -71,7 +71,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
                         myEventsRefsLocal.append("events/\(event.key)/invitees/\(i)")
                         self.myEvents.append(myEventInstance.toAnyObject())
                         myEventInstanceRef.child(event.key).setValue(myEventInstance.toAnyObject())
-//                        myEventInstanceRef.child("eventCount").setValue(self.myEvents.count)
 
                         break
                     }
@@ -79,8 +78,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, APSchedul
                 
             }
             self.myEventsRefs = myEventsRefsLocal
-            print(self.myEventsRefs)
-               self.myEventsCountLocal = NSNumber(value: self.myEvents.count)
+            self.myEventsCountLocal = NSNumber(value: myEventsRefsLocal.count)
+            print(self.myEventsCountLocal)
         self.myEventsCount.text = self.myEventsCountLocal.stringValue
         
        })
