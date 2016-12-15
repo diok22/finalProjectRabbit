@@ -14,7 +14,7 @@
 		220DE9141DFAC9DD002DC596 /* LogiInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220DE9131DFAC9DD002DC596 /* LogiInViewController.swift */; };
 		224231F91DF705A70070BE16 /* DetailOutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224231F81DF705A70070BE16 /* DetailOutputViewController.swift */; };
 		225B2D2AD276890E452F4BAF /* Pods_finalProjectMA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E3C7BCD1FD140B106FA3F6 /* Pods_finalProjectMA.framework */; };
-		22AA92C51E02BFC40098E945 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22AA92C41E02BFC40098E945 /* GoogleService-Info.plist */; };
+		22AA92C91E02E3E70098E945 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22AA92C81E02E3E70098E945 /* GoogleService-Info.plist */; };
 		441F5C8A1DF71C9B00D17CCA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441F5C891DF71C9B00D17CCA /* MapViewController.swift */; };
 		D412F3371DFC9F2000300C44 /* InviteeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412F3361DFC9F2000300C44 /* InviteeTableViewCell.swift */; };
 		D412F3391DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412F3381DFCD8B800300C44 /* InviteeMapViewTableViewCell.swift */; };
@@ -57,7 +57,7 @@
 		137C1BE81DF6ED200082DCA2 /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		220DE9131DFAC9DD002DC596 /* LogiInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogiInViewController.swift; path = ../LogiInViewController.swift; sourceTree = "<group>"; };
 		224231F81DF705A70070BE16 /* DetailOutputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOutputViewController.swift; sourceTree = "<group>"; };
-		22AA92C41E02BFC40098E945 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22AA92C81E02E3E70098E945 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		441F5C891DF71C9B00D17CCA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		68248754C5929E491B69A817 /* Pods-finalProjectMA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProjectMA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finalProjectMA/Pods-finalProjectMA.debug.xcconfig"; sourceTree = "<group>"; };
 		808951FDFF276AFADAD8669A /* Pods-finalProjectMA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProjectMA.release.xcconfig"; path = "Pods/Target Support Files/Pods-finalProjectMA/Pods-finalProjectMA.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				131415FC1DF8613300103C48 /* finalProjectMA.entitlements */,
-				22AA92C41E02BFC40098E945 /* GoogleService-Info.plist */,
+				22AA92C81E02E3E70098E945 /* GoogleService-Info.plist */,
 				137C1BEA1DF6ED310082DCA2 /* Supporting Files */,
 				F5B3880E1DF6CB810039771E /* AppDelegate.swift */,
 				131415FA1DF85E9600103C48 /* ShowEventsTableViewController.swift */,
@@ -332,7 +332,7 @@
 			files = (
 				137C1BE91DF6ED200082DCA2 /* keys.plist in Resources */,
 				F5B3881D1DF6CB810039771E /* LaunchScreen.storyboard in Resources */,
-				22AA92C51E02BFC40098E945 /* GoogleService-Info.plist in Resources */,
+				22AA92C91E02E3E70098E945 /* GoogleService-Info.plist in Resources */,
 				F5B3881A1DF6CB810039771E /* Assets.xcassets in Resources */,
 				F5B388181DF6CB810039771E /* Main.storyboard in Resources */,
 			);
