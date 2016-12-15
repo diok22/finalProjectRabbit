@@ -538,118 +538,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1b-V9-EN7">
-                                <rect key="frame" x="20" y="65" width="335" height="619"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDf-do-58r">
-                                        <rect key="frame" x="25" y="103" width="285" height="40"/>
-                                        <color key="backgroundColor" red="0.0" green="0.80666859889999998" blue="0.82205894970000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="qWc-Bd-Q2s"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <size key="titleShadowOffset" width="0.0" height="1"/>
-                                        <state key="normal" title="Create New Event">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="createEventForm:" destination="S4R-Ja-viH" eventType="touchUpInside" id="qqm-Zs-oLf"/>
-                                            <segue destination="6Hs-Oz-oxC" kind="show" identifier="CreateNewEvent" id="XW2-xR-5m2"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUn-Ss-SKi">
-                                        <rect key="frame" x="25" y="164" width="162" height="40"/>
-                                        <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="162" id="67d-vm-7dD"/>
-                                            <constraint firstAttribute="height" constant="40" id="IiU-JL-0Jc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <size key="titleShadowOffset" width="0.0" height="1"/>
-                                        <state key="normal" title="My Events">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="ShowEventsListTable:" destination="S4R-Ja-viH" eventType="touchUpInside" id="4Kh-Ns-gdV"/>
-                                            <segue destination="ftT-xG-bVT" kind="show" identifier="showEventsListTable" id="tck-0k-Lr2"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" EventCount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrT-Cd-0tZ">
-                                        <rect key="frame" x="225" y="164" width="85" height="40"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <size key="shadowOffset" width="0.0" height="1"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLl-nG-zTm">
-                                        <rect key="frame" x="25" y="475" width="285" height="40"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="5mI-CA-AcS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <size key="titleShadowOffset" width="0.0" height="1"/>
-                                        <state key="normal" title="Log Out">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logOut:" destination="S4R-Ja-viH" eventType="touchUpInside" id="6sc-Bh-8Ac"/>
-                                            <segue destination="OV5-k4-U8A" kind="show" id="ZqN-43-byR"/>
-                                        </connections>
-                                    </button>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4M-CZ-EPX">
-                                        <rect key="frame" x="25" y="253" width="285" height="175"/>
-                                        <connections>
-                                            <segue destination="DzJ-Vj-uaE" kind="embed" id="TjJ-zQ-EoG"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUn-Ss-SKi">
+                                <rect key="frame" x="45" y="361" width="285" height="40"/>
+                                <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="yUn-Ss-SKi" firstAttribute="top" secondItem="xDf-do-58r" secondAttribute="bottom" constant="21" id="4Fm-Ax-kyt"/>
-                                    <constraint firstItem="yUn-Ss-SKi" firstAttribute="top" secondItem="yrT-Cd-0tZ" secondAttribute="top" id="70M-gL-mMH"/>
-                                    <constraint firstItem="yUn-Ss-SKi" firstAttribute="leading" secondItem="VLl-nG-zTm" secondAttribute="leading" id="9Rx-BB-9kV"/>
-                                    <constraint firstItem="VLl-nG-zTm" firstAttribute="top" secondItem="j4M-CZ-EPX" secondAttribute="bottom" constant="47" id="9VX-bM-OVs"/>
-                                    <constraint firstItem="yUn-Ss-SKi" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="25" id="Aho-7r-acJ"/>
-                                    <constraint firstItem="xDf-do-58r" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="103" id="Dza-cK-MeY"/>
-                                    <constraint firstItem="j4M-CZ-EPX" firstAttribute="top" secondItem="yrT-Cd-0tZ" secondAttribute="bottom" constant="49" id="Ekt-Mb-oBK"/>
-                                    <constraint firstItem="xDf-do-58r" firstAttribute="centerX" secondItem="s1b-V9-EN7" secondAttribute="centerX" id="Est-ya-5DB"/>
-                                    <constraint firstItem="xDf-do-58r" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="25" id="F2k-Jb-eNt"/>
-                                    <constraint firstItem="yrT-Cd-0tZ" firstAttribute="top" secondItem="xDf-do-58r" secondAttribute="bottom" constant="21" id="I8L-wE-6YX"/>
-                                    <constraint firstItem="yrT-Cd-0tZ" firstAttribute="leading" secondItem="yUn-Ss-SKi" secondAttribute="trailing" constant="38" id="Jed-ja-uNI"/>
-                                    <constraint firstItem="VLl-nG-zTm" firstAttribute="top" secondItem="yrT-Cd-0tZ" secondAttribute="bottom" constant="271" id="JhO-XG-juT"/>
-                                    <constraint firstItem="yUn-Ss-SKi" firstAttribute="bottom" secondItem="yrT-Cd-0tZ" secondAttribute="bottom" id="NUi-Ka-TGc"/>
-                                    <constraint firstItem="VLl-nG-zTm" firstAttribute="top" secondItem="yUn-Ss-SKi" secondAttribute="bottom" constant="271" id="OgE-0K-yYI"/>
-                                    <constraint firstItem="xDf-do-58r" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="103" id="Ov1-Ep-pMa"/>
-                                    <constraint firstItem="VLl-nG-zTm" firstAttribute="top" secondItem="yrT-Cd-0tZ" secondAttribute="bottom" constant="271" id="S1n-Ch-cv4"/>
-                                    <constraint firstItem="VLl-nG-zTm" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="25" id="T4J-3w-lNV"/>
-                                    <constraint firstItem="yrT-Cd-0tZ" firstAttribute="leading" secondItem="yUn-Ss-SKi" secondAttribute="trailing" constant="38" id="UaW-f7-DNU"/>
-                                    <constraint firstItem="j4M-CZ-EPX" firstAttribute="leading" secondItem="VLl-nG-zTm" secondAttribute="leading" id="VB1-xv-YL6"/>
-                                    <constraint firstItem="yrT-Cd-0tZ" firstAttribute="top" secondItem="xDf-do-58r" secondAttribute="bottom" constant="21" id="aUc-Da-xAc"/>
-                                    <constraint firstAttribute="trailing" secondItem="yrT-Cd-0tZ" secondAttribute="trailing" constant="25" id="bol-86-cGD"/>
-                                    <constraint firstAttribute="trailing" secondItem="VLl-nG-zTm" secondAttribute="trailing" constant="25" id="bwb-Ep-IdW"/>
-                                    <constraint firstAttribute="trailing" secondItem="xDf-do-58r" secondAttribute="trailing" constant="25" id="cIj-Eu-xVB"/>
-                                    <constraint firstItem="yrT-Cd-0tZ" firstAttribute="leading" secondItem="yUn-Ss-SKi" secondAttribute="trailing" constant="38" id="crN-9x-h4a"/>
-                                    <constraint firstItem="xDf-do-58r" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="25" id="cwJ-5x-YxO"/>
-                                    <constraint firstAttribute="bottom" secondItem="VLl-nG-zTm" secondAttribute="bottom" constant="104" id="f4Q-Us-a3U"/>
-                                    <constraint firstItem="xDf-do-58r" firstAttribute="trailing" secondItem="yrT-Cd-0tZ" secondAttribute="trailing" id="fp5-cR-Qsr"/>
-                                    <constraint firstItem="j4M-CZ-EPX" firstAttribute="trailing" secondItem="VLl-nG-zTm" secondAttribute="trailing" id="jNE-ZB-jM8"/>
-                                    <constraint firstItem="xDf-do-58r" firstAttribute="leading" secondItem="yUn-Ss-SKi" secondAttribute="leading" id="ryW-yK-vOd"/>
-                                    <constraint firstItem="yrT-Cd-0tZ" firstAttribute="trailing" secondItem="VLl-nG-zTm" secondAttribute="trailing" id="wVy-k5-iBJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="VLl-nG-zTm" secondAttribute="bottom" constant="104" id="yNo-lF-Hl2"/>
-                                    <constraint firstItem="yUn-Ss-SKi" firstAttribute="top" secondItem="xDf-do-58r" secondAttribute="bottom" constant="21" id="z9E-ra-dOz"/>
+                                    <constraint firstAttribute="height" constant="40" id="eTy-zO-UrE"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="View all events">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ShowEventsListTable:" destination="S4R-Ja-viH" eventType="touchUpInside" id="4Kh-Ns-gdV"/>
+                                    <segue destination="ftT-xG-bVT" kind="show" identifier="showEventsListTable" id="tck-0k-Lr2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLl-nG-zTm">
+                                <rect key="frame" x="45" y="627" width="285" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GKC-CB-ky0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="S4R-Ja-viH" eventType="touchUpInside" id="6sc-Bh-8Ac"/>
+                                    <segue destination="OV5-k4-U8A" kind="show" id="ZqN-43-byR"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j4M-CZ-EPX">
+                                <rect key="frame" x="45" y="160" width="285" height="175"/>
+                                <connections>
+                                    <segue destination="DzJ-Vj-uaE" kind="embed" id="TjJ-zQ-EoG"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDf-do-58r">
+                                <rect key="frame" x="45" y="48" width="285" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.80666859889999998" blue="0.82205894970000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Rk5-I6-iUn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Create New Event">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createEventForm:" destination="S4R-Ja-viH" eventType="touchUpInside" id="qqm-Zs-oLf"/>
+                                    <segue destination="6Hs-Oz-oxC" kind="show" identifier="CreateNewEvent" id="XW2-xR-5m2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBO-Bx-xcy">
+                                <rect key="frame" x="45" y="131" width="149" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="149" id="Jpo-RC-25T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrT-Cd-0tZ">
+                                <rect key="frame" x="264" y="361" width="85" height="40"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="v63-sa-rW6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="s1b-V9-EN7" secondAttribute="trailing" constant="20" symbolic="YES" id="333-Jl-G0r"/>
-                            <constraint firstItem="s1b-V9-EN7" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" constant="20" symbolic="YES" id="CIC-qa-9gW"/>
-                            <constraint firstItem="s1b-V9-EN7" firstAttribute="top" secondItem="fXf-Jd-eTc" secondAttribute="bottom" constant="45" id="wbW-fh-e5N"/>
+                            <constraint firstItem="xDf-do-58r" firstAttribute="top" secondItem="fXf-Jd-eTc" secondAttribute="bottom" constant="28" id="4nG-f3-teM"/>
+                            <constraint firstItem="xDf-do-58r" firstAttribute="trailing" secondItem="j4M-CZ-EPX" secondAttribute="trailing" id="8qt-wf-b94"/>
+                            <constraint firstItem="yUn-Ss-SKi" firstAttribute="top" secondItem="yrT-Cd-0tZ" secondAttribute="top" id="Ck2-Gi-Yui"/>
+                            <constraint firstItem="yUn-Ss-SKi" firstAttribute="trailing" secondItem="VLl-nG-zTm" secondAttribute="trailing" id="FaG-Mk-u0w"/>
+                            <constraint firstItem="j4M-CZ-EPX" firstAttribute="leading" secondItem="yUn-Ss-SKi" secondAttribute="leading" id="Jr3-qc-lEm"/>
+                            <constraint firstItem="j4M-CZ-EPX" firstAttribute="trailing" secondItem="yUn-Ss-SKi" secondAttribute="trailing" id="OOs-gG-lo1"/>
+                            <constraint firstItem="j4M-CZ-EPX" firstAttribute="top" secondItem="WBO-Bx-xcy" secondAttribute="bottom" constant="8" symbolic="YES" id="W9e-Y3-Ani"/>
+                            <constraint firstItem="xDf-do-58r" firstAttribute="leading" secondItem="WBO-Bx-xcy" secondAttribute="leading" id="YOK-AF-1Lh"/>
+                            <constraint firstItem="WBO-Bx-xcy" firstAttribute="leading" secondItem="j4M-CZ-EPX" secondAttribute="leading" id="g1U-2E-nWD"/>
+                            <constraint firstItem="yUn-Ss-SKi" firstAttribute="bottom" secondItem="yrT-Cd-0tZ" secondAttribute="bottom" id="rhC-iv-6In"/>
+                            <constraint firstItem="VLl-nG-zTm" firstAttribute="top" secondItem="yUn-Ss-SKi" secondAttribute="bottom" constant="27" id="sao-5h-QPN"/>
+                            <constraint firstItem="yUn-Ss-SKi" firstAttribute="top" secondItem="j4M-CZ-EPX" secondAttribute="bottom" constant="26" id="uM1-Qt-9gR"/>
+                            <constraint firstItem="VLl-nG-zTm" firstAttribute="bottom" secondItem="EPS-s9-h4K" secondAttribute="top" id="x3f-WK-Mcr"/>
+                            <constraint firstItem="yUn-Ss-SKi" firstAttribute="leading" secondItem="VLl-nG-zTm" secondAttribute="leading" id="yh9-gm-DCQ"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -703,7 +686,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZqN-43-byR"/>
         <segue reference="a6d-yL-Slq"/>
+        <segue reference="ZqN-43-byR"/>
     </inferredMetricsTieBreakers>
 </document>
