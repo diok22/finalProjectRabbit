@@ -28,8 +28,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             } else if result?.isCancelled == true {
                 print("User cancelled FB auth")
             } else {
-                print(user.self)
-                print("successful authen with FB")
+                print("Successful authentication with FB")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 self.firebaseAuth(credential)
             }
@@ -128,6 +127,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FIRMessaging.messaging().subscribe(toTopic: "/topics/news")
         
         let loginButton = FBSDKLoginButton()
         view.addSubview(loginButton)
