@@ -15,7 +15,7 @@ import FBSDKShareKit
 import FBSDKLoginKit
 
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     var activeUser: FIRUser!
     
     @IBAction func facebookBtnTapped(_ sender: AnyObject) {
@@ -23,16 +23,13 @@ class LogInViewController: UIViewController {
         let facebookLogin = FBSDKLoginManager()
         
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
-            print("1")
             if error != nil {
-                print("Akram: unable to authen with facebook - \(error)")
+                print("unable to authen with facebook - \(error)")
             } else if result?.isCancelled == true {
-                print("Akram User cancelled FB auth")
+                print("User cancelled FB auth")
             } else {
-                print("2")
                 print(user.self)
-                print("Akram: successful authen with FB")
-                print("3")
+                print("successful authen with FB")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 self.firebaseAuth(credential)
             }
@@ -42,11 +39,11 @@ class LogInViewController: UIViewController {
     func firebaseAuth(_ credential: FIRAuthCredential) {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {
-                print("Akram: unable to authenticate with - \(error)")
+                print("unable to authenticate with - \(error)")
             } else {
-                print("4")
                 print(user!)
-                print("Akram: successful authen with FB")
+                print("successful authen with FB")
+
                 
             }
         })
@@ -132,11 +129,11 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let loginButton = FBSDKLoginButton()
-//        
-//        view.addSubview(loginButton)
-//        
-//        loginButton.delegate = self
+        let loginButton = FBSDKLoginButton()
+        view.addSubview(loginButton)
+        loginButton.frame = CGRect(x: 16, y: 30, width: view.frame.width - 32, height: 50)
+        
+        loginButton.delegate = self
         
         self.errorLabel.text = ""
         print("hello")
@@ -150,21 +147,26 @@ class LogInViewController: UIViewController {
             }
         }
         // Do any additional setup after loading the view.
+        
     }
-//    
-//    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-//        print("Did log out")
-//    }
-//    
-//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-//        if error != nil {
-//            print(error)
-//            return
-//        }
-//        
-//        print("successful login")
-//     
-//    }
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Did log out of facebook")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        }
+        
+        print("successful login")
+        self.performSegue(withIdentifier: "logInSegue", sender: nil)
+        
+        
+    }
+
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
