@@ -134,27 +134,27 @@
         <scene sceneID="U26-d6-svx">
             <objects>
                 <tableViewController id="DzJ-Vj-uaE" customClass="UpcomingEventsTableViewController" customModule="finalProjectMA" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="UYg-1V-GxG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="27" sectionHeaderHeight="28" sectionFooterHeight="28" id="UYg-1V-GxG">
                         <rect key="frame" x="0.0" y="0.0" width="285" height="175"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingEventCell" rowHeight="50" id="xey-55-GIr" userLabel="eventCell" customClass="UpcomingEventTableViewCell" customModule="finalProjectMA" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="285" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingEventCell" rowHeight="27" id="xey-55-GIr" userLabel="eventCell" customClass="UpcomingEventTableViewCell" customModule="finalProjectMA" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="285" height="27"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xey-55-GIr" id="ndf-fc-wRc">
-                                    <rect key="frame" x="0.0" y="0.0" width="285" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="285" height="26"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3My-RJ-b9H">
                                             <rect key="frame" x="30" y="0.0" width="101" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7X-S3-VHg">
-                                            <rect key="frame" x="30" y="22" width="376" height="21"/>
+                                            <rect key="frame" x="176" y="0.0" width="101" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -176,7 +176,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b3n-1n-zeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="468"/>
+            <point key="canvasLocation" x="1445.5999999999999" y="467.3163418290855"/>
         </scene>
         <!--New Event-->
         <scene sceneID="chg-qz-pPs">
@@ -710,7 +710,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fY2-Qr-hHB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pMc-xp-LGd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pMc-xp-LGd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -732,7 +732,7 @@
         <image name="Screen Shot 2016-12-15 at 14.07.51" width="1216" height="598"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a6d-yL-Slq"/>
         <segue reference="ZqN-43-byR"/>
+        <segue reference="thp-sW-9wX"/>
     </inferredMetricsTieBreakers>
 </document>
