@@ -41,7 +41,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
-        self.time.text = formatter.string(from: sender.date)
+        // self.time.text = formatter.string(from: sender.date)
         
         let dateTime = sender.date
         var interval = Double()

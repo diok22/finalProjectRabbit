@@ -75,7 +75,7 @@ class MapInContainer: UIViewController, CLLocationManagerDelegate  {
         ref.child((currentUser?.uid)!).child("userData").observe(.value, with: { (userSnapshot) in
             let currentUserData = userSnapshot.value as! [String:AnyObject]
             let urlAPI = "https://maps.googleapis.com/maps/api/directions/json?"
-            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJo"  // X to break key
+            let urlKey = "key=AIzaSyDEw43MvKypSnZOmxMiTzXs4nJ0ZsTjyJoX"  // X to break key
             self.latString = String(describing: currentUserData["latitude"]!)
             self.lonString = String(describing: currentUserData["longitude"]!)
             let eventLatString = self.currentEvent.latitude
