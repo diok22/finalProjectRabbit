@@ -24,6 +24,9 @@ PODS:
   - Firebase/Database (3.10.0):
     - Firebase/Core
     - FirebaseDatabase (= 3.1.1)
+  - Firebase/Messaging (3.10.0):
+    - Firebase/Core
+    - FirebaseMessaging (= 1.2.1)
   - FirebaseAnalytics (3.6.0):
     - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
@@ -40,6 +43,12 @@ PODS:
   - FirebaseDatabase (3.1.1):
     - FirebaseAnalytics (~> 3.5)
   - FirebaseInstanceID (1.0.8)
+  - FirebaseMessaging (1.2.1):
+    - FirebaseAnalytics (~> 3.4)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleToolboxForMac/Logger (~> 2.1)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleMaps (2.1.1):
@@ -53,6 +62,8 @@ PODS:
   - GoogleToolboxForMac/DebugUtils (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
   - GoogleToolboxForMac/Defines (2.1.0)
+  - GoogleToolboxForMac/Logger (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
   - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.0):
@@ -73,6 +84,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Messaging
   - GoogleMaps
   - GooglePlaces
   - SwiftyJSON
@@ -90,6 +102,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 1e383fdfe37b6b5d6ff88e84204bdee30276af0f
   FirebaseDatabase: 6de92187481ff0e8e124064f21742e95ee883b02
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
+  FirebaseMessaging: acf66347e43c5637c697060c3001d25c809a4131
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
   GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
@@ -98,6 +111,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: 10161a4dab842454e44d5faef74c62a75ff10651
+PODFILE CHECKSUM: 99f8327b93f15f5f6ed64fc1752639d0272ae8c6
 
 COCOAPODS: 1.1.1

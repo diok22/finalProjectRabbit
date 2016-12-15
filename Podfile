@@ -13,4 +13,5 @@ target 'finalProjectMA' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
+  pod 'Firebase/Messaging'
 end

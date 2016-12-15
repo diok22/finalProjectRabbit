@@ -14,6 +14,8 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import APScheduledLocationManager
+import FirebaseInstanceID
+import FirebaseMessaging
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, APScheduledLocationManagerDelegate {
     
