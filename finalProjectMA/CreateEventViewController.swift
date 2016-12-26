@@ -152,6 +152,10 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
 //        }
 //    }
 //
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    } // dismiss keyboard
 
     override func viewDidLoad() {
         super.viewDidLoad()
