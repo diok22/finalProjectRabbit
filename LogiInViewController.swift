@@ -165,8 +165,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         
     }
-
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    } // dismiss keyboard
 
 
     override func didReceiveMemoryWarning() {
